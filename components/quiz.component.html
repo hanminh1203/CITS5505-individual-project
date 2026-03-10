@@ -1,0 +1,18 @@
+<ol>
+    <li>Create a quiz page based on your tutorial content with at least 10 questions.</li>
+    <li>Questions are loaded dynamically using AJAX from a local data file (JSON, XML, or plain text). The question order  must be randomised each time the quiz loads.</li>
+    <li>Questions must be rendered dynamically using JavaScript and/or jQuery (i.e., not hard coded directly into the HTML).</li>
+    <li>If the user attempts to navigate away or close the tab at any point after starting the quiz (i.e., at least one answer has been selected) but before successfully submitting, the browser's built-in navigation warning must be triggered. This warning must be cleared once the quiz has been successfully submitted.</li>
+    <li>When the user submits the quiz, automatically calculate and display their score, percentage, and whether they have passed. You can set your own pass threshold (for example, 70% score 7/10).</li>
+    <li>If the user passes, trigger a second AJAX request to retrieve and display some reward content (e.g., a badge, or congratulatory message). The reward must be fetched dynamically from a public API, not hard-coded.</li>
+    <li>Use local storage to save each attempt, including the score, percentage, and date/time. Display the current result alongside any previous attempts so the user can track their progress over time.</li>
+    <li>AJAX requests must retrieve data either from a local data file (e.g., JSON, XML, or text) or from a suitable public API (for example, one listed in one listed in https://github.com/public-apis/public-apis). Note that the reward content in point (f) must come from a public API.</li>
+</ol>
+<div>
+    <div id="quiz-container">
+    </div>
+    <div class="control text-center">
+        <button id="btn-submit" class="btn btn-primary">Submit Quiz</button>
+    </div>
+</div>
+<script src="components/quiz.component.js"></script>
