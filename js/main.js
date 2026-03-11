@@ -1,5 +1,5 @@
 $(function () {
-    $("header").load("components/header/header.component.html");
+    $("header").load("components/header.component.html");
     $("footer").load("components/footer.component.html");
     
     const hash = $(location).attr('hash').substring(1) || 'tutorial';
