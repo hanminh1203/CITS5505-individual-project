@@ -1,0 +1,41 @@
+section {
+    height: 100vh;
+    display: flex;
+}
+
+.flex-menu-container {
+    position: fixed;
+    bottom: 10vh;
+    width: 50px;
+    height: 150px;
+}
+
+.section-student-info {
+    background-color: #f8f9fa;
+    /* #TODO change to image */
+
+}
+
+.image-overlay {
+    position: absolute;
+    background: #211506;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.section-html {
+    background-color: #e9ecef;
+    /* #TODO change to image */
+}
+
+.section-css {
+    background-color: #ced4da;
+    /* #TODO change to image */
+}
+.section-javascript {
+    background-color: #dee2e6;
+    /* #TODO change to image */
+}

@@ -4,14 +4,39 @@ $(function () {
     const NUMBER_OF_QUESTIONS = 10;
 
     const questionTemplate = (question, questionIndex) => `
-    <div id="question-${questionIndex}" class="question">
-        <p>${question.question}</p>
-        <ul>
-            ${question.choices.map((option, index) => `<li><input type="radio" name="question-${questionIndex}" value="${index}"> ${option}</li>`).join('')}
-        </ul>
+    <div id="question-${questionIndex}" class="question mb-1">
+        <h5>Question ${questionIndex + 1}</h5>
+        <div>${question.question}</div>
+        <div>
+            ${question.choices.map((option, index) => `<div><input type="radio" name="question-${questionIndex}" value="${index}"> ${option}</div>`).join('')}
+        </div>
         <div class="feedback"></div>
     </div>
     `;
+
+    const resultsTemplate = (results) => `
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Score</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${displayResults(results)}
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    function displayResults(results) {
+        if (results.length) {
+            return results.map(line => `<tr><td>${new Date(line.date).toLocaleString()}</td><td>${line.score}</td><td>${line.percentage}%</td></tr>`).join('');
+        }
+        return `<tr><td colspan="3" class="text-center">No results yet.</td></tr>`;
+    }
     let questions = [];
     let selectedQuestions = [];
     $.ajax({
@@ -35,9 +60,9 @@ $(function () {
                 //  retry | Back to Tutorial
                 // TODO: Create a model or new message, depends on the design
                 const results = JSON.parse(localStorage.getItem('results')) || [];
-                results.push({ score, percentage: (score / NUMBER_OF_QUESTIONS * 100).toFixed(2), date: new Date().toISOString() });
+                results.unshift({ score, percentage: (score / NUMBER_OF_QUESTIONS * 100).toFixed(2), date: new Date().toISOString() });
                 localStorage.setItem('results', JSON.stringify(results));
-                $('#results-list').html(results.map(result => `<li>Score: ${result.score}, Percentage: ${result.percentage}%, Date: ${new Date(result.date).toLocaleString()}</li>`).join(''));
+                $('#results-list').html(resultsTemplate(results));
                 $('#results-container').removeClass('d-none');
             });
         }
@@ -52,7 +77,7 @@ $(function () {
     });
     $('#btn-clear-results').click(function () {
         localStorage.removeItem('results');
-        $('#results-list').html('');
+        $('#results-list').html(resultsTemplate([]));
     });
     function loadQuestions(selectedQuestions, questionTemplate) {
         $('#quiz-container').html(selectedQuestions.map(questionTemplate).join(''));

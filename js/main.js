@@ -13,6 +13,7 @@ $(function () {
 
 function selectPage(page) {
     $('main').load('components/' + page + '.component.html');
+    $('main').addClass(page);
     $('.navbar .nav-item').removeClass('active');
     $('.navbar .link-nav-' + page).parent().addClass('active');
 }
