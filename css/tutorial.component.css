@@ -3,6 +3,13 @@ section {
     display: flex;
 }
 
+section .container {
+    padding: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
 .flex-menu-container {
     position: fixed;
     bottom: 10vh;
@@ -11,19 +18,9 @@ section {
 }
 
 .section-student-info {
-    background-color: #f8f9fa;
-    /* #TODO change to image */
+    background-image: url('/assets/background.jpg');
+    background-size: cover;
 
-}
-
-.image-overlay {
-    position: absolute;
-    background: #211506;
-    opacity: 0.6;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
 }
 
 .section-html {
