@@ -3,3 +3,4 @@ Individual project for CITS5505 Semester 1 - 2026
 
 #Reference:
 Theme: https://bootstrap.themes.guide/darkster/
+Tutorial content generator: https://notebooklm.google.com/

@@ -6,28 +6,157 @@
         <div class="mb-4">25112977</div>
     </div>
 </section>
+<style>
+    .demo-box {
+        border: 2px solid #3498db;
+        padding: 15px;
+        margin: 15px 0;
+        background: #ebf5fb;
+    }
+
+    .box-model-visual {
+        border: 20px solid #2ecc71;
+        padding: 20px;
+        margin: 20px;
+        background: #e8f8f5;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .highlight {
+        background-color: #f1c40f;
+        padding: 2px 5px;
+    }
+</style>
 <section class="section-html">
     <div class="container pt-3 pb-3">
-        <div class="title">HTML (HyperText Markup Language)</div>
+        <div class="title">HTML</div>
         <div class="content">
-            <div class="definition">
-                <p>HTML was originally defined as type of SGML in 1990, by Tim Berners-Lee.</p>
-                <p>HTML5 was a significant revamp of the language release in 2008</p>
+            <div id="introduction" class="content-section">
+                <div class="content-header">1. What is HTML?</div>
+                <p><strong>HTML (Hyper Text Markup Language)</strong> was originally defined as a type of SGML in 1990,
+                    by Tim Berners-Lee.<br>HTML5 was a significant revamp of the language released in 2008.</p>
+                <div class="content-subheader">The HTML5 Philosophy</div>
+                <ul>
+                    <li><strong>Interoperability:</strong> Pages should be renderable on a wide variety of browsers.
+                    </li>
+                    <li><strong>Graceful Error Recovery:</strong> Small errors should not stop the page from rendering.
+                    </li>
+                    <li><strong>Backwards Compatibility:</strong> New features should not break the web.
+                    </li>
+                    <li><strong>Prioritize Users:</strong> The needs of the user come before designers, browsers, or
+                        theorists.</li>
+                    <li><strong>Separation of Concerns:</strong> HTML describe the <em>type</em> of information, not how
+                        it displays.</li>
+                </ul>
             </div>
-            <div>
-                <div>HTML element</div>
-                <div>
-                    <p>An HTML document is made up of <span class="fw-bold">elements</span>.</p>
-                    <p>An element is usually made up of opening and closing <span class="fw-bold">tags</span> with <span
-                            class="fw-bold">content</span>between.</p>
-                    TODO add interactive demonstration of HTML elements, tags, and content
+
+            <div id="structure" class="content-section">
+                <div class="content-header">2. Document Structure</div>
+                <p>An HTML document is a <strong>tree data structure</strong> made of elements. Most elements
+                    consist of an <strong>opening tag</strong>, content, and a <strong>closing tag</strong>.</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome to Agile Web!&lt;/h1&gt;
+    &lt;p&gt;Ready to build a website?&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>Visible elements, like headings and paragraphs, are placed within the <code>&lt;body&gt;</code>
+                    branch, while metadata and the page title reside in the <code>&lt;head&gt;</code>.</p>
+            </div>
+
+            <div id="text-elements" class="content-section">
+                <div class="content-header">3. Text and Semantic Content</div>
+                <p>HTML provides various tags to define the meaning of text:</p>
+                <ul>
+                    <li><code>&lt;h1&gt;</code> to <code>&lt;h4&gt;</code>: Headings of varying importance.</li>
+                    <li><code>&lt;p&gt;</code>: Paragraphs.</li>
+                    <li><code>&lt;code&gt;</code>: Computer code snippets.</li>
+                    <li><code>&lt;em&gt;</code>: Emphasized (italic) text.</li>
+                </ul>
+                <div class="demo">
+                    <div class="content-subheader">Example Demonstration:</div>
+                    <p>This is a standard paragraph. <em>This text is emphasized</em>, and this is
+                        <code>variableName = 10;</code> in code format.
+                    </p>
                 </div>
             </div>
-            <div>
-                <div>HTML document struture</div>
-                TODO add interactive demonstration of HTML document structure, including the doctype declaration, html
-                element, head and body sections, and common elements like headings, paragraphs, links, images, lists,
-                etc.
+
+            <div id="media-links" class="content-section">
+                <div class="content-header">4. Images and Hyperlinks</div>
+                <p>All HTML tags can have a list of attributes which appear between its name and the right bracket of
+                    the opening tag.</p>
+                <div class="content-subheader">Images</div>
+                <p>Images are inserted via the <code>&lt;img/&gt;</code> tag using the <code>src</code> attribute. The
+                    <code>alt</code> attribute provides text for if the image can't be displayed or for screen readers.
+                </p>
+                <pre class="flex-fill mb-0 me-3"><code>&lt;img src="https://imgs.xkcd.com/comics/university_website.png" alt="Pointed advice on university website design" style="width:500px"&gt;</code></pre>
+
+                <div class="content-subheader">Hyperlinks</div>
+                <p>Links are created using the <strong>anchor tag</strong> <code>&lt;a&gt;</code> with an
+                    <code>href</code> (hypertext reference) attribute.
+                </p>
+                <div class="demo">
+                    <a href="javascript:void(0)">Agile Web Development</a>.
+                </div>
+            </div>
+
+            <div id="lists-tables" class="content-section">
+                <div class="content-header">5. Organizing Data: Lists and Tables</div>
+                <div class="content-subheader">Lists</div>
+                <p>HTML supports <strong>Ordered Lists</strong> (<code>&lt;ol&gt;</code>) for numbered items and
+                    <strong>Unordered Lists</strong> (<code>&lt;ul&gt;</code>) for bullet points. Items are defined
+                    using <code>&lt;li&gt;</code>.
+                </p>
+
+                <div class="content-subheader">Tables</div>
+                <p>Tables are matrices of cells consisting of rows (<code>&lt;tr&gt;</code>), headers
+                    (<code>&lt;th&gt;</code>), and data cells (<code>&lt;td&gt;</code>).</p>
+                <div class="demo">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th>Category</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>Semantic</td>
+                            <td>Defines meaning</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="layout" class="content-section">
+                <div class="content-header">6. Layout and Grouping</div>
+                <p>To group elements for formatting or layout, HTML uses <strong>Block</strong> and
+                    <strong>Inline</strong> containers:
+                </p>
+                <ul>
+                    <li><code>&lt;div&gt;</code>: A multi-line block used for larger sections.</li>
+                    <li><code>&lt;span&gt;</code>: Groups content on a single line, like words in a sentence.</li>
+                </ul>
+                <p>HTML5 also introduced <strong>Advanced Layout Elements</strong> like <code>&lt;header&gt;</code>,
+                    <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>,
+                    <code>&lt;aside&gt;</code>, and <code>&lt;footer&gt;</code> for better document structure.
+                </p>
+            </div>
+
+            <div id="forms" class="content-section">
+                <div class="content-header">7. Forms and Interaction</div>
+                <p>The <code>&lt;form&gt;</code> element is the standard way to send data from the browser to a server
+                    .</p>
+                <pre><code>&lt;form action="/submit-data" method="get"&gt;
+  &lt;label for="user-email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="user-email" name="email" required&gt;
+  &lt;input type="submit" value="Send"&gt;
+&lt;/form&gt;</code></pre>
+                <p>Using correct <code>type</code> attributes (e.g., <code>email</code>, <code>tel</code>,
+                    <code>date</code>) allows browsers to provide specialized keyboards and native validation.
+                </p>
             </div>
         </div>
     </div>
@@ -36,23 +165,141 @@
     <div class="container pt-3 pb-3">
         <div class="title">CSS (Cascading Style Sheets)</div>
         <div class="content">
-            <div class="definition">
-                
+            <div class="content-section">
+                <h2>1. What is CSS?</h2>
+                <p><strong>CSS (Cascading Style Sheets)</strong> is a stylesheet language used to describe the
+                    <strong>presentation, style, and appearance</strong> of a web page [1, 2]. It allows for the
+                    <strong>separation of content (HTML) from presentation (CSS)</strong>, which offers several key
+                    advantages for the web [2, 3]:
+                </p>
+                <ul>
+                    <li><strong>Speed:</strong> Stylesheets are downloaded once and cached, rather than sent with every
+                        page [2].</li>
+                    <li><strong>Maintainability:</strong> Styles can be centrally maintained and updated across an
+                        entire site [3].</li>
+                    <li><strong>Accessibility:</strong> Keeping style in CSS improves accessibility for assistive
+                        technologies by maintaining semantic markup [3].</li>
+                    <li><strong>Consistency:</strong> Ensures an organization's web pages have a consistent "look and
+                        feel" [3].</li>
+                </ul>
             </div>
-            <div>
-                <div>Advantages of CSS</div>
+
+            <div class="content-section">
+                <h2>2. Applying CSS to Your Documents</h2>
+                <p>There are three primary ways to include CSS in your project [4]:</p>
+
+                <h3>A. Inline Styles</h3>
+                <p>Applied directly to a single tag using the <code>style</code> attribute [4]. While useful for
+                    debugging, they generally defeat the purpose of uniform styling [5].</p>
+                <pre><code>&lt;p style="color: blue; font-size: 16px;"&gt;This is an inline style.&lt;/p&gt;</code></pre>
+
+                <h3>B. Document (Internal) Style Sheets</h3>
+                <p>Contained within a <code>&lt;style&gt;</code> tag inside the HTML <code>&lt;head&gt;</code> [4].
+                    These apply rules to the entire document [4, 6].</p>
+                <pre><code>&lt;style&gt;
+  p { color: red; }
+&lt;/style&gt;</code></pre>
+
+                <h3>C. External Style Sheets</h3>
+                <p>Separate <code>.css</code> files linked in the <code>&lt;head&gt;</code> [4]. This is the most
+                    efficient way to apply styles to many pages at once [7].</p>
+                <pre><code>&lt;link rel="stylesheet" type="text/css" href="styles.css"&gt;</code></pre>
             </div>
-            <div>
-                <div>Why "cascading"</div>
+
+            <div class="content-section">
+                <h2>3. Selectors: Targeting Elements</h2>
+                <p>A <strong>selector</strong> determines which HTML elements a style rule applies to [6].</p>
+                <ul>
+                    <li><strong>Universal Selector (<code>*</code>):</strong> Matches all elements on the page [8].</li>
+                    <li><strong>Element Selector:</strong> Matches a specific tag type (e.g., <code>p</code>,
+                        <code>h1</code>) [9].
+                    </li>
+                    <li><strong>Class Selector (<code>.class</code>):</strong> Groups arbitrary sets of elements using
+                        the <code>class</code> attribute [7, 10].</li>
+                    <li><strong>ID Selector (<code>#id</code>):</strong> Targets a unique element with a specific
+                        <code>id</code> attribute [7, 10].
+                    </li>
+                    <li><strong>Pseudo-class (<code>:state</code>):</strong> Selects elements based on state, such as
+                        <code>:hover</code> or <code>:visited</code> [7, 11].
+                    </li>
+                </ul>
+                <div class="demo-box">
+                    <p><strong>Interactive Demo:</strong> This paragraph is inside a <code>.demo-box</code> class. If we
+                        use the selector <code>.demo-box:hover</code>, we can change the background when the mouse moves
+                        over it [11]!</p>
+                </div>
             </div>
-            <div>
-                <div>Selector basics</div>
+
+            <div class="content-section">
+                <h2>4. The Box Model</h2>
+                <p>Every element is laid out as <strong>four boxes</strong> that control spacing and borders [12].</p>
+                <ol>
+                    <li><strong>Content:</strong> Where the actual element (text/image) is rendered [12].</li>
+                    <li><strong>Padding:</strong> The space between the border and the content [13].</li>
+                    <li><strong>Border:</strong> The line surrounding the padding and content [14].</li>
+                    <li><strong>Margin:</strong> The transparent space between the border and neighboring elements [13].
+                    </li>
+                </ol>
+                <div class="box-model-visual">
+                    MARGIN (Transparent Outer Space) [13]<br>
+                    <div style="border: 5px solid #273746; padding: 10px;">
+                        BORDER [14]<br>
+                        <div style="background: #fff; padding: 10px;">
+                            PADDING [13]<br>
+                            <div style="background: #d5f5e3;">CONTENT AREA [12]</div>
+                        </div>
+                    </div>
+                </div>
+                <p><strong>Note:</strong> Total width and height calculations must include padding and borders [13].</p>
             </div>
-            <div>
-                <div>Property groups</div>
+
+            <div class="content-section">
+                <h2>5. Common Properties</h2>
+                <h3>Fonts and Text</h3>
+                <ul>
+                    <li><strong>font-size:</strong> Sets the size using numbers or names (e.g., <code>xx-large</code>)
+                        [15].</li>
+                    <li><strong>text-align:</strong> Controls alignment (<code>left</code>, <code>center</code>,
+                        <code>right</code>, or <code>justify</code>) [16].
+                    </li>
+                    <li><strong>text-decoration:</strong> Adds effects like <code>underline</code> or
+                        <code>line-through</code> [16].
+                    </li>
+                </ul>
+
+                <h3>Colors</h3>
+                <p>Colors can be specified by 140 supported names, a set of 16 standard colors, or 16 million different
+                    <strong>hexadecimal codes</strong> (e.g., <code>#FFFFFF</code> for white) [12].
+                </p>
             </div>
-            <div>
-                <div>Box model</div>
+
+            <div class="content-section">
+                <h2>6. Layout and Conflict Resolution</h2>
+                <p>By default, elements follow <strong>normal flow</strong>, appearing sequentially above each other
+                    [17]. This can be overridden using:</p>
+                <ul>
+                    <li><strong>Float:</strong> Shifts elements to the left or right, allowing text to flow around them
+                        [16, 17].</li>
+                    <li><strong>Position:</strong> Offers <code>static</code>, <code>relative</code>,
+                        <code>absolute</code>, <code>fixed</code>, and <code>sticky</code> modes using offsets like
+                        <code>top</code> and <code>left</code> [18].
+                    </li>
+                </ul>
+
+                <h3>Dealing with Conflicts (The Cascade)</h3>
+                <p>When multiple rules apply to one element, browser precedence rules take over [19]. Generally,
+                    priority follows [20]:</p>
+                <p><strong>Inline Styles > ID Selectors > Class/Attribute Selectors > Element Selectors</strong></p>
+                <p>The <code>!important</code> modifier can be used to override these standard priorities [21].</p>
+            </div>
+
+            <div class="content-section">
+                <h2>7. Modern Styling with Frameworks</h2>
+                <p>Manually laying out pages with raw CSS is difficult and must account for many device sizes [22].
+                    <strong>CSS Frameworks</strong> like <strong>Bootstrap</strong> are open-source libraries that
+                    provide pre-built, responsive components [23, 24]. Bootstrap uses a <strong>12-column grid
+                        system</strong> to align content easily across mobile, tablets, and PCs [25].
+                </p>
             </div>
         </div>
     </div>

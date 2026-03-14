@@ -1,5 +1,5 @@
 section {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
 }
 
@@ -10,11 +10,13 @@ section .container {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-.flex-menu-container {
-    position: fixed;
-    bottom: 10vh;
-    width: 50px;
-    height: 150px;
+
+.content-section {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .section-student-info {
@@ -32,7 +34,59 @@ section .container {
     background-color: #ced4da;
     /* #TODO change to image */
 }
+
 .section-javascript {
     background-color: #dee2e6;
     /* #TODO change to image */
+}
+
+.title {
+    color: #2c3e50;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.content-header {
+    color: #35424a;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.content-subheader {
+    color: #35424a;
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+pre code {
+    background: transparent
+}
+
+code {
+    background: #e0e0e0;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+pre {
+    background: #2d2d2d;
+    color: #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+
+.demo {
+    border: 2px dashed #bbb;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: #fafafa;
+}
+
+#image-example {
+    max-width: 500px;
 }
