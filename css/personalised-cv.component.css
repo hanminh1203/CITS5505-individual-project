@@ -1,0 +1,26 @@
+.cv-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.cv-container .headings {
+    border-bottom: 1px solid #000;
+    font-weight: 700;
+    font-size: 1rem;
+    padding-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.title-timeline {
+    display: flex;
+    justify-content: space-between;
+}
+.title-timeline .title,
+.title-timeline .timeline {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.job-description {
+    list-style-type: disc;
+    padding-top: 1rem;
+}
