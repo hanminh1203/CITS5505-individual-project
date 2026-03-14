@@ -1,116 +1,202 @@
 [
     {
-        "question": "Question 1",
+        "question": "Who originally defined HTML in 1990?",
         "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "Matthew Daggitt",
+            "Tim Berners-Lee",
+            "Maira Alvi",
+            "The W3C Consortium"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Which of the following is a core principle of the HTML5 philosophy?",
+        "choices": [
+            "Prioritize theorists over users",
+            "Strict error reporting that stops rendering",
+            "Graceful error recovery",
+            "Breaking backwards compatibility for new features"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "HTML is considered which type of data structure?",
+        "choices": [
+            "Linear data structure",
+            "Matrix data structure",
+            "Tree data structure",
+            "Relational data structure"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Where are visible elements typically placed in an HTML5 document structure?",
+        "choices": [
+            "Within the <head> branch",
+            "Within the <html> root only",
+            "Within the <body> branch",
+            "Within the <!DOCTYPE> declaration"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Which HTML tag is used to create a multi-line block for grouping content?",
+        "choices": [
+            "<span>",
+            "<div>",
+            "<tr>",
+            "<section>"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "What is the primary purpose of the 'alt' attribute in an <img> tag?",
+        "choices": [
+            "To set the image width",
+            "To provide the image source URL",
+            "To provide text if the image cannot be displayed or for screen readers",
+            "To add a border to the image"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Why is it recommended NOT to use borderless tables for page layout?",
+        "choices": [
+            "It is too fast for browsers to render",
+            "It violates semantic intent and confuses screen readers",
+            "Tables cannot be nested",
+            "HTML5 does not support the 'border' attribute"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Which attribute is used in an anchor tag <a> to specify the link's destination?",
+        "choices": [
+            "src",
+            "id",
+            "href",
+            "rel"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "In HTML forms, which 'method' appends form values directly into the URL of the server request?",
+        "choices": [
+            "POST",
+            "SEND",
+            "GET",
+            "ACTION"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Which HTML5 element represents a portion of a page that can stand alone, such as a blog post?",
+        "choices": [
+            "<aside>",
+            "<article>",
+            "<section>",
+            "<nav>"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "What does CSS stand for?",
+        "choices": [
+            "Creative Style Sheets",
+            "Computer Style Sheets",
+            "Cascading Style Sheets",
+            "Complex Style Sheets"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "What is a primary advantage of using CSS for web development?",
+        "choices": [
+            "It makes the website run only on desktop PCs",
+            "It allows for the separation of content and presentation",
+            "It increases the size of every downloaded page",
+            "It forces developers to specify alignment for every individual element"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Which CSS implementation level applies to a single tag only?",
+        "choices": [
+            "External style sheets",
+            "Document style sheets",
+            "Inline styles",
+            "Internal CSS"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Which CSS selector matches all elements on a page?",
+        "choices": [
+            "Element selector",
+            "Universal selector (*)",
+            "ID selector",
+            "Class selector"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "In the CSS Box Model, what is the space between the border and the content called?",
+        "choices": [
+            "Margin",
+            "Padding",
+            "Outline",
+            "Framework"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Which CSS 'position' value removes an element entirely from the normal flow and offsets it relative to its most recently positioned ancestor?",
+        "choices": [
+            "static",
+            "relative",
+            "absolute",
+            "fixed"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "How can a developer override standard CSS priority/precedence rules?",
+        "choices": [
+            "By using the !important modifier",
+            "By moving the rule to the User Agent stylesheet",
+            "By using an element selector instead of an ID",
+            "By placing the rule first in the document"
         ],
         "answer": 0
     },
     {
-        "question": "Question 2",
+        "question": "How many columns does the Bootstrap grid system use for layout?",
         "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "8",
+            "10",
+            "12",
+            "16"
         ],
-        "answer": 0
+        "answer": 2
     },
     {
-        "question": "Question 3",
+        "question": "Which Bootstrap class provides a full-width container that always spans 100% of the viewport?",
         "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            ".container",
+            ".container-fixed",
+            ".container-fluid",
+            ".container-sm"
         ],
-        "answer": 0
+        "answer": 2
     },
     {
-        "question": "Question 4",
+        "question": "What are 'Glyphicons' in the context of Bootstrap?",
         "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "A type of JavaScript validation",
+            "A library of 200 icons rendered as text",
+            "A new HTML5 layout element",
+            "A method for submitting forms"
         ],
-        "answer": 0
-    },
-    {
-        "question": "Question 5",
-        "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
-        ],
-        "answer": 0
-    },
-    {
-        "question": "Question 6",
-        "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
-        ],
-        "answer": 0
-    },{
-        "question": "Question 7",
-        "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
-        ],
-        "answer": 0
-    },{
-        "question": "Question 8",
-        "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
-        ],
-        "answer": 0
-    },{
-        "question": "Question 9",
-        "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
-        ],
-        "answer": 0
-    },{
-        "question": "Question 10",
-        "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
-        ],
-        "answer": 0
-    },{
-        "question": "Question 11",
-        "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
-        ],
-        "answer": 0
-    },{
-        "question": "Question 12",
-        "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
-        ],
-        "answer": 0
+        "answer": 1
     }
 ]

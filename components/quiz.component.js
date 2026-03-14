@@ -8,7 +8,7 @@ $(function () {
         <h5>Question ${questionIndex + 1}</h5>
         <div>${question.question}</div>
         <div>
-            ${question.choices.map((option, index) => `<div><input type="radio" name="question-${questionIndex}" value="${index}"> ${option}</div>`).join('')}
+            ${question.choices.map((option, index) => `<div><input type="radio" name="question-${questionIndex}" value="${index}"> ${escapeHTML(option)}</div>`).join('')}
         </div>
         <div class="feedback"></div>
     </div>
@@ -37,6 +37,13 @@ $(function () {
         }
         return `<tr><td colspan="3" class="text-center">No results yet.</td></tr>`;
     }
+
+    function escapeHTML(str) {
+        var p = document.createElement("p");
+        p.textContent = str; // or p.innerText = str;
+        return p.innerHTML;
+    }
+
     let questions = [];
     let selectedQuestions = [];
     $.ajax({
@@ -44,6 +51,7 @@ $(function () {
         dataType: 'json',
         success: function (data) {
             questions = data;
+            console.log(questions)
             selectedQuestions = randomizeQuestions(data);
             // TODO Random select 10 questions
             loadQuestions(selectedQuestions, questionTemplate);
@@ -53,7 +61,7 @@ $(function () {
                 let isPass = score >= PASSING_SCORE;
                 $('.control .btn').addClass('d-none');
                 $('#btn-reset').removeClass('d-none');
-                // Display feedback
+                // TODO Display message and reward
                 // is pass
                 //  Retest | Back to Tutorial | AI Reflection Log | Personalised CV
                 // if not pass
@@ -82,7 +90,7 @@ $(function () {
     function loadQuestions(selectedQuestions, questionTemplate) {
         $('#quiz-container').html(selectedQuestions.map(questionTemplate).join(''));
     }
-    
+
     function calculateScore(selectedQuestions, selectedAnswers) {
         let score = 0;
         for (let i = 0; i < selectedQuestions.length; i++) {
@@ -99,11 +107,11 @@ $(function () {
         }
         return score;
     }
-    
+
     function randomizeQuestions(questions) {
         return questions.sort(() => 0.5 - Math.random()).slice(0, NUMBER_OF_QUESTIONS);
     }
-    
+
     function extractSelectedAnswers() {
         return $('#quiz-container').serializeArray()
             .reduce((values, x) => {
@@ -112,7 +120,7 @@ $(function () {
                 return values;
             }, {})
     }
-    
+
     function resetQuiz() {
         $('#quiz-container').html('');
         $('#btn-submit').removeClass('invisible');
