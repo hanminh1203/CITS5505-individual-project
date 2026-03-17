@@ -90,3 +90,89 @@ pre {
 #image-example {
     max-width: 500px;
 }
+
+.demo-box {
+    border: 2px solid #3498db;
+    padding: 15px;
+    margin: 15px 0;
+    background: #ebf5fb;
+}
+
+.demo-box:hover {
+    background: #34b4ff;
+}
+
+.box-model {
+    padding: 0px 20px 20px 20px;
+    text-align: center;
+    color: black;
+}
+.box-model-margin {
+    width: 300px;
+    border: 1px dashed black;
+    background-color: #ae8254;
+}
+.box-model-margin:hover .box-model:not(:hover),
+.box-model:has(.box-model:hover) {
+    background-color: white;
+}
+
+
+.box-model-border {
+    border: 1px solid black;
+    background-color: #e3c382;
+}
+.box-model-padding {
+    border: 1px dashed black;
+    background-color: #b7c480;
+}
+
+.box-model-content  {
+    border: 1px solid black;
+    background-color: #87b2bd;
+}
+
+.highlight {
+    background-color: #f1c40f;
+    padding: 2px 5px;
+}
+
+#html-flip-cards .flip-card {
+    min-height: 150px;
+}
+#css-flip-cards, #html-flip-cards {
+    row-gap: var(--bs-gutter-x);
+}
+#css-flip-cards .flip-card {
+    min-height: 230px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+    color: black;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+

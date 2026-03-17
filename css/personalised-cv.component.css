@@ -24,3 +24,7 @@
     list-style-type: disc;
     padding-top: 1rem;
 }
+
+.job-description li li {
+    margin-bottom: .5rem;
+}
