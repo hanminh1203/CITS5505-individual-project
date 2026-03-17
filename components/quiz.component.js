@@ -4,33 +4,19 @@ $(function () {
     const NUMBER_OF_QUESTIONS = 10;
 
     const questionTemplate = (question, questionIndex) => `
-    <div id="question-${questionIndex}" class="question mb-1">
+    <div id="question-${questionIndex}" class="question mb-3">
         <h5>Question ${questionIndex + 1}</h5>
         <div>${question.question}</div>
         <div>
-            ${question.choices.map((option, index) => `<div><input type="radio" name="question-${questionIndex}" value="${index}"> ${escapeHTML(option)}</div>`).join('')}
+            ${question.choices.map((option, index) => `
+                <div class="form-check">
+                    <input class="form-check-input" id="answer-${questionIndex}-${index}" type="radio" name="question-${questionIndex}" value="${index}">
+                    <label class="form-check-label" for="answer-${questionIndex}-${index}">${escapeHTML(option)}</label>
+                </div>`).join('')}
         </div>
         <div class="feedback"></div>
     </div>
     `;
-
-    const resultsTemplate = (results) => `
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Score</th>
-                        <th>Percentage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${displayResults(results)}
-                </tbody>
-            </table>
-        </div>
-    `;
-
     function displayResults(results) {
         if (results.length) {
             return results.map(line => `<tr><td>${new Date(line.date).toLocaleString()}</td><td>${line.score}</td><td>${line.percentage}%</td></tr>`).join('');
@@ -51,7 +37,6 @@ $(function () {
         dataType: 'json',
         success: function (data) {
             questions = data;
-            console.log(questions)
             selectedQuestions = randomizeQuestions(data);
             // TODO Random select 10 questions
             loadQuestions(selectedQuestions, questionTemplate);
@@ -70,8 +55,12 @@ $(function () {
                 const results = JSON.parse(localStorage.getItem('results')) || [];
                 results.unshift({ score, percentage: (score / NUMBER_OF_QUESTIONS * 100).toFixed(2), date: new Date().toISOString() });
                 localStorage.setItem('results', JSON.stringify(results));
-                $('#results-list').html(resultsTemplate(results));
+                $('#results-list').html(displayResults(results));
                 $('#results-container').removeClass('d-none');
+                $('#results-container')[0].scrollIntoView({
+                    behavior: "smooth",
+                    block: "end"
+                });
             });
         }
     });
@@ -85,7 +74,7 @@ $(function () {
     });
     $('#btn-clear-results').click(function () {
         localStorage.removeItem('results');
-        $('#results-list').html(resultsTemplate([]));
+        $('#results-list').html(displayResults([]));
     });
     function loadQuestions(selectedQuestions, questionTemplate) {
         $('#quiz-container').html(selectedQuestions.map(questionTemplate).join(''));
