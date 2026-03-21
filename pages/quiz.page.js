@@ -36,13 +36,17 @@ export class QuizComponent {
         return true;
     }
 
-    onSubmit() {
+    async onSubmit() {
         if (!this.validateForm()) {
             return;
         }
-        
-        let result = questionService.validateAnswers(this.questions.map(question => ({ id: question.id, selected: question.selected })));
+
+        const result = questionService.validateAnswers(this.questions.map(question => ({ id: question.id, selected: question.selected })));
         this.renderFeedback(result);
+        this.isDirty = false;
+        if (result.isPassed) {
+            await this.displayRewardPopup();
+        }
 
         // TODO Call Public API, validate response and Display reward (see Rubrics)
         // TODO use one of Public API: https://github.com/surhud004/Foodish?tab=readme-ov-file#readme
@@ -56,6 +60,33 @@ export class QuizComponent {
             behavior: "smooth",
             block: "end"
         });
+    }
+
+    async displayRewardPopup() {
+        const modal = await $.get('/components/reward.component.html');
+        const modalElement = $(modal);
+        try {
+            const reward = await $.get('https://foodish-api.com/api/');
+            if (reward.image) {
+                modalElement.find('#reward-popup-image-success').addClass('d-block')
+                    .removeClass('d-none');
+                modalElement.find('#reward-popup-image-failed').addClass('d-none')
+                    .removeClass('d-block');
+                modalElement.find('#reward-image').attr('src', reward.image);
+            } else {
+                modalElement.find('#reward-popup-image-success').addClass('d-none')
+                    .removeClass('d-block');
+                modalElement.find('#reward-popup-image-failed').addClass('d-block')
+                    .removeClass('d-none');
+            }
+        } catch {
+            modalElement.find('#reward-popup-image-success').addClass('d-none')
+                    .removeClass('d-block');
+            modalElement.find('#reward-popup-image-failed').addClass('d-block')
+                .removeClass('d-none');
+        }
+        const bootstrapModal = new bootstrap.Modal(modalElement, { backdrop: 'static' });
+        bootstrapModal.show();
     }
 
     validateForm() {

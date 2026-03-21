@@ -1,4 +1,4 @@
-.tutorial>section {
+.tutorial>section:not(:last-child) {
     min-height: 100vh;
     display: flex;
 }
