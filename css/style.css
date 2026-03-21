@@ -6,3 +6,21 @@ main {
 main>.container {
     background-color: rgb(255, 255, 255, 0.8);
 }
+
+#footer-navigation {
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity, 1));
+    color: rgba(var(--bs-light-rgb), var(--bs-text-opacity, 1));
+    padding: 0px 12px;
+}
+
+#footer-navigation .col {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: .2rem 0;
+    text-decoration: none;
+    color: rgba(var(--bs-light-rgb), var(--bs-text-opacity, 1));
+}
+#footer-navigation .col div {
+    font-size: 12px;
+}

@@ -3,7 +3,7 @@
         <div class="title">HTML</div>
         <div class="content">
             <div id="introduction" class="content-section">
-                <div class="content-header">1. What is HTML?</div>
+                <h2>1. What is HTML?</h2>
                 <p><strong>HTML (Hyper Text Markup Language)</strong> was originally defined as a type of SGML in 1990,
                     by Tim Berners-Lee.<br>HTML5 was a significant revamp of the language released in 2008.</p>
                 <div class="content-subheader">The HTML5 Philosophy</div>
@@ -84,7 +84,7 @@
             </div>
 
             <div id="structure" class="content-section">
-                <div class="content-header">2. Document Structure</div>
+                <h2>2. Document Structure</h2>
                 <p>An HTML document is a <strong>tree data structure</strong> made of elements. Most elements
                     consist of an <strong>opening tag</strong>, content, and a <strong>closing tag</strong>.</p>
                 <pre><code>&lt;!DOCTYPE html&gt;
@@ -102,7 +102,7 @@
             </div>
 
             <div id="text-elements" class="content-section">
-                <div class="content-header">3. Text and Semantic Content</div>
+                <h2>3. Text and Semantic Content</h2>
                 <p>HTML provides various tags to define the meaning of text:</p>
                 <ul>
                     <li><code>&lt;h1&gt;</code> to <code>&lt;h4&gt;</code>: Headings of varying importance.</li>
@@ -119,7 +119,7 @@
             </div>
 
             <div id="media-links" class="content-section">
-                <div class="content-header">4. Images and Hyperlinks</div>
+                <h2>4. Images and Hyperlinks</h2>
                 <p>All HTML tags can have a list of attributes which appear between its name and the right bracket of
                     the opening tag.</p>
                 <div class="content-subheader">Images</div>
@@ -139,7 +139,7 @@
             </div>
 
             <div id="lists-tables" class="content-section">
-                <div class="content-header">5. Organizing Data: Lists and Tables</div>
+                <h2>5. Organizing Data: Lists and Tables</h2>
                 <div class="content-subheader">Lists</div>
                 <p>HTML supports <strong>Ordered Lists</strong> (<code>&lt;ol&gt;</code>) for numbered items and
                     <strong>Unordered Lists</strong> (<code>&lt;ul&gt;</code>) for bullet points. Items are defined
@@ -164,7 +164,7 @@
             </div>
 
             <div id="layout" class="content-section">
-                <div class="content-header">6. Layout and Grouping</div>
+                <h2>6. Layout and Grouping</h2>
                 <p>To group elements for formatting or layout, HTML uses <strong>Block</strong> and
                     <strong>Inline</strong> containers:
                 </p>
@@ -179,7 +179,7 @@
             </div>
 
             <div id="forms" class="content-section">
-                <div class="content-header">7. Forms and Interaction</div>
+                <h2>7. Forms and Interaction</h2>
                 <p>The <code>&lt;form&gt;</code> element is the standard way to send data from the browser to a server
                     .</p>
                 <pre><code>&lt;form action="/submit-data" method="get"&gt;
@@ -360,7 +360,7 @@
                 </ol>
                 <div class="box-model-visual d-flex justify-content-center">
                     <div class="box-model box-model-margin">
-                    MARGIN (Transparent Outer Space)<br>
+                        MARGIN (Transparent Outer Space)<br>
                         <div class="box-model box-model-border">
                             BORDER<br>
                             <div class="box-model box-model-padding">
@@ -426,10 +426,175 @@
 </section>
 <section class="section-javascript">
     <div class="container pt-3 pb-3">
-        JavaScript feature
+        <div class="title">Javascript</div>
+        <div class="content">
+            <section id="intro">
+                <h2>1. What is JavaScript?</h2>
+                <p><strong>JavaScript</strong> is a high-level, dynamic, untyped, and interpreted programming language
+                    standardized in the <strong>ECMAScript</strong> specification [1]. Along with HTML and CSS, it is
+                    one of the three essential technologies for web production [1].</p>
+                <ul>
+                    <li><strong>Multi-paradigm:</strong> Supports object-oriented, imperative, and functional
+                        programming styles [1].</li>
+                    <li><strong>Prototype-based:</strong> Features class-less inheritance with <strong>first-class
+                            functions</strong> [1].</li>
+                    <li><strong>Components:</strong> Includes <em>Core</em> (the heart), <em>Client-side</em> (browser
+                        control), and <em>Server-side</em> (NodeJS) [2].</li>
+                    <li><strong>Efficiency:</strong> Provides a quicker alternative to server-side processing by
+                        executing on the client device, reducing server load [2].</li>
+                </ul>
+            </section>
+
+            <section id="execution">
+                <h2>2. Execution, I/O, and Debugging</h2>
+                <h3>Execution Environments</h3>
+                <p>JavaScript primarily runs in <strong>Browsers</strong>, where it can interact with the internal model
+                    of the page [2, 3]. It can also run on <strong>NodeJS</strong>, a server-side console environment
+                    [3].</p>
+                <h3>Including JavaScript</h3>
+                <ul>
+                    <li><strong>Inline:</strong> Inside tag attributes like <code>onclick</code> [4].</li>
+                    <li><strong>Internal:</strong> Within <code>&lt;script&gt;</code> tags in the document [4].</li>
+                    <li><strong>External:</strong> Referenced via a URL using the <code>src</code> attribute [4].</li>
+                </ul>
+                <h3>Input and Output (I/O)</h3>
+                <p>Standard interaction methods include <code>console.log()</code> for best-practice logging,
+                    <code>alert()</code> or <code>confirm()</code> for outputting data, and <code>prompt()</code> for
+                    gathering user input [5].</p>
+                <div class="interactive-box">
+                    <h3>Interactive Demo: Browser I/O</h3>
+                    <p>This demonstrates event-driven computation responding to a click [6].</p>
+                    <button class="btn"
+                        onclick="let name = prompt('Enter your name:'); if(name) alert('Hello, ' + name + '! This is an event-driven response.');">Trigger
+                        I/O Event</button>
+                </div>
+                <p class="note"><strong>Debugging:</strong> Browser <strong>DevTools</strong> provide a console for
+                    interaction and <strong>breakpoints</strong> to monitor code during execution [7].</p>
+            </section>
+
+            <section id="syntax">
+                <h2>3. Syntax and Variables</h2>
+                <p>JavaScript syntax is flexible but has specific rules:</p>
+                <ul>
+                    <li><strong>Semicolons:</strong> Statements should end with <code>;</code>, though the interpreter
+                        inserts them if missing, which can cause bugs in <code>return</code> statements [8, 9].</li>
+                    <li><strong>Comments:</strong> Use <code>//</code> for single lines and <code>/* ... */</code> for
+                        multiple lines [8].</li>
+                    <li><strong>Variables:</strong> Names are case-sensitive and can start with <code>$</code>,
+                        <code>_</code>, or letters [5].</li>
+                </ul>
+                <h3>Declaration Keywords</h3>
+                <div class="grid-container">
+                    <div>
+                        <p><strong>Modern (Preferred):</strong></p>
+                        <ul>
+                            <li><code>const</code>: Block-level scope; value cannot be changed [10, 11].</li>
+                            <li><code>let</code>: Block-level scope; standard choice for mutable variables [5, 10, 11].
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p><strong>Legacy/Avoid:</strong></p>
+                        <ul>
+                            <li><code>var</code>: Function-level scope; can interfere with outside blocks [11].</li>
+                            <li><strong>Undeclared:</strong> Automatically assigned <strong>Global Scope</strong>;
+                                considered bad coding style [12].</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="types">
+                <h2>4. Data Types and Coercion</h2>
+                <p>JavaScript uses <strong>Dynamic Typing</strong>, meaning variables can hold any type of value at any
+                    time [13].</p>
+                <h3>The Primitives [9]:</h3>
+                <ul>
+                    <li><strong>Number:</strong> 64-bit IEEE 754 floating-point [9, 14]. Includes <code>NaN</code> (Not
+                        a Number), which is <strong>infectious</strong> [15].</li>
+                    <li><strong>String:</strong> Unicode characters in single or double quotes [16].</li>
+                    <li><strong>Boolean:</strong> <code>true</code> and <code>false</code> [16].</li>
+                    <li><strong>Null & Undefined:</strong> <code>null</code> is intentional non-value;
+                        <code>undefined</code> is uninitialized or undeclared [13].</li>
+                </ul>
+                <h3>Implicit Type Coercion</h3>
+                <p>JavaScript attempts to convert values to perform operations [17]. For instance, <code>4 - true</code>
+                    becomes <code>3</code> [17]. To avoid unintuitive results, use <strong>Strict Equality
+                        (<code>===</code>)</strong>, which checks both value and type, rather than <code>==</code> [18,
+                    19].</p>
+                <div class="interactive-box">
+                    <h3>Interactive Demo: Math Object</h3>
+                    <p>JavaScript provides advanced operations via the <code>Math</code> object [15].</p>
+                    <button class="btn" onclick="alert('Math.sin(3.5) = ' + Math.sin(3.5));">Calculate
+                        Math.sin(3.5)</button>
+                </div>
+            </section>
+
+            <section id="control">
+                <h2>5. Control Structures and Arrays</h2>
+                <h3>Program Flow</h3>
+                <p>Standard structures include <code>if-else</code>, <code>switch</code>, and the <strong>ternary
+                        operator</strong> (<code>condition ? val1 : val2</code>) [20]. Loops include <code>for</code>,
+                    <code>for...in</code> (for iterating properties), and <code>while</code> [21].</p>
+                <h3>Arrays</h3>
+                <p>Arrays are lists indexed numerically starting at 0 [21]. They are dynamic in size and can hold mixed
+                    types [20, 21].</p>
+                <pre><code>let fruits = ["Apple", "Orange"];
+fruits.push("Banana"); // Add to end [22]
+fruits.shift();       // Remove from front [22]
+console.log(fruits.length); // returns 2 [21]</code></pre>
+                <p class="note"><strong>Associative Arrays:</strong> Uses string indices; technically objects under the
+                    hood [23].</p>
+            </section>
+
+            <section id="functions">
+                <h2>6. Functions</h2>
+                <p>Functions are <strong>first-class objects</strong> [24]. They must be defined before use [25].</p>
+                <ul>
+                    <li><strong>Parameters:</strong> JavaScript is lax; missing arguments are <code>undefined</code>,
+                        and extra arguments are stored in the <code>arguments</code> property array [24, 25].</li>
+                    <li><strong>Passing:</strong> Primitives are passed by <strong>Value</strong>; Objects are passed by
+                        <strong>Sharing</strong> (references can be used to change the object) [25].</li>
+                    <li><strong>Anonymous:</strong> Can be defined without a name, often using <code>(...) =></code>
+                        syntax [26, 27].</li>
+                </ul>
+            </section>
+
+            <section id="objects">
+                <h2>7. Objects and Prototypes</h2>
+                <p>Objects are collections of name-value pairs, created quickly with <code>{ ... }</code> [27, 28].
+                    Properties are accessed via dot <code>.</code> or <code>[]</code> notation [28].</p>
+                <h3>Prototypes and Inheritance</h3>
+                <p>JavaScript uses a <strong>class-less, prototype-oriented model</strong> [29].
+                <ul>
+                    <li><strong>Constructors:</strong> Functions used with the <code>new</code> keyword to initialize
+                        objects [29].</li>
+                    <li><strong>Lookup Chain:</strong> If a property isn't found on an object, JavaScript checks its
+                        <strong>prototype</strong> [30].</li>
+                    <li><strong>Runtime Modification:</strong> You can add methods to all instances of an object by
+                        modifying the prototype at any time [31].</li>
+                </ul>
+                <p>The <strong><code>this</code></strong> keyword refers to the current object context, which depends on
+                    how the function was called [32].</p>
+            </section>
+
+            <section id="scoping">
+                <h2>8. Scoping and Closures</h2>
+                <p>Scoping determines variable visibility: <strong>Global</strong> (accessible anywhere),
+                    <strong>Function</strong> (inside a function), or <strong>Block</strong> (inside <code>{}</code>)
+                    [10].</p>
+                <h3>The Global Object</h3>
+                <p>A global object exists everywhere (<code>window</code> in browsers, <code>globalThis</code>
+                    portably). Undeclared variables are added here, which is bad style [33, 34].</p>
+                <h3>Closures</h3>
+                <p>A <strong>Closure</strong> is a powerful abstraction where an inner function keeps the local
+                    variables of its outer function alive even after that outer function has returned [35, 36]. Every
+                    execution creates a <strong>scope object</strong> to hold these variables [36].</p>
+            </section>
+        </div>
     </div>
 </section>
-<div class="text-center pt-3 pb-3">
+<section class="text-center pt-3 pb-3">
     <div class="mb-4">Ready to test your knowledge?</div>
     <a class="btn btn-primary link-nav-quiz" href="#quiz">Start Quiz</a>
-</div>
+</section>

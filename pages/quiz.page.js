@@ -45,6 +45,7 @@ export class QuizComponent {
         this.renderFeedback(result);
 
         // TODO Call Public API, validate response and Display reward (see Rubrics)
+        // TODO use one of Public API: https://github.com/surhud004/Foodish?tab=readme-ov-file#readme
         this.isDirty = false;
         const results = this.storeResult(result);
         $('.control .btn').addClass('d-none');
@@ -73,7 +74,7 @@ export class QuizComponent {
         // TODO  Storage reads/writes wrapped in try/catch for private browsing.
         // TODO Malformed/missing data handled gracefully.
         const results = JSON.parse(localStorage.getItem('results')) || [];
-        results.unshift({ score: result.score, percentage: result.percentage, date: new Date().toISOString() });
+        results.unshift({ score: result.score, percentage: result.percentage, date: new Date().toISOString(), isPassed: result.isPassed });
         localStorage.setItem('results', JSON.stringify(results));
         return results;
     }
@@ -141,9 +142,13 @@ export class QuizComponent {
 
     renderResult(results) {
         if (results.length) {
-            return results.map(line => `<tr><td>${new Date(line.date).toLocaleString()}</td><td>${line.score}</td><td>${line.percentage}%</td></tr>`).join('');
+            return results.map(line => $('<tr></tr>')
+                .append($('<td></td>').text(new Date(line.date).toLocaleString()))
+                .append($('<td></td>').text(line.score))
+                .append($('<td></td>').text(line.percentage))
+                .append($('<td></td>').addClass(line.isPassed ? 'text-success' : 'text-danger').text(line.isPassed ? 'Passed' : 'Failed')));
         }
-        return `<tr><td colspan="3" class="text-center">No results yet.</td></tr>`;
+        return `<tr><td colspan="4" class="text-center">No results yet.</td></tr>`;
     }
 }
 export const component = new QuizComponent();
