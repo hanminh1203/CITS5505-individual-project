@@ -8,6 +8,7 @@ section .container {
     margin-top: 1rem;
     margin-bottom: 1rem;
     background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -26,17 +27,17 @@ section .container {
 }
 
 .section-html {
-    background-color: #e9ecef;
+    background-color: var(--content-bg-color);
     /* #TODO change to image */
 }
 
 .section-css {
-    background-color: #ced4da;
+    background-color: var(--content-bg-color-alt);
     /* #TODO change to image */
 }
 
 .section-javascript {
-    background-color: #dee2e6;
+    background-color: var(--content-bg-color);
     /* #TODO change to image */
 }
 

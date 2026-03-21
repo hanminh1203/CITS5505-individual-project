@@ -1,0 +1,8 @@
+main {
+    background-color: var(--content-bg-color);
+    flex: 1 1 auto;
+}
+
+main>.container {
+    background-color: rgb(255, 255, 255, 0.8);
+}

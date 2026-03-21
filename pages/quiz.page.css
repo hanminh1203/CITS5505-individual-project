@@ -1,0 +1,12 @@
+.feedback {
+    height: 1.5rem;
+}
+
+.quiz {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.quiz .container {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

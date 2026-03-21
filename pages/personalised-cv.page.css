@@ -1,8 +1,10 @@
-.cv-container {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+.personalised-cv .container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 3rem 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.cv-container .headings {
+.personalised-cv .headings {
     border-bottom: 1px solid #000;
     font-weight: 700;
     font-size: 1rem;

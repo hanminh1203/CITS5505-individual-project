@@ -1,5 +1,6 @@
 [
     {
+        "id": "1",
         "question": "Who originally defined HTML in 1990?",
         "choices": [
             "Matthew Daggitt",
@@ -10,6 +11,7 @@
         "answer": 1
     },
     {
+        "id": "2",
         "question": "Which of the following is a core principle of the HTML5 philosophy?",
         "choices": [
             "Prioritize theorists over users",
@@ -20,6 +22,7 @@
         "answer": 2
     },
     {
+        "id": "3",
         "question": "HTML is considered which type of data structure?",
         "choices": [
             "Linear data structure",
@@ -30,6 +33,7 @@
         "answer": 2
     },
     {
+        "id": "4",
         "question": "Where are visible elements typically placed in an HTML5 document structure?",
         "choices": [
             "Within the <head> branch",
@@ -40,6 +44,7 @@
         "answer": 2
     },
     {
+        "id": "5",
         "question": "Which HTML tag is used to create a multi-line block for grouping content?",
         "choices": [
             "<span>",
@@ -50,6 +55,7 @@
         "answer": 1
     },
     {
+        "id": "6",
         "question": "What is the primary purpose of the 'alt' attribute in an <img> tag?",
         "choices": [
             "To set the image width",
@@ -60,6 +66,7 @@
         "answer": 2
     },
     {
+        "id": "7",
         "question": "Why is it recommended NOT to use borderless tables for page layout?",
         "choices": [
             "It is too fast for browsers to render",
@@ -70,6 +77,7 @@
         "answer": 1
     },
     {
+        "id": "8",
         "question": "Which attribute is used in an anchor tag <a> to specify the link's destination?",
         "choices": [
             "src",
@@ -80,16 +88,7 @@
         "answer": 2
     },
     {
-        "question": "In HTML forms, which 'method' appends form values directly into the URL of the server request?",
-        "choices": [
-            "POST",
-            "SEND",
-            "GET",
-            "ACTION"
-        ],
-        "answer": 2
-    },
-    {
+        "id": "9",
         "question": "Which HTML5 element represents a portion of a page that can stand alone, such as a blog post?",
         "choices": [
             "<aside>",
@@ -100,6 +99,7 @@
         "answer": 1
     },
     {
+        "id": "10",
         "question": "What does CSS stand for?",
         "choices": [
             "Creative Style Sheets",
@@ -110,6 +110,7 @@
         "answer": 2
     },
     {
+        "id": "11",
         "question": "What is a primary advantage of using CSS for web development?",
         "choices": [
             "It makes the website run only on desktop PCs",
@@ -120,6 +121,7 @@
         "answer": 1
     },
     {
+        "id": "12",
         "question": "Which CSS implementation level applies to a single tag only?",
         "choices": [
             "External style sheets",
@@ -130,6 +132,7 @@
         "answer": 2
     },
     {
+        "id": "13",
         "question": "Which CSS selector matches all elements on a page?",
         "choices": [
             "Element selector",
@@ -140,6 +143,7 @@
         "answer": 1
     },
     {
+        "id": "14",
         "question": "In the CSS Box Model, what is the space between the border and the content called?",
         "choices": [
             "Margin",
@@ -150,6 +154,7 @@
         "answer": 1
     },
     {
+        "id": "15",
         "question": "Which CSS 'position' value removes an element entirely from the normal flow and offsets it relative to its most recently positioned ancestor?",
         "choices": [
             "static",
@@ -160,6 +165,7 @@
         "answer": 2
     },
     {
+        "id": "16",
         "question": "How can a developer override standard CSS priority/precedence rules?",
         "choices": [
             "By using the !important modifier",
@@ -170,6 +176,7 @@
         "answer": 0
     },
     {
+        "id": "17",
         "question": "How many columns does the Bootstrap grid system use for layout?",
         "choices": [
             "8",
@@ -180,6 +187,7 @@
         "answer": 2
     },
     {
+        "id": "18",
         "question": "Which Bootstrap class provides a full-width container that always spans 100% of the viewport?",
         "choices": [
             ".container",
@@ -190,6 +198,7 @@
         "answer": 2
     },
     {
+        "id": "19",
         "question": "What are 'Glyphicons' in the context of Bootstrap?",
         "choices": [
             "A type of JavaScript validation",
@@ -198,5 +207,16 @@
             "A method for submitting forms"
         ],
         "answer": 1
+    },
+    {
+        "id": "20",
+        "question": "In HTML forms, which 'method' appends form values directly into the URL of the server request?",
+        "choices": [
+            "POST",
+            "SEND",
+            "GET",
+            "ACTION"
+        ],
+        "answer": 2
     }
 ]
