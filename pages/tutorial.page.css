@@ -28,17 +28,14 @@ section .container {
 
 .section-html {
     background-color: var(--content-bg-color);
-    /* #TODO change to image */
 }
 
 .section-css {
     background-color: var(--content-bg-color-alt);
-    /* #TODO change to image */
 }
 
 .section-javascript {
     background-color: var(--content-bg-color);
-    /* #TODO change to image */
 }
 
 .title {

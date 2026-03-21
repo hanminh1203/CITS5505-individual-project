@@ -2,8 +2,13 @@ export class QuestionService {
     NUMBER_OF_QUESTIONS = 10;
     PASSING_SCORE = 70;
     questions = {};
+    correctAnswerMap = {}
     storeQuestion(questions) {
         this.questions = questions;
+        this.correctAnswerMap = this.questions.reduce((questionMap, question) => {
+            questionMap[question.id] = question.answer;
+            return questionMap;
+        }, {});
     }
 
     randomize() {
@@ -11,12 +16,8 @@ export class QuestionService {
     }
 
     validateAnswers(answers) {
-        const correctAnswerMap = this.questions.reduce((questionMap, question) => {
-            questionMap[question.id] = question.answer;
-            return questionMap;
-        });
-        console.log(answers, correctAnswerMap);
-        const correctedAnswers = Object.keys(answers).filter(questionId => correctAnswerMap[questionId] === answers[questionId]);
+        const correctedAnswers = answers.filter(question => this.correctAnswerMap[question.id] === question.selected)
+                        .map(question => question.id);
         const percentage = (correctedAnswers.length * 100 / this.NUMBER_OF_QUESTIONS).toFixed(2);
         return {
             score: correctedAnswers.length,
