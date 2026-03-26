@@ -1,5 +1,6 @@
 import { ObjectUtils } from '/utils/object.utils.js';
 import { component as questionService } from '/services/question.service.js';
+import { component as storageService } from '/services/storage.service.js';
 
 export class QuizComponent {
     questions = [];
@@ -48,14 +49,13 @@ export class QuizComponent {
             await this.displayRewardPopup();
         }
 
-        // TODO Call Public API, validate response and Display reward (see Rubrics)
-        // TODO use one of Public API: https://github.com/surhud004/Foodish?tab=readme-ov-file#readme
         this.isDirty = false;
-        const results = this.storeResult(result);
-        $('.control .btn').addClass('d-none');
-        $('#btn-reset').removeClass('d-none');
+        const results = storageService.storeResult(result);
+        this.hideElement($('.control .btn'));
+        this.showElement($('#btn-reset'));
         $('#results-list').html(this.renderResult(results));
-        $('#results-container').removeClass('d-none');
+        const resultsContainer = $('#results-container');
+        this.showElement(resultsContainer);
         $('#results-container')[0].scrollIntoView({
             behavior: "smooth",
             block: "end"
@@ -68,22 +68,16 @@ export class QuizComponent {
         try {
             const reward = await $.get('https://foodish-api.com/api/');
             if (reward.image) {
-                modalElement.find('#reward-popup-image-success').addClass('d-block')
-                    .removeClass('d-none');
-                modalElement.find('#reward-popup-image-failed').addClass('d-none')
-                    .removeClass('d-block');
+                this.showElement(modalElement.find('#reward-popup-image-success'));
+                this.hideElement(modalElement.find('#reward-popup-image-failed'));
                 modalElement.find('#reward-image').attr('src', reward.image);
             } else {
-                modalElement.find('#reward-popup-image-success').addClass('d-none')
-                    .removeClass('d-block');
-                modalElement.find('#reward-popup-image-failed').addClass('d-block')
-                    .removeClass('d-none');
+                this.showElement(modalElement.find('#reward-popup-image-failed'));
+                this.hideElement(modalElement.find('#reward-popup-image-success'));
             }
         } catch {
-            modalElement.find('#reward-popup-image-success').addClass('d-none')
-                    .removeClass('d-block');
-            modalElement.find('#reward-popup-image-failed').addClass('d-block')
-                .removeClass('d-none');
+            this.showElement(modalElement.find('#reward-popup-image-failed'));
+            this.hideElement(modalElement.find('#reward-popup-image-success'));
         }
         const bootstrapModal = new bootstrap.Modal(modalElement, { backdrop: 'static' });
         bootstrapModal.show();
@@ -99,15 +93,6 @@ export class QuizComponent {
         }
         return validForm;
 
-    }
-
-    storeResult(result) {
-        // TODO  Storage reads/writes wrapped in try/catch for private browsing.
-        // TODO Malformed/missing data handled gracefully.
-        const results = JSON.parse(localStorage.getItem('results')) || [];
-        results.unshift({ score: result.score, percentage: result.percentage, date: new Date().toISOString(), isPassed: result.isPassed });
-        localStorage.setItem('results', JSON.stringify(results));
-        return results;
     }
 
     renderFeedback(result) {
@@ -135,9 +120,9 @@ export class QuizComponent {
     onResetQuiz() {
         this.questions = questionService.randomize();
         this.renderQuestions();
-        $('#btn-submit').removeClass('d-none');
-        $('#btn-reset').addClass('d-none');
-        $('#results-container').addClass('d-none');
+        this.showElement($('#btn-submit'));
+        this.hideElement($('#btn-reset'));
+        this.hideElement($('#results-container'));
     }
 
     onClearResults() {
@@ -180,6 +165,14 @@ export class QuizComponent {
                 .append($('<td></td>').addClass(line.isPassed ? 'text-success' : 'text-danger').text(line.isPassed ? 'Passed' : 'Failed')));
         }
         return `<tr><td colspan="4" class="text-center">No results yet.</td></tr>`;
+    }
+
+    hideElement(element) {
+        return element.addClass('d-none');
+    }
+
+    showElement(element) {
+        return element.removeClass('d-none');
     }
 }
 export const component = new QuizComponent();
