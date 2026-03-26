@@ -15,7 +15,7 @@ section>.container {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.content-section {
+.content>section {
     background: #fff;
     padding: 20px;
     margin: 20px 0;
@@ -87,7 +87,7 @@ pre {
     background: #ebf5fb;
 }
 
-.demo-box:hover {
+.selector-demo-box:hover {
     background: #34b4ff;
 }
 

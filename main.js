@@ -1,5 +1,5 @@
 const ROUTES = {
-    'tutorial': { css: 'pages/tutorial.page.css', component: 'pages/tutorial.page.html' },
+    'tutorial': { css: 'pages/tutorial.page.css', component: 'pages/tutorial.page.html', js: '/pages/tutorial.page.js' },
     'quiz': { css: 'pages/quiz.page.css', component: 'pages/quiz.page.html', js: '/pages/quiz.page.js' },
     'ai-reflection-log': { component: 'pages/ai-reflection-log.page.html' },
     'personalised-cv': { css: 'pages/personalised-cv.page.css', component: 'pages/personalised-cv.page.html' }
@@ -12,7 +12,9 @@ $(document).ready(() => {
         const routes = ROUTES[hash];
         $('link[app-style-sheet]').remove();
         if (currentComponent) {
-            currentComponent.onDestroy();
+            if (currentComponent.onDestroy) {
+                currentComponent.onDestroy();
+            }
             currentComponent = null;
         }
         if (routes) {
@@ -50,7 +52,10 @@ $(document).ready(() => {
 
 $(document).click((event) => {
     const element = $(event.target);
-    if (element.is('a[href^="#"]') && currentComponent && !currentComponent.onBeforeHashChange()) {
+    if (element.is('a[href^="#"]')
+        && currentComponent
+        && currentComponent.onBeforeHashChange
+        && !currentComponent.onBeforeHashChange()) {
         event.preventDefault();
     }
 })

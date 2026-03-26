@@ -2,7 +2,7 @@
     <div class="container pt-3 pb-3">
         <div class="title">HTML</div>
         <div class="content">
-            <div id="introduction" class="content-section">
+            <section id="introduction">
                 <h2>1. What is HTML?</h2>
                 <p><strong>HTML (Hyper Text Markup Language)</strong> was originally defined as a type of SGML in 1990,
                     by Tim Berners-Lee.<br>HTML5 was a significant revamp of the language released in 2008.</p>
@@ -81,9 +81,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div id="structure" class="content-section">
+            <section id="structure">
                 <h2>2. Document Structure</h2>
                 <p>An HTML document is a <strong>tree data structure</strong> made of elements. Most elements
                     consist of an <strong>opening tag</strong>, content, and a <strong>closing tag</strong>.</p>
@@ -99,9 +99,9 @@
 &lt;/html&gt;</code></pre>
                 <p>Visible elements, like headings and paragraphs, are placed within the <code>&lt;body&gt;</code>
                     branch, while metadata and the page title reside in the <code>&lt;head&gt;</code>.</p>
-            </div>
+            </section>
 
-            <div id="text-elements" class="content-section">
+            <section id="text-elements">
                 <h2>3. Text and Semantic Content</h2>
                 <p>HTML provides various tags to define the meaning of text:</p>
                 <ul>
@@ -116,9 +116,9 @@
                         <code>variableName = 10;</code> in code format.
                     </p>
                 </div>
-            </div>
+            </section>
 
-            <div id="media-links" class="content-section">
+            <section id="media-links">
                 <h2>4. Images and Hyperlinks</h2>
                 <p>All HTML tags can have a list of attributes which appear between its name and the right bracket of
                     the opening tag.</p>
@@ -136,9 +136,9 @@
                 <div class="demo">
                     <a href="javascript:void(0)">Agile Web Development</a>.
                 </div>
-            </div>
+            </section>
 
-            <div id="lists-tables" class="content-section">
+            <section id="lists-tables">
                 <h2>5. Organizing Data: Lists and Tables</h2>
                 <div class="content-subheader">Lists</div>
                 <p>HTML supports <strong>Ordered Lists</strong> (<code>&lt;ol&gt;</code>) for numbered items and
@@ -161,9 +161,9 @@
                         </tr>
                     </table>
                 </div>
-            </div>
+            </section>
 
-            <div id="layout" class="content-section">
+            <section id="layout">
                 <h2>6. Layout and Grouping</h2>
                 <p>To group elements for formatting or layout, HTML uses <strong>Block</strong> and
                     <strong>Inline</strong> containers:
@@ -176,9 +176,9 @@
                     <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>,
                     <code>&lt;aside&gt;</code>, and <code>&lt;footer&gt;</code> for better document structure.
                 </p>
-            </div>
+            </section>
 
-            <div id="forms" class="content-section">
+            <section id="forms">
                 <h2>7. Forms and Interaction</h2>
                 <p>The <code>&lt;form&gt;</code> element is the standard way to send data from the browser to a server
                     .</p>
@@ -190,7 +190,7 @@
                 <p>Using correct <code>type</code> attributes (e.g., <code>email</code>, <code>tel</code>,
                     <code>date</code>) allows browsers to provide specialized keyboards and native validation.
                 </p>
-            </div>
+            </section>
         </div>
     </div>
 </section>
@@ -198,7 +198,7 @@
     <div class="container pt-3 pb-3">
         <div class="title">CSS (Cascading Style Sheets)</div>
         <div class="content">
-            <div class="content-section">
+            <section>
                 <h2>1. What is CSS?</h2>
                 <div>CSS stands for <em>Cascading Style Sheets</em>
                     <ul>
@@ -300,9 +300,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="content-section">
+            <section>
                 <h2>2. Applying CSS to Your Documents</h2>
                 <p>There are three primary ways to include CSS in your project:</p>
 
@@ -322,9 +322,9 @@
                 <p>Separate <code>.css</code> files linked in the <code>&lt;head&gt;</code>. This is the most
                     efficient way to apply styles to many pages at once.</p>
                 <pre><code>&lt;link rel="stylesheet" type="text/css" href="styles.css"&gt;</code></pre>
-            </div>
+            </section>
 
-            <div class="content-section">
+            <section>
                 <h2>3. Selectors: Targeting Elements</h2>
                 <p>A <strong>selector</strong> determines which HTML elements a style rule applies to.</p>
                 <ul>
@@ -341,14 +341,14 @@
                         <code>:hover</code> or <code>:visited</code>.
                     </li>
                 </ul>
-                <div class="demo-box">
-                    <p><strong>Interactive Demo:</strong> This paragraph is inside a <code>.demo-box</code> class. If we
-                        use the selector <code>.demo-box:hover</code>, we can change the background when the mouse moves
+                <div class="demo-box selector-demo-box">
+                    <p><strong>Interactive Demo:</strong> This paragraph is inside a <code>.selector-demo-box</code> class. If we
+                        use the selector <code>.selector-demo-box:hover</code>, we can change the background when the mouse moves
                         over it!</p>
                 </div>
-            </div>
+            </section>
 
-            <div class="content-section">
+            <section>
                 <h2>4. The Box Model</h2>
                 <p>Every element is laid out as <strong>four boxes</strong> that control spacing and borders.</p>
                 <ol>
@@ -371,9 +371,9 @@
                     </div>
                 </div>
                 <p><strong>Note:</strong> Total width and height calculations must include padding and borders.</p>
-            </div>
+            </section>
 
-            <div class="content-section">
+            <section>
                 <h2>5. Common Properties</h2>
                 <h3>Fonts and Text</h3>
                 <ul>
@@ -391,9 +391,52 @@
                 <p>Colors can be specified by 140 supported names, a set of 16 standard colors, or 16 million different
                     <strong>hexadecimal codes</strong> (e.g., <code>#FFFFFF</code> for white).
                 </p>
-            </div>
 
-            <div class="content-section">
+                <h3>Demo</h3>
+                <div class="css-demo-box">
+                    <div id="demo-css-text" style="font-size: 16px;">
+                        Change below inputs to update style of this text.
+                    </div>
+                    <div>
+                        <div>
+                            <label for="demo-css-font-size-input" class="form-label">Font size: <span
+                                    id="demo-css-font-size-value">16</span>px</label>
+                            <input type="range" class="form-range" id="demo-css-font-size-input" min="9" max="36"
+                                value="16">
+                        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="demo-css-text-align-input" class="form-label">Text align</label>
+                            </div>
+                            <div class="col-auto">
+                                <select class="form-control" id="demo-css-text-align-input">
+                                    <option selected>left</option>
+                                    <option>center</option>
+                                    <option>right</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="demo-css-bold">
+                                    <label class="form-check-label" for="demo-css-bold"><strong>Bold</strong></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="demo-css-italic">
+                                    <label class="form-check-label" for="demo-css-italic"><em>Italic</em></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="demo-css-underline">
+                                    <label class="form-check-label text-decoration-underline"
+                                        for="demo-css-underline">Underline</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section>
                 <h2>6. Layout and Conflict Resolution</h2>
                 <p>By default, elements follow <strong>normal flow</strong>, appearing sequentially above each other
                     . This can be overridden using:</p>
@@ -411,16 +454,16 @@
                     priority follows:</p>
                 <p><strong>Inline Styles > ID Selectors > Class/Attribute Selectors > Element Selectors</strong></p>
                 <p>The <code>!important</code> modifier can be used to override these standard priorities.</p>
-            </div>
+            </section>
 
-            <div class="content-section">
+            <section>
                 <h2>7. Modern Styling with Frameworks</h2>
                 <p>Manually laying out pages with raw CSS is difficult and must account for many device sizes.
                     <strong>CSS Frameworks</strong> like <strong>Bootstrap</strong> are open-source libraries that
                     provide pre-built, responsive components. Bootstrap uses a <strong>12-column grid
                         system</strong> to align content easily across mobile, tablets, and PCs.
                 </p>
-            </div>
+            </section>
         </div>
     </div>
 </section>
@@ -431,17 +474,17 @@
             <section id="intro">
                 <h2>1. What is JavaScript?</h2>
                 <p><strong>JavaScript</strong> is a high-level, dynamic, untyped, and interpreted programming language
-                    standardized in the <strong>ECMAScript</strong> specification [1]. Along with HTML and CSS, it is
-                    one of the three essential technologies for web production [1].</p>
+                    standardized in the <strong>ECMAScript</strong> specification. Along with HTML and CSS, it is
+                    one of the three essential technologies for web production.</p>
                 <ul>
                     <li><strong>Multi-paradigm:</strong> Supports object-oriented, imperative, and functional
-                        programming styles [1].</li>
+                        programming styles.</li>
                     <li><strong>Prototype-based:</strong> Features class-less inheritance with <strong>first-class
-                            functions</strong> [1].</li>
+                            functions</strong>.</li>
                     <li><strong>Components:</strong> Includes <em>Core</em> (the heart), <em>Client-side</em> (browser
-                        control), and <em>Server-side</em> (NodeJS) [2].</li>
+                        control), and <em>Server-side</em> (NodeJS).</li>
                     <li><strong>Efficiency:</strong> Provides a quicker alternative to server-side processing by
-                        executing on the client device, reducing server load [2].</li>
+                        executing on the client device, reducing server load.</li>
                 </ul>
             </section>
 
@@ -449,27 +492,28 @@
                 <h2>2. Execution, I/O, and Debugging</h2>
                 <h3>Execution Environments</h3>
                 <p>JavaScript primarily runs in <strong>Browsers</strong>, where it can interact with the internal model
-                    of the page [2, 3]. It can also run on <strong>NodeJS</strong>, a server-side console environment
-                    [3].</p>
+                    of the page. It can also run on <strong>NodeJS</strong>, a server-side console environment
+                   .</p>
                 <h3>Including JavaScript</h3>
                 <ul>
-                    <li><strong>Inline:</strong> Inside tag attributes like <code>onclick</code> [4].</li>
-                    <li><strong>Internal:</strong> Within <code>&lt;script&gt;</code> tags in the document [4].</li>
-                    <li><strong>External:</strong> Referenced via a URL using the <code>src</code> attribute [4].</li>
+                    <li><strong>Inline:</strong> Inside tag attributes like <code>onclick</code>.</li>
+                    <li><strong>Internal:</strong> Within <code>&lt;script&gt;</code> tags in the document.</li>
+                    <li><strong>External:</strong> Referenced via a URL using the <code>src</code> attribute.</li>
                 </ul>
                 <h3>Input and Output (I/O)</h3>
                 <p>Standard interaction methods include <code>console.log()</code> for best-practice logging,
                     <code>alert()</code> or <code>confirm()</code> for outputting data, and <code>prompt()</code> for
-                    gathering user input [5].</p>
-                <div class="interactive-box">
+                    gathering user input.
+                </p>
+                <div class="demo-box">
                     <h3>Interactive Demo: Browser I/O</h3>
-                    <p>This demonstrates event-driven computation responding to a click [6].</p>
-                    <button class="btn"
+                    <p>This demonstrates event-driven computation responding to a click.</p>
+                    <button class="btn btn-primary"
                         onclick="let name = prompt('Enter your name:'); if(name) alert('Hello, ' + name + '! This is an event-driven response.');">Trigger
                         I/O Event</button>
                 </div>
                 <p class="note"><strong>Debugging:</strong> Browser <strong>DevTools</strong> provide a console for
-                    interaction and <strong>breakpoints</strong> to monitor code during execution [7].</p>
+                    interaction and <strong>breakpoints</strong> to monitor code during execution.</p>
             </section>
 
             <section id="syntax">
@@ -477,28 +521,29 @@
                 <p>JavaScript syntax is flexible but has specific rules:</p>
                 <ul>
                     <li><strong>Semicolons:</strong> Statements should end with <code>;</code>, though the interpreter
-                        inserts them if missing, which can cause bugs in <code>return</code> statements [8, 9].</li>
+                        inserts them if missing, which can cause bugs in <code>return</code> statements.</li>
                     <li><strong>Comments:</strong> Use <code>//</code> for single lines and <code>/* ... */</code> for
-                        multiple lines [8].</li>
+                        multiple lines.</li>
                     <li><strong>Variables:</strong> Names are case-sensitive and can start with <code>$</code>,
-                        <code>_</code>, or letters [5].</li>
+                        <code>_</code>, or letters.
+                    </li>
                 </ul>
                 <h3>Declaration Keywords</h3>
                 <div class="grid-container">
                     <div>
                         <p><strong>Modern (Preferred):</strong></p>
                         <ul>
-                            <li><code>const</code>: Block-level scope; value cannot be changed [10, 11].</li>
-                            <li><code>let</code>: Block-level scope; standard choice for mutable variables [5, 10, 11].
+                            <li><code>const</code>: Block-level scope; value cannot be changed.</li>
+                            <li><code>let</code>: Block-level scope; standard choice for mutable variables.
                             </li>
                         </ul>
                     </div>
                     <div>
                         <p><strong>Legacy/Avoid:</strong></p>
                         <ul>
-                            <li><code>var</code>: Function-level scope; can interfere with outside blocks [11].</li>
+                            <li><code>var</code>: Function-level scope; can interfere with outside blocks.</li>
                             <li><strong>Undeclared:</strong> Automatically assigned <strong>Global Scope</strong>;
-                                considered bad coding style [12].</li>
+                                considered bad coding style.</li>
                         </ul>
                     </div>
                 </div>
@@ -507,25 +552,26 @@
             <section id="types">
                 <h2>4. Data Types and Coercion</h2>
                 <p>JavaScript uses <strong>Dynamic Typing</strong>, meaning variables can hold any type of value at any
-                    time [13].</p>
-                <h3>The Primitives [9]:</h3>
+                    time.</p>
+                <h3>The Primitives:</h3>
                 <ul>
-                    <li><strong>Number:</strong> 64-bit IEEE 754 floating-point [9, 14]. Includes <code>NaN</code> (Not
-                        a Number), which is <strong>infectious</strong> [15].</li>
-                    <li><strong>String:</strong> Unicode characters in single or double quotes [16].</li>
-                    <li><strong>Boolean:</strong> <code>true</code> and <code>false</code> [16].</li>
+                    <li><strong>Number:</strong> 64-bit IEEE 754 floating-point. Includes <code>NaN</code> (Not
+                        a Number), which is <strong>infectious</strong>.</li>
+                    <li><strong>String:</strong> Unicode characters in single or double quotes.</li>
+                    <li><strong>Boolean:</strong> <code>true</code> and <code>false</code>.</li>
                     <li><strong>Null & Undefined:</strong> <code>null</code> is intentional non-value;
-                        <code>undefined</code> is uninitialized or undeclared [13].</li>
+                        <code>undefined</code> is uninitialized or undeclared.
+                    </li>
                 </ul>
                 <h3>Implicit Type Coercion</h3>
-                <p>JavaScript attempts to convert values to perform operations [17]. For instance, <code>4 - true</code>
-                    becomes <code>3</code> [17]. To avoid unintuitive results, use <strong>Strict Equality
+                <p>JavaScript attempts to convert values to perform operations. For instance, <code>4 - true</code>
+                    becomes <code>3</code>. To avoid unintuitive results, use <strong>Strict Equality
                         (<code>===</code>)</strong>, which checks both value and type, rather than <code>==</code> [18,
                     19].</p>
-                <div class="interactive-box">
+                <div class="demo-box">
                     <h3>Interactive Demo: Math Object</h3>
-                    <p>JavaScript provides advanced operations via the <code>Math</code> object [15].</p>
-                    <button class="btn" onclick="alert('Math.sin(3.5) = ' + Math.sin(3.5));">Calculate
+                    <p>JavaScript provides advanced operations via the <code>Math</code> object.</p>
+                    <button class="btn btn-primary" onclick="alert('Math.sin(3.5) = ' + Math.sin(3.5));">Calculate
                         Math.sin(3.5)</button>
                 </div>
             </section>
@@ -534,62 +580,66 @@
                 <h2>5. Control Structures and Arrays</h2>
                 <h3>Program Flow</h3>
                 <p>Standard structures include <code>if-else</code>, <code>switch</code>, and the <strong>ternary
-                        operator</strong> (<code>condition ? val1 : val2</code>) [20]. Loops include <code>for</code>,
-                    <code>for...in</code> (for iterating properties), and <code>while</code> [21].</p>
+                        operator</strong> (<code>condition ? val1 : val2</code>). Loops include <code>for</code>,
+                    <code>for...in</code> (for iterating properties), and <code>while</code>.
+                </p>
                 <h3>Arrays</h3>
-                <p>Arrays are lists indexed numerically starting at 0 [21]. They are dynamic in size and can hold mixed
-                    types [20, 21].</p>
+                <p>Arrays are lists indexed numerically starting at 0. They are dynamic in size and can hold mixed
+                    types.</p>
                 <pre><code>let fruits = ["Apple", "Orange"];
-fruits.push("Banana"); // Add to end [22]
-fruits.shift();       // Remove from front [22]
-console.log(fruits.length); // returns 2 [21]</code></pre>
+fruits.push("Banana"); // Add to end
+fruits.shift();       // Remove from front
+console.log(fruits.length); // returns 2</code></pre>
                 <p class="note"><strong>Associative Arrays:</strong> Uses string indices; technically objects under the
-                    hood [23].</p>
+                    hood.</p>
             </section>
 
             <section id="functions">
                 <h2>6. Functions</h2>
-                <p>Functions are <strong>first-class objects</strong> [24]. They must be defined before use [25].</p>
+                <p>Functions are <strong>first-class objects</strong>. They must be defined before use.</p>
                 <ul>
                     <li><strong>Parameters:</strong> JavaScript is lax; missing arguments are <code>undefined</code>,
-                        and extra arguments are stored in the <code>arguments</code> property array [24, 25].</li>
+                        and extra arguments are stored in the <code>arguments</code> property array.</li>
                     <li><strong>Passing:</strong> Primitives are passed by <strong>Value</strong>; Objects are passed by
-                        <strong>Sharing</strong> (references can be used to change the object) [25].</li>
+                        <strong>Sharing</strong> (references can be used to change the object).
+                    </li>
                     <li><strong>Anonymous:</strong> Can be defined without a name, often using <code>(...) =></code>
-                        syntax [26, 27].</li>
+                        syntax.</li>
                 </ul>
             </section>
 
             <section id="objects">
                 <h2>7. Objects and Prototypes</h2>
-                <p>Objects are collections of name-value pairs, created quickly with <code>{ ... }</code> [27, 28].
-                    Properties are accessed via dot <code>.</code> or <code>[]</code> notation [28].</p>
+                <p>Objects are collections of name-value pairs, created quickly with <code>{ ... }</code>.
+                    Properties are accessed via dot <code>.</code> or <code>[]</code> notation.</p>
                 <h3>Prototypes and Inheritance</h3>
-                <p>JavaScript uses a <strong>class-less, prototype-oriented model</strong> [29].
+                <p>JavaScript uses a <strong>class-less, prototype-oriented model</strong>.
                 <ul>
                     <li><strong>Constructors:</strong> Functions used with the <code>new</code> keyword to initialize
-                        objects [29].</li>
+                        objects.</li>
                     <li><strong>Lookup Chain:</strong> If a property isn't found on an object, JavaScript checks its
-                        <strong>prototype</strong> [30].</li>
+                        <strong>prototype</strong>.
+                    </li>
                     <li><strong>Runtime Modification:</strong> You can add methods to all instances of an object by
-                        modifying the prototype at any time [31].</li>
+                        modifying the prototype at any time.</li>
                 </ul>
                 <p>The <strong><code>this</code></strong> keyword refers to the current object context, which depends on
-                    how the function was called [32].</p>
+                    how the function was called.</p>
             </section>
 
             <section id="scoping">
                 <h2>8. Scoping and Closures</h2>
                 <p>Scoping determines variable visibility: <strong>Global</strong> (accessible anywhere),
                     <strong>Function</strong> (inside a function), or <strong>Block</strong> (inside <code>{}</code>)
-                    [10].</p>
+                   .
+                </p>
                 <h3>The Global Object</h3>
                 <p>A global object exists everywhere (<code>window</code> in browsers, <code>globalThis</code>
-                    portably). Undeclared variables are added here, which is bad style [33, 34].</p>
+                    portably). Undeclared variables are added here, which is bad style.</p>
                 <h3>Closures</h3>
                 <p>A <strong>Closure</strong> is a powerful abstraction where an inner function keeps the local
-                    variables of its outer function alive even after that outer function has returned [35, 36]. Every
-                    execution creates a <strong>scope object</strong> to hold these variables [36].</p>
+                    variables of its outer function alive even after that outer function has returned. Every
+                    execution creates a <strong>scope object</strong> to hold these variables.</p>
             </section>
         </div>
     </div>
