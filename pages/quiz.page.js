@@ -151,6 +151,10 @@ export class QuizComponent {
         this.showElement($('#btn-submit'));
         this.hideElement($('#btn-reset'));
         this.hideElement($('#results-container'));
+        $('.question')[0].scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+        });
     }
 
     onClearResults() {
