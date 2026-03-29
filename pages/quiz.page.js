@@ -6,13 +6,13 @@ export class QuizComponent {
     questions = [];
     submitted = false;
     questionTemplate = null;
-    questionChoiceTemplate = null;
+    questionOptionTemplate = null;
     isDirty = false;
 
     onInit() {
         Promise.all([
             $.get('components/question.component.html').then(template => this.questionTemplate = template),
-            $.get('components/question-choice.component.html').then(template => this.questionChoiceTemplate = template)
+            $.get('components/question-option.component.html').then(template => this.questionOptionTemplate = template)
         ]).then(() => $.get('assets/questions.json').then(data => {
             questionService.storeQuestion(data);
             this.questions = questionService.randomize();
@@ -26,7 +26,7 @@ export class QuizComponent {
         this.questions = [];
         this.submitted = false;
         this.questionTemplate = null;
-        this.questionChoiceTemplate = null;
+        this.questionOptionTemplate = null;
         this.isDirty = false;
     }
 
@@ -39,8 +39,14 @@ export class QuizComponent {
 
     async onSubmit() {
         if (!this.validateForm()) {
+            $('.question:has(.feedback:has(.text-danger))')[0].scrollIntoView({
+                behavior: "smooth",
+                block: "end"
+            });
             return;
         }
+
+        this.submitted = true;
 
         const result = questionService.validateAnswers(this.questions.map(question => ({ id: question.id, selected: question.selected })));
         this.renderFeedback(result);
@@ -63,8 +69,7 @@ export class QuizComponent {
     }
 
     async displayRewardPopup() {
-        const modal = await $.get('/components/reward.component.html');
-        const modalElement = $(modal);
+        const modalElement = $('#reward-popup');
         try {
             const reward = await $.get('https://foodish-api.com/api/');
             if (reward.image) {
@@ -79,7 +84,7 @@ export class QuizComponent {
             this.showElement(modalElement.find('#reward-popup-image-failed'));
             this.hideElement(modalElement.find('#reward-popup-image-success'));
         }
-        const bootstrapModal = new bootstrap.Modal(modalElement, { backdrop: 'static' });
+        const bootstrapModal = new bootstrap.Modal(modalElement[0], { backdrop: 'static' });
         bootstrapModal.show();
     }
 
@@ -96,11 +101,18 @@ export class QuizComponent {
     }
 
     renderFeedback(result) {
+        $('#res-score').text(`${result.score}/${result.maxScore}`);
+        $('#res-message').text(result.isPassed ? 'Congratulations! You passed the quiz!' : 'Better luck next time! You did not pass the quiz.');
+        $('#res-description').text(result.isPassed ? 'You have demonstrated a good understanding of the material. Keep up the great work!' : 'Consider reviewing the material and trying again to improve your score.');
+
         this.questions.forEach(question => {
+            $(`#question-${question.id} .question-option`).removeClass('clickable');
+            $(`#question-${question.id} .question-option[app-option=${question.answer}]`).addClass('success');
             if (result.correctAnswers.includes(question.id)) {
                 this.setFeedbackMessage(question, false, 'Correct!');
             } else {
-                this.setFeedbackMessage(question, true, `Incorrect! The correct answer is: ${question.choices[question.answer]}`);
+                this.setFeedbackMessage(question, true, `Incorrect! The correct answer is: ${question.options[question.answer]}`);
+                $(`#question-${question.id} .question-option[app-option=${question.selected}]`).addClass('error');
             }
         });
     }
@@ -119,6 +131,7 @@ export class QuizComponent {
 
     onResetQuiz() {
         this.questions = questionService.randomize();
+        this.submitted = false;
         this.renderQuestions();
         this.showElement($('#btn-submit'));
         this.hideElement($('#btn-reset'));
@@ -131,29 +144,40 @@ export class QuizComponent {
     }
 
     onUpdateAnswer(event) {
-        const element = $(event.target);
+        if (this.submitted) {
+            return;
+        }
+        const element = $(event.currentTarget);
+        element.addClass('selected').siblings().removeClass('selected');
         const questionId = element.attr('app-question-id');
-        const answer = parseInt(element.attr('app-answer'));
+        const answer = parseInt(element.attr('app-option'));
         const question = this.questions.find(question => question.id === questionId)
         question.selected = answer;
         this.isDirty = true;
         this.setFeedbackMessage(question);
     }
+    
+    onSubmitted() {
+        $('#quiz-container .question-option').removeClass('clickable');
+    }
 
     renderQuestions() {
         const formattedQuestions = this.questions.map((question, index) => {
             return ObjectUtils.format(this.questionTemplate, {
-                ...question,
+                id: question.id,
+                question: question.question,
                 number: index + 1,
-                choices: question.choices.map((choice, choiceIndex) => ObjectUtils.format(this.questionChoiceTemplate, {
+                questionCount: this.questions.length,
+                options: question.options.map((option, optionIndex) => ObjectUtils.format(this.questionOptionTemplate, {
                     questionId: question.id,
-                    index: choiceIndex,
-                    option: ObjectUtils.escapeHTML(choice)
+                    index: optionIndex,
+                    number: optionIndex + 1,
+                    option: ObjectUtils.escapeHTML(option)
                 })).join('')
             });
         });
         $('#quiz-container').html(formattedQuestions);
-        $('#quiz-container input').change(this.onUpdateAnswer.bind(this));
+        $('#quiz-container .question-option').addClass('clickable').click(this.onUpdateAnswer.bind(this));
     }
 
     renderResult(results) {

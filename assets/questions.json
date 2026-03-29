@@ -1,184 +1,162 @@
 [
     {
-        "id": "1",
-        "question": "Who originally defined HTML in 1990?",
-        "choices": [
+        "id": "CITS-HTML-001",
+        "question": "According to the sources, who originally defined HTML as a type of SGML in 1990?",
+        "options": [
             "Matthew Daggitt",
-            "Tim Berners-Lee",
             "Maira Alvi",
-            "The W3C Consortium"
-        ],
-        "answer": 1
-    },
-    {
-        "id": "2",
-        "question": "Which of the following is a core principle of the HTML5 philosophy?",
-        "choices": [
-            "Prioritize theorists over users",
-            "Strict error reporting that stops rendering",
-            "Graceful error recovery",
-            "Breaking backwards compatibility for new features"
+            "Tim Berners-Lee",
+            "The W3C"
         ],
         "answer": 2
     },
     {
-        "id": "3",
-        "question": "HTML is considered which type of data structure?",
-        "choices": [
+        "id": "CITS-HTML-002",
+        "question": "Which of the following is a priority in the HTML5 philosophy?",
+        "options": [
+            "Theorists > Browser Implementer",
+            "Web Designer > User",
+            "User > Web Designer",
+            "Theorist > User"
+        ],
+        "answer": 2
+    },
+    {
+        "id": "CITS-HTML-003",
+        "question": "What kind of data structure is HTML considered to be?",
+        "options": [
             "Linear data structure",
-            "Matrix data structure",
             "Tree data structure",
+            "Graph data structure",
             "Relational data structure"
         ],
-        "answer": 2
+        "answer": 1
     },
     {
-        "id": "4",
-        "question": "Where are visible elements typically placed in an HTML5 document structure?",
-        "choices": [
-            "Within the <head> branch",
-            "Within the <html> root only",
-            "Within the <body> branch",
-            "Within the <!DOCTYPE> declaration"
-        ],
-        "answer": 2
-    },
-    {
-        "id": "5",
-        "question": "Which HTML tag is used to create a multi-line block for grouping content?",
-        "choices": [
+        "id": "CITS-HTML-004",
+        "question": "Which HTML element is used to group content in a multi-line block, typically for several paragraphs or images?",
+        "options": [
             "<span>",
             "<div>",
-            "<tr>",
-            "<section>"
-        ],
-        "answer": 1
-    },
-    {
-        "id": "6",
-        "question": "What is the primary purpose of the 'alt' attribute in an <img> tag?",
-        "choices": [
-            "To set the image width",
-            "To provide the image source URL",
-            "To provide text if the image cannot be displayed or for screen readers",
-            "To add a border to the image"
-        ],
-        "answer": 2
-    },
-    {
-        "id": "7",
-        "question": "Why is it recommended NOT to use borderless tables for page layout?",
-        "choices": [
-            "It is too fast for browsers to render",
-            "It violates semantic intent and confuses screen readers",
-            "Tables cannot be nested",
-            "HTML5 does not support the 'border' attribute"
-        ],
-        "answer": 1
-    },
-    {
-        "id": "8",
-        "question": "Which attribute is used in an anchor tag <a> to specify the link's destination?",
-        "choices": [
-            "src",
-            "id",
-            "href",
-            "rel"
-        ],
-        "answer": 2
-    },
-    {
-        "id": "9",
-        "question": "Which HTML5 element represents a portion of a page that can stand alone, such as a blog post?",
-        "choices": [
-            "<aside>",
-            "<article>",
             "<section>",
-            "<nav>"
+            "<article>"
         ],
         "answer": 1
     },
     {
-        "id": "10",
-        "question": "What does CSS stand for?",
-        "choices": [
-            "Creative Style Sheets",
-            "Computer Style Sheets",
-            "Cascading Style Sheets",
-            "Complex Style Sheets"
+        "id": "CITS-HTML-005",
+        "question": "In an HTML form, which method encodes values in the body of the server request rather than the URL?",
+        "options": [
+            "get",
+            "action",
+            "post",
+            "submit"
         ],
         "answer": 2
     },
     {
-        "id": "11",
-        "question": "What is a primary advantage of using CSS for web development?",
-        "choices": [
-            "It makes the website run only on desktop PCs",
-            "It allows for the separation of content and presentation",
-            "It increases the size of every downloaded page",
-            "It forces developers to specify alignment for every individual element"
+        "id": "CITS-HTML-006",
+        "question": "Which advanced layout element represents a portion of a page that can stand alone, such as a blog post?",
+        "options": [
+            "<section>",
+            "<aside>",
+            "<nav>",
+            "<article>"
         ],
-        "answer": 1
+        "answer": 3
     },
     {
-        "id": "12",
-        "question": "Which CSS implementation level applies to a single tag only?",
-        "choices": [
-            "External style sheets",
-            "Document style sheets",
-            "Inline styles",
-            "Internal CSS"
+        "id": "CITS-HTML-007",
+        "question": "When representing durations in a <time> element, what prefix is used for days?",
+        "options": [
+            "P",
+            "T",
+            "D",
+            "S"
+        ],
+        "answer": 0
+    },
+    {
+        "id": "CITS-CSS-001",
+        "question": "What is a primary advantage of using CSS mentioned in the sources?",
+        "options": [
+            "It allows intermingling content and style for faster downloads",
+            "It forces developers to specify alignment for every element",
+            "It allows style to be centrally maintained and easier to update",
+            "It makes HTML attributes for presentation mandatory"
         ],
         "answer": 2
     },
     {
-        "id": "13",
+        "id": "CITS-CSS-002",
         "question": "Which CSS selector matches all elements on a page?",
-        "choices": [
-            "Element selector",
+        "options": [
             "Universal selector (*)",
-            "ID selector",
-            "Class selector"
+            "Element selector",
+            "Class selector",
+            "ID selector"
         ],
-        "answer": 1
+        "answer": 0
     },
     {
-        "id": "14",
-        "question": "In the CSS Box Model, what is the space between the border and the content called?",
-        "choices": [
+        "id": "CITS-CSS-003",
+        "question": "In the CSS Box Model, what is defined as the space between the border and the content?",
+        "options": [
             "Margin",
             "Padding",
             "Outline",
-            "Framework"
+            "Boundary"
         ],
         "answer": 1
     },
     {
-        "id": "15",
-        "question": "Which CSS 'position' value removes an element entirely from the normal flow and offsets it relative to its most recently positioned ancestor?",
-        "choices": [
+        "id": "CITS-CSS-004",
+        "question": "Which CSS positioning value offsets an element relative to its normal flow position but does not remove it from the flow?",
+        "options": [
             "static",
             "relative",
             "absolute",
             "fixed"
         ],
+        "answer": 1
+    },
+    {
+        "id": "CITS-CSS-005",
+        "question": "According to the specificity rules, which type of style has the highest precedence?",
+        "options": [
+            "Style sheet styles",
+            "ID selectors",
+            "Inline styles",
+            "Class selectors"
+        ],
         "answer": 2
     },
     {
-        "id": "16",
-        "question": "How can a developer override standard CSS priority/precedence rules?",
-        "choices": [
-            "By using the !important modifier",
-            "By moving the rule to the User Agent stylesheet",
-            "By using an element selector instead of an ID",
-            "By placing the rule first in the document"
+        "id": "CITS-CSS-006",
+        "question": "What modifier can be used in CSS to override standard priority rules?",
+        "options": [
+            "!override",
+            "!important",
+            "!force",
+            "!high"
         ],
-        "answer": 0
+        "answer": 1
     },
     {
-        "id": "17",
+        "id": "CITS-CSS-007",
+        "question": "Which selector combinator (s1 s2) selects elements matching s2 that are anywhere below s1 in the tree?",
+        "options": [
+            "Direct descendant selector",
+            "Descendant selector",
+            "Sibling selector",
+            "Direct sibling selector"
+        ],
+        "answer": 1
+    },
+    {
+        "id": "CITS-BOOT-001",
         "question": "How many columns does the Bootstrap grid system use for layout?",
-        "choices": [
+        "options": [
             "8",
             "10",
             "12",
@@ -187,36 +165,168 @@
         "answer": 2
     },
     {
-        "id": "18",
+        "id": "CITS-BOOT-002",
         "question": "Which Bootstrap class provides a full-width container that always spans 100% of the viewport?",
-        "choices": [
+        "options": [
             ".container",
             ".container-fixed",
             ".container-fluid",
-            ".container-sm"
+            ".container-spread"
         ],
         "answer": 2
     },
     {
-        "id": "19",
+        "id": "CITS-BOOT-003",
         "question": "What are 'Glyphicons' in the context of Bootstrap?",
-        "choices": [
-            "A type of JavaScript validation",
-            "A library of 200 icons rendered as text",
-            "A new HTML5 layout element",
-            "A method for submitting forms"
+        "options": [
+            "JavaScript plugins",
+            "A set of 200 icons rendered as text",
+            "Responsive grid breakpoints",
+            "Pre-styled table classes"
         ],
         "answer": 1
     },
     {
-        "id": "20",
-        "question": "In HTML forms, which 'method' appends form values directly into the URL of the server request?",
-        "choices": [
-            "POST",
-            "SEND",
-            "GET",
-            "ACTION"
+        "id": "CITS-BOOT-004",
+        "question": "Which meta-tag is required for Bootstrap to ensure proper zooming and scaling on different devices?",
+        "options": [
+            "charset",
+            "viewport",
+            "author",
+            "description"
+        ],
+        "answer": 1
+    },
+    {
+        "id": "CITS-BOOT-005",
+        "question": "In Bootstrap's grid, which class specifies a layout for 'medium' devices and larger?",
+        "options": [
+            "col-sm-*",
+            "col-md-*",
+            "col-lg-*",
+            "col-xl-*"
+        ],
+        "answer": 1
+    },
+    {
+        "id": "CITS-BOOT-006",
+        "question": "What is a mentioned disadvantage of using CSS frameworks like Bootstrap?",
+        "options": [
+            "They are not responsive",
+            "They require manual CSS layout",
+            "Websites built with them often appear visually similar",
+            "They lack icon support"
         ],
         "answer": 2
+    },
+    {
+        "id": "CITS-JS-001",
+        "question": "JavaScript has been standardized in which language specification?",
+        "options": [
+            "W3C JS",
+            "ECMAScript",
+            "JSON Standard",
+            "ANSI JavaScript"
+        ],
+        "answer": 1
+    },
+    {
+        "id": "CITS-JS-002",
+        "question": "Which keyword is recommended as the default for declaring variables in modern JavaScript?",
+        "options": [
+            "var",
+            "const",
+            "let",
+            "nothing at all"
+        ],
+        "answer": 2
+    },
+    {
+        "id": "CITS-JS-003",
+        "question": "What is the result of the arithmetic operation 0.1 + 0.2 in JavaScript?",
+        "options": [
+            "0.3",
+            "0.30000000000000004",
+            "NaN",
+            "0.33"
+        ],
+        "answer": 1
+    },
+    {
+        "id": "CITS-JS-004",
+        "question": "Which special value is returned in JavaScript for invalid numeric operations?",
+        "options": [
+            "null",
+            "undefined",
+            "Infinity",
+            "NaN"
+        ],
+        "answer": 3
+    },
+    {
+        "id": "CITS-JS-005",
+        "question": "Which operator returns true only if both operands are equal and of the same type?",
+        "options": [
+            "==",
+            "===",
+            "=",
+            "!="
+        ],
+        "answer": 1
+    },
+    {
+        "id": "CITS-JS-006",
+        "question": "Which property array holds all actual parameters passed to a function, including extra ones?",
+        "options": [
+            "params",
+            "actuals",
+            "arguments",
+            "inputs"
+        ],
+        "answer": 2
+    },
+    {
+        "id": "CITS-JS-007",
+        "question": "What is a 'closure' in JavaScript?",
+        "options": [
+            "A way to stop a function from executing",
+            "The local variables for a function kept alive after the function has returned",
+            "The process of garbage collecting objects",
+            "A method to hide global variables"
+        ],
+        "answer": 1
+    },
+    {
+        "id": "CITS-JS-008",
+        "question": "JavaScript uses which type of object-oriented programming model?",
+        "options": [
+            "Class-based inheritance",
+            "Prototype-based programming",
+            "Procedural abstraction",
+            "Subtyping polymorphism"
+        ],
+        "answer": 1
+    },
+    {
+        "id": "CITS-JS-009",
+        "question": "What scope do variables declared with const or let have?",
+        "options": [
+            "Global scope",
+            "Function scope",
+            "Block scope",
+            "No scope"
+        ],
+        "answer": 2
+    },
+    {
+        "id": "CITS-JS-010",
+        "question": "In a JavaScript function, what does the 'this' keyword typically refer to when used alone?",
+        "options": [
+            "The parent function",
+            "The global object",
+            "undefined",
+            "The first parameter"
+        ],
+        "answer": 1
     }
 ]

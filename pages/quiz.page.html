@@ -1,10 +1,13 @@
-<div class="container p-4">
-    <div class="text-center">
-        <h1>Quiz</h1>
-        <div>
-            Pick your answers and see how you go! Get at least 7 right answer to win a reward.
+<section class="page-header">
+    <div class="container">
+        <div class="page-name"><i class="bi bi-patch-question me-2"></i>Knowledge check</div>
+        <h1 class="page-title">Test What You Know</h1>
+        <div class="page-subtitle">
+            Pick your answers and see how you go! Get at least 7 right answer to win a reward. Take your time - there's no time limit.
         </div>
     </div>
+</section>
+<div class="container p-4">
     <form id="quiz-container">
     </form>
     <div class="control text-center">
@@ -12,7 +15,14 @@
     </div>
     <div class="row justify-content-center">
         <div id="results-container" class="mt-4 d-none text-center container">
-            <h3 class="mb-3">Quiz Results</h3>
+            <div class="current-result mb-4">
+                <div class="result-ring">
+                    <span class="result-score" id="res-score"></span>
+                </div>
+                <h3 class="result-message" id="res-message"></h3>
+                <div class="result-description" id="res-description"></div>
+            </div>
+            <h3 class="mb-3">History</h3>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">
                     <thead class="table-dark">
@@ -30,7 +40,32 @@
             <div class="results-controls mt-3">
                 <button id="btn-clear-results" class="btn btn-danger">Clear Results</button>
                 <button id="btn-reset" class="btn btn-secondary">Reload Quiz</button>
-                <a id="btn-reset" class="btn btn-dark" href="#">Back to tutorial</a>
+                <a id="btn-back" class="btn btn-dark" href="#">Back to tutorial</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="reward-popup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="reward-popup-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="reward-popup-label">Your reward</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="reward-popup-image-success" class="d-block">
+                    <img id="reward-image" class="img-thumbnail" alt="Failed to load reward image">
+                    <div>
+                        Congratulations! You earn yourself a picture of gorgeous gourmet cuisine.
+                    </div>
+                </div>
+                <div id="reward-popup-image-failed" class="d-none">
+                    Failed to load reward image
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Great</button>
             </div>
         </div>
     </div>

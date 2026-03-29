@@ -1,7 +1,10 @@
 <div id="question-{{id}}" class="question mb-3">
-    <h5>Question {{number}}</h5>
-        <div>{{question}}</div>
-        <div>{{choices}}</div>
-        <div class="feedback"></div>
+    <div class="question-header mb-1">
+        <div class="mb-1 question-number">Question {{number}} of {{questionCount}}</div>
+        <div class="mb-0 question-text">{{question}}</div>
+    </div>
+    <div class="feedback ms-2 mb-4"></div>
+    <div class="question-options">
+        {{options}}
     </div>
 </div>

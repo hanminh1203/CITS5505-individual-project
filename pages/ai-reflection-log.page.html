@@ -1,10 +1,147 @@
-<div class="container">
-<ol>
-    <li>Use this page to document and critically evaluate how you used AI tools or large language models (LLMs) during
-        the project. </li>
-    <li>Your reflection should include example prompts you used, a summary of what the AI produced, any corrections or
-        changes you made to that output, and what limitations you noticed.</li>
-    <li>Go beyond simple description. Demonstrate that you can critically assess the reliability, risks, and ethical
-        considerations of using AI assistance in a coding project. </li>
-</ol>
-</div>
+<section class="page-header">
+    <div class="container">
+        <div class="page-name"><i class="bi bi-journal-text me-2"></i>Personal Journal</div>
+        <h1 class="page-title">AI Reflection Log</h1>
+    </div>
+</section>
+<section class="container py-4">
+    <section class="mb-4">
+        <h2 class="content-heading">Overview</h2>
+        <div class="content-paragraph">
+            <p>I used AI tools during this project as a support mechanism for both content generation and implementation.
+                The main areas where AI was helpful were drafting tutorial explanations, suggesting quiz content, refining
+                page structure, and speeding up repetitive front-end coding tasks. Rather than copying AI output directly
+                into the final submission without review, I treated it as an initial draft that still required checking,
+                editing, and testing. This was especially important because the project combines technical accuracy,
+                visual presentation, and course-related expectations.</p>
+            <p>Based on the project files, AI assistance had the most visible impact on the tutorial material and general
+                page-writing tasks. The README also records the use of NotebookLM as a tutorial content generator, which
+                aligns with the educational content included in the HTML, CSS, and JavaScript sections. AI therefore acted
+                as a productivity tool, but not as a replacement for my own responsibility to verify correctness and make
+                design decisions.</p>
+        </div>
+    </section>
+
+    <section class="mb-4">
+        <h2 class="content-heading">How I Used AI</h2>
+        <div class="content-paragraph">
+            <p>I used AI in several stages of the project. First, I used it to help draft tutorial explanations for HTML,
+                CSS, JavaScript, and Bootstrap-related concepts. This was useful for turning lecture-style ideas into
+                shorter, student-friendly explanations and examples. Second, I used AI assistance to generate or improve
+                quiz questions and answer choices, which helped me create a larger question bank more quickly. Third, I
+                used AI to help with interface wording and code structure for components such as quiz feedback, navigation,
+                and layout sections.</p>
+            <p>AI was most effective when the task was specific. Broad prompts often produced generic answers, while more
+                detailed prompts gave results that were easier to adapt into the project. For that reason, I found prompt
+                quality directly affected output quality.</p>
+        </div>
+    </section>
+
+    <section class="mb-4">
+        <h2 class="content-heading">Example Prompts</h2>
+        <div class="content-paragraph">
+        <div class="mb-3">
+            <h3 class="content-subheading">Prompt 1</h3>
+            <pre><code>Create beginner-friendly tutorial notes for HTML, CSS, and JavaScript suitable for a university
+web development project. Include short explanations, examples, and interactive ideas.</code></pre>
+            <p><strong>AI output summary:</strong> The AI produced topic summaries, code examples, and suggested ways to
+                present material in sections. This helped form the early structure of the tutorial page.</p>
+            <p><strong>Corrections made:</strong> I rewrote parts that were too generic, simplified some explanations,
+                and aligned the content more closely with course topics and the style of the site.</p>
+        </div>
+
+        <div class="mb-3">
+            <h3 class="content-subheading">Prompt 2</h3>
+            <pre><code>Generate multiple choice quiz questions about HTML, CSS, Bootstrap, and JavaScript for beginner
+students. Provide four options and identify the correct answer.</code></pre>
+            <p><strong>AI output summary:</strong> The AI generated a draft question bank with answer choices and
+                correct-answer suggestions.</p>
+            <p><strong>Corrections made:</strong> I checked question wording, removed ambiguous or repetitive items, and
+                adjusted difficulty so the questions better matched the tutorial content shown on the website.</p>
+        </div>
+
+        <div class="mb-3">
+            <h3 class="content-subheading">Prompt 3</h3>
+            <pre><code>Suggest a clean way to organise a small single-page web app with reusable HTML components,
+page-specific CSS, and JavaScript for quiz behaviour.</code></pre>
+            <p><strong>AI output summary:</strong> The AI suggested separating pages, components, assets, and services,
+                which matched the kind of structure I wanted for maintainability.</p>
+            <p><strong>Corrections made:</strong> I still had to decide the final file boundaries, adapt naming to my
+                project, and implement the routing and event behaviour myself.</p>
+        </div>
+        </div>
+    </section>
+
+    <section class="mb-4">
+        <h2 class="content-heading">What AI Did Well</h2>
+        <div class="content-paragraph">
+            <p>AI was useful for speed, idea generation, and reducing the blank-page problem. It was particularly good at
+                producing first drafts of explanatory text, generating examples, and suggesting alternative ways to phrase
+                technical ideas for beginners. For a project like this, that saved time when building learning content and
+                populating pages with enough detail to feel complete.</p>
+            <p>It was also helpful for repetitive front-end work. For example, AI can quickly suggest HTML patterns,
+                reusable section structures, or starter JavaScript logic for event handling. Even when the generated code
+                was not perfect, it provided momentum and reduced the time needed to assemble a working prototype.</p>
+        </div>
+    </section>
+
+    <section class="mb-4">
+        <h2 class="content-heading">Limitations and Problems</h2>
+        <div class="content-paragraph">
+            <p>The biggest limitation was reliability. AI often produced technically plausible answers that still needed
+                verification. Some examples were overly broad, some wording did not match the exact course focus, and some
+                code suggestions required debugging before they worked correctly in the browser. This means AI output could
+                not be trusted as final just because it sounded confident.</p>
+            <p>Another issue was that AI tends to produce generic design and writing patterns. If used uncritically, the
+                final website could end up feeling bland, overly similar to other AI-assisted work, or inconsistent with my
+                own voice. I noticed this especially in explanatory content and interface text, where I had to revise the
+                wording so the site felt more coherent and personal.</p>
+            <p>AI also struggles with project-specific context unless prompts are detailed. For example, it may suggest code
+                that ignores the existing file structure, mismatches naming conventions, or assumes libraries that are not
+                actually being used. Because of this, I had to manually integrate and test any useful suggestion.</p>
+        </div>
+    </section>
+
+    <section class="mb-4">
+        <h2 class="content-heading">Reliability, Risk, and Ethics</h2>
+        <div class="content-paragraph">
+            <p>Using AI in a coding project raises both academic and professional concerns. From an academic perspective, it
+                is important that AI support does not replace genuine understanding. If I had copied content or code without
+                reviewing it, I would risk submitting work that I could not explain or defend. That would undermine the
+                purpose of the assignment. To reduce that risk, I checked the generated content, edited it, and made sure I
+                understood how the final implementation worked.</p>
+            <p>There are also ethical concerns around attribution and originality. AI-generated material should not be
+                presented as if it came entirely from independent human effort. In this project, acknowledging the use of AI
+                is important because the tutorial material and wording may have been influenced by external tools. This page
+                therefore serves as a transparency record.</p>
+            <p>A further risk is hidden inaccuracy. If AI generates incorrect tutorial explanations or flawed quiz answers,
+                it can mislead users while appearing authoritative. In an educational website, this is especially serious
+                because users may rely on the page to learn foundational concepts. For that reason, human review remains
+                essential.</p>
+        </div>
+    </section>
+
+    <section class="mb-4">
+        <h2 class="content-heading">What I Changed After Reviewing AI Output</h2>
+        <div class="content-paragraph">
+            <p>After reviewing AI-assisted material, I made several kinds of changes. I corrected wording so concepts were
+                clearer and closer to what was taught in class. I adjusted question wording and answer sets so they were
+                less ambiguous. I also modified layout and interface details so the site felt more structured and visually
+                consistent instead of looking like a direct dump of generated content. In code-related areas, I tested the
+                behaviour manually and changed anything that did not integrate properly with the existing project files.</p>
+        </div>
+    </section>
+
+    <section class="mb-4">
+        <h2 class="content-heading">Conclusion</h2>
+        <div class="content-paragraph">
+            <p>Overall, AI was valuable in this project as an assistant for brainstorming, drafting, and accelerating
+                implementation, but it was not reliable enough to use without supervision. Its greatest strength was speed;
+                its greatest weakness was overconfidence and lack of project-specific judgement. The final quality of the
+                work still depended on my ability to review, verify, adapt, and take responsibility for the output.</p>
+            <p>This experience showed that AI can be helpful in software and web development when used critically. It is
+                most useful as a collaborator for early drafts and repetitive tasks, but human judgement remains necessary
+                for correctness, ethics, design quality, and academic integrity.</p>
+        </div>
+    </section>
+</section>

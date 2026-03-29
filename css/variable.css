@@ -1,4 +1,16 @@
 :root {
     --content-bg-color: #e9ecef;
     --content-bg-color-alt: #ced4da;
+    --dark-color: #0d0d14;
+    --accent-color:    #e85d26;
+    --accent2-color:    #2d6be4;
+    --light-color:     #f4f1eb;
+    --border-color:    #e2dfd8;
+    --surface-color:   #ffffff;
+    --muted-color:     #8c8a84;
+    --tag-bg-color: #fff3ee;
+    --error-color: rgb(220, 53, 69);
+    --error-bg-color: rgb(255,233,235);
+    --success-color: rgb(25, 135, 84);
+    --success-bg-color: rgb(189,253,223);
 }

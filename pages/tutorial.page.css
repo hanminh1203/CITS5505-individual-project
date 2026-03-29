@@ -1,46 +1,61 @@
-.tutorial>section:not(:last-child) {
+.lesson .title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.lesson .title::after {
+    width: 40px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+    content: '';
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.lesson {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
 }
 
-.tutorial>section:nth-child(even) {
-    background-color: var(--content-bg-color-alt);
+.lesson-point {
+    display: flex;
+    gap: 1rem;
 }
 
-section>.container {
-    padding: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.point-header {
+    display: flex;
+    flex-direction: column;
 }
 
-.content>section {
-    background: #fff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.point-connector {
+    width: 2px;
+    background: var(--border-color);
+    flex: 1;
+    margin: 4px auto;
 }
 
-.section-student-info {
-    background-image: url('/assets/background.jpg');
-    background-size: cover;
-
-}
-
-.title {
-    color: #2c3e50;
-    font-size: 3rem;
+.point-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
     font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.content-header {
-    color: #35424a;
-    font-size: 2rem;
-    font-weight: 500;
+.point-content {
+    padding-bottom: 1.5rem;
+    flex: auto;
+}
+
+.point-content h2 {
+    padding-bottom: .5rem;
 }
 
 .content-subheader {
@@ -49,26 +64,6 @@ section>.container {
     font-weight: 500;
 }
 
-pre code {
-    background: transparent
-}
-
-code {
-    background: #e0e0e0;
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-family: "Courier New", Courier, monospace;
-}
-
-pre {
-    background: #2d2d2d;
-    color: #ccc;
-    padding: 1rem;
-    border-radius: 5px;
-    overflow-x: auto;
-}
-
-
 .demo {
     border: 2px dashed #bbb;
     padding: 1rem;
@@ -76,19 +71,15 @@ pre {
     background: #fafafa;
 }
 
-#image-example {
-    max-width: 500px;
-}
-
 .demo-box {
-    border: 2px solid #3498db;
+    border: 2px solid var(--accent-color);
     padding: 15px;
     margin: 15px 0;
     background: #ebf5fb;
 }
 
 .selector-demo-box:hover {
-    background: #34b4ff;
+    background: var(--accent-color);
 }
 
 .box-model {
@@ -108,7 +99,6 @@ pre {
     background-color: white;
 }
 
-
 .box-model-border {
     border: 1px solid black;
     background-color: #e3c382;
@@ -124,13 +114,23 @@ pre {
     background-color: #87b2bd;
 }
 
-.highlight {
-    background-color: #f1c40f;
-    padding: 2px 5px;
+code {
+    background: #e0e0e0;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
 }
 
-#html-flip-cards .flip-card {
-    min-height: 150px;
+pre {
+    background: #2d2d2d;
+    color: #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+pre code {
+    background: transparent
 }
 
 #css-flip-cards,
@@ -138,8 +138,16 @@ pre {
     row-gap: var(--bs-gutter-x);
 }
 
+#html-flip-cards .flip-card {
+    min-height: 150px;
+}
+
 #css-flip-cards .flip-card {
     min-height: 230px;
+}
+
+.flip-card {
+    cursor: pointer;
 }
 
 .flip-card-inner {
@@ -171,4 +179,8 @@ pre {
 
 .flip-card-back {
     transform: rotateY(180deg);
+}
+
+#start-quiz {
+    border-top: 2px solid var(--accent-color);
 }
