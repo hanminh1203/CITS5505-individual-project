@@ -1,5 +1,5 @@
 export class QuestionService {
-    NUMBER_OF_QUESTIONS = 5;
+    NUMBER_OF_QUESTIONS = 10;
     PASSING_SCORE = 70;
     questions = {};
     correctAnswerMap = {}

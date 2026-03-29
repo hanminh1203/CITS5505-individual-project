@@ -23,6 +23,13 @@ class TutorialComponent {
             const checked = event.target.checked;
             $('#demo-css-text').css('text-decoration', checked ? 'underline' : 'normal');
         });
+
+        $('.box-model').on('mouseover', (event) => {
+            $(event.target).removeClass('box-white');
+            $(`.box-model:not(#${event.target.id})`).addClass('box-white');
+        }).on('mouseout', (event) => {
+            $('.box-model').removeClass('box-white');
+        });
     }
 }
 export const component = new TutorialComponent();
