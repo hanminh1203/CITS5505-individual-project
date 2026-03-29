@@ -69,22 +69,37 @@ export class QuizComponent {
     }
 
     async displayRewardPopup() {
-        const modalElement = $('#reward-popup');
+        const modalElement = document.getElementById('reward-popup');
+        const modal = $(modalElement);
+        const previousFocus = document.activeElement;
         try {
             const reward = await $.get('https://foodish-api.com/api/');
             if (reward.image) {
-                this.showElement(modalElement.find('#reward-popup-image-success'));
-                this.hideElement(modalElement.find('#reward-popup-image-failed'));
-                modalElement.find('#reward-image').attr('src', reward.image);
+                this.showElement(modal.find('#reward-popup-image-success'));
+                this.hideElement(modal.find('#reward-popup-image-failed'));
+                modal.find('#reward-image').attr('src', reward.image);
             } else {
-                this.showElement(modalElement.find('#reward-popup-image-failed'));
-                this.hideElement(modalElement.find('#reward-popup-image-success'));
+                this.showElement(modal.find('#reward-popup-image-failed'));
+                this.hideElement(modal.find('#reward-popup-image-success'));
             }
         } catch {
-            this.showElement(modalElement.find('#reward-popup-image-failed'));
-            this.hideElement(modalElement.find('#reward-popup-image-success'));
+            this.showElement(modal.find('#reward-popup-image-failed'));
+            this.hideElement(modal.find('#reward-popup-image-success'));
         }
-        const bootstrapModal = new bootstrap.Modal(modalElement[0], { backdrop: 'static' });
+
+        modalElement.addEventListener('hide.bs.modal', () => {
+            if (modalElement.contains(document.activeElement)) {
+                document.activeElement.blur();
+            }
+        }, { once: true });
+
+        modalElement.addEventListener('hidden.bs.modal', () => {
+            if (previousFocus instanceof HTMLElement) {
+                previousFocus.focus();
+            }
+        }, { once: true });
+
+        const bootstrapModal = new bootstrap.Modal(modalElement, { backdrop: 'static' });
         bootstrapModal.show();
     }
 
