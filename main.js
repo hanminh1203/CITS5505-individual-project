@@ -7,40 +7,61 @@ const ROUTES = {
 let currentComponent = null;
 
 $(document).ready(() => {
-    function route() {
-        const rawHash = $(location).attr('hash').substring(1) || 'tutorial';
+    function getCurrentHash() {
+        return $(location).attr('hash').substring(1) || 'tutorial';
+    }
+
+    function getResolvedRoute() {
+        const rawHash = getCurrentHash();
         const hash = ROUTES[rawHash] ? rawHash : 'tutorial';
-        const routes = ROUTES[hash];
+        return { rawHash, hash, routeConfig: ROUTES[hash] };
+    }
+
+    function updateActiveNavigation(hash) {
+        $('.navbar .nav-link').removeClass('active');
+        $('.navbar .nav-link-' + hash).addClass('active');
+        $('#footer-navigation .col').removeClass('active');
+        $('#footer-navigation .col-' + hash).addClass('active');
+    }
+
+    function destroyCurrentComponent() {
+        if (currentComponent?.onDestroy) {
+            currentComponent.onDestroy();
+        }
+        currentComponent = null;
+    }
+
+    async function initializeRouteScript(routeConfig) {
+        if (!routeConfig.js) {
+            currentComponent = null;
+            return;
+        }
+
+        const module = await import(routeConfig.js);
+        currentComponent = module.component;
+        currentComponent.onInit();
+    }
+
+    function route() {
+        const { rawHash, hash, routeConfig } = getResolvedRoute();
         if (rawHash !== hash) {
             window.location.hash = hash;
             return;
         }
+
         $('link[app-style-sheet]').remove();
-        if (currentComponent) {
-            if (currentComponent.onDestroy) {
-                currentComponent.onDestroy();
-            }
-            currentComponent = null;
-        }
-        if (routes) {
-            $('main').load(routes.component, () => {
-                if (routes.js) {
-                    import(routes.js).then((module) => {
-                        currentComponent = module.component;
-                        currentComponent.onInit();
-                    });
-                } else {
-                    currentComponent = null;
-                }
+
+        destroyCurrentComponent();
+
+        if (routeConfig) {
+            $('main').load(routeConfig.component, () => {
+                initializeRouteScript(routeConfig);
             });
-            if (routes.css) {
-                $('head').append($('<link rel="stylesheet">').attr('href', routes.css).attr('app-style-sheet', true));
+            if (routeConfig.css) {
+                $('head').append($('<link rel="stylesheet">').attr('href', routeConfig.css).attr('app-style-sheet', true));
             }
             $('main').removeClass().addClass(hash);
-            $('.navbar .nav-link').removeClass('active');
-            $('.navbar .nav-link-' + hash).addClass('active');
-            $('#footer-navigation .col').removeClass('active');
-            $('#footer-navigation .col-' + hash).addClass('active');
+            updateActiveNavigation(hash);
         }
     }
 
@@ -51,14 +72,10 @@ $(document).ready(() => {
     }
 
     $("header").load("components/header.component.html", () => {
-        const hash = $(location).attr('hash').substring(1) || 'tutorial';
-        $('.navbar .nav-link').removeClass('active');
-        $('.navbar .nav-link-' + hash).addClass('active');
+        updateActiveNavigation(getResolvedRoute().hash);
     });
     $("footer").load("components/footer.component.html", () => {
-        const hash = $(location).attr('hash').substring(1) || 'tutorial';
-        $('#footer-navigation .col').removeClass('active');
-        $('#footer-navigation .col-' + hash).addClass('active');
+        updateActiveNavigation(getResolvedRoute().hash);
     });
 
     $(window).on('hashchange load', route);
