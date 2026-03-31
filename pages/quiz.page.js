@@ -70,7 +70,7 @@ export class QuizComponent {
             resultScore: $('#res-score'),
             resultMessage: $('#res-message'),
             resultDescription: $('#res-description'),
-            rewardModal: $('#reward-popup')
+            rewardModal: document.getElementById('reward-popup')
         };
     }
 
