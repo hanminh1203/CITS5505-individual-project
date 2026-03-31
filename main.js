@@ -43,7 +43,7 @@ $(document).ready(() => {
     }
 
     function route() {
-        const { rawHash, hash, routeConfig } = getResolvedRoute();
+                const { rawHash, hash, routeConfig } = getResolvedRoute();
         if (rawHash !== hash) {
             window.location.hash = hash;
             return;
@@ -78,8 +78,9 @@ $(document).ready(() => {
         updateActiveNavigation(getResolvedRoute().hash);
     });
 
-    $(window).on('hashchange load', route);
+    $(window).on('hashchange', route);
     $(window).on('beforeunload', onBeforeUnload);
+    route();
 });
 
 $(document).click((event) => {
