@@ -1,6 +1,6 @@
-import { ObjectUtils } from '/utils/object.utils.js';
-import { component as questionService } from '/services/question.service.js';
-import { component as storageService } from '/services/storage.service.js';
+import { ObjectUtils } from '../utils/object.utils.js';
+import { component as questionService } from '../services/question.service.js';
+import { component as storageService } from '../services/storage.service.js';
 
 const QUIZ_MESSAGE = {
     incomplete: 'You haven\'t answered this question yet',
