@@ -1,6 +1,6 @@
 const ROUTES = {
-    'tutorial': { css: 'pages/tutorial.page.css', component: 'pages/tutorial.page.html', js: '/pages/tutorial.page.js' },
-    'quiz': { css: 'pages/quiz.page.css', component: 'pages/quiz.page.html', js: '/pages/quiz.page.js' },
+    'tutorial': { css: 'pages/tutorial.page.css', component: 'pages/tutorial.page.html', js: 'pages/tutorial.page.js' },
+    'quiz': { css: 'pages/quiz.page.css', component: 'pages/quiz.page.html', js: 'pages/quiz.page.js' },
     'ai-reflection-log': { css: 'pages/ai-reflection-log.page.css', component: 'pages/ai-reflection-log.page.html' },
     'personalised-cv': { css: 'pages/personalised-cv.page.css', component: 'pages/personalised-cv.page.html' }
 };
