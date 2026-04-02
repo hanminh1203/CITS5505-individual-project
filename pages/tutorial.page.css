@@ -17,7 +17,11 @@
 .lesson {
     min-height: 100vh;
     min-height: 100dvh;
-    display: flex;
+    display: none;
+}
+
+.lesson.active {
+    display: block;
 }
 
 .lesson-point {
@@ -52,6 +56,7 @@
 .point-content {
     padding-bottom: 1.5rem;
     flex: auto;
+    min-width: 0;
 }
 
 .point-content h2 {
@@ -126,10 +131,15 @@ pre {
     padding: 1rem;
     border-radius: 5px;
     overflow-x: auto;
+    max-width: 100%;
 }
 
 pre code {
-    background: transparent
+    background: transparent;
+    display: block;
+    width: max-content;
+    min-width: 100%;
+    white-space: pre;
 }
 
 #css-flip-cards,
@@ -182,4 +192,74 @@ pre code {
 
 #start-quiz {
     border-top: 2px solid var(--accent-color);
+}
+
+.module-tab-bar {
+    background: var(--surface-color);
+    border-bottom: 1.5px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.module-tab {
+    flex: 1;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-color);
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    background: transparent;
+}
+
+.module-tab.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+    background: var(--light-color);
+}
+
+.module-tab .tab-num {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--border-color);
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.module-tab.active .tab-num {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--dark-color);
+    border: 1.5px solid var(--border-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .18s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-outline:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
 }

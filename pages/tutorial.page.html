@@ -7,7 +7,20 @@
         </div>
     </div>
 </section>
-<section class="lesson">
+<div class="module-tab-bar">
+    <div class="container d-flex">
+        <button class="module-tab active" app-module-tab-name="html">
+            <span class="tab-num">1</span>
+            HTML</button>
+        <button class="module-tab" app-module-tab-name="css">
+            <span class="tab-num">2</span>
+            CSS</button>
+        <button class="module-tab" app-module-tab-name="javascript">
+            <span class="tab-num">3</span>
+            JavaScript</button>
+    </div>
+</div>
+<section class="lesson active" app-module-name="html">
     <div class="container pt-3 pb-3">
         <div class="title">Module: HTML</div>
         <div class="content">
@@ -252,9 +265,13 @@
                 </div>
             </section>
         </div>
+        <div class="d-flex mt-4">
+            <button class="btn-outline flex-fill justify-content-center" app-module-tab-name="css"
+            ><i class="bi bi-arrow-right me-2"></i>Next module</button>
+        </div>
     </div>
 </section>
-<section class="lesson">
+<section class="lesson" app-module-name="css">
     <div class="container pt-3 pb-3">
         <div class="title">Module: CSS (Cascading Style Sheets)</div>
         <div class="content">
@@ -580,9 +597,13 @@
                 </div>
             </section>
         </div>
+        <div class="d-flex mt-4">
+            <button class="btn-outline flex-fill justify-content-center" app-module-tab-name="javascript"
+            ><i class="bi bi-arrow-right me-2"></i>Next module</button>
+        </div>
     </div>
 </section>
-<section class="lesson">
+<section class="lesson" app-module-name="javascript">
     <div class="container pt-3 pb-3">
         <div class="title">Module: Javascript</div>
         <div class="content">

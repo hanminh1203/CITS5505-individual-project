@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LearnFlow — Your AI Learning Companion</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ─── CSS Variables ─────────────────────────────── */
+    :root {
+      --ink:       #0d0d14;
+      --paper:     #f4f1eb;
+      --accent:    #e85d26;
+      --accent2:   #2d6be4;
+      --muted:     #8c8a84;
+      --surface:   #ffffff;
+      --border:    #e2dfd8;
+      --tag-bg:    #fff3ee;
+      --tag-color: #e85d26;
+      --nav-h:     72px;
+    }
+
+    /* ─── Base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    h1,h2,h3,h4,h5,h6,.display-font {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+    }
+
+    /* ─── Header / Nav ──────────────────────────────── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--ink);
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--paper);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+      animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.4); opacity: .7; }
+    }
+
+    .nav-pills-custom {
+      display: flex;
+      gap: 4px;
+      flex-wrap: nowrap;
+    }
+
+    .nav-btn {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 6px;
+      border: 1.5px solid transparent;
+      background: transparent;
+      color: #a8a5a0;
+      cursor: pointer;
+      transition: all .2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-btn:hover {
+      color: var(--paper);
+      border-color: rgba(255,255,255,.2);
+      background: rgba(255,255,255,.07);
+    }
+
+    .nav-btn.active {
+      color: var(--ink);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ─── Pages ─────────────────────────────────────── */
+    .page { display: none; flex: 1; }
+    .page.active { display: block; }
+
+    /* ─── Hero Band ─────────────────────────────────── */
+    .page-hero {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 64px 0 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(232,93,38,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: .75rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #a8a5a0;
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    /* ─── Cards ─────────────────────────────────────── */
+    .card-custom {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(13,13,20,.09);
+      border-color: var(--accent);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .icon-orange { background: #fff3ee; color: var(--accent); }
+    .icon-blue   { background: #eef3ff; color: var(--accent2); }
+    .icon-green  { background: #edfbf3; color: #2dab6a; }
+    .icon-purple { background: #f3eeff; color: #7c3aed; }
+
+    /* ─── Section Label ─────────────────────────────── */
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .divider-accent {
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+
+    /* ─── TAG ───────────────────────────────────────── */
+    .tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .tag-blue   { background: #eef3ff; color: var(--accent2); }
+    .tag-green  { background: #edfbf3; color: #2dab6a; }
+    .tag-purple { background: #f3eeff; color: #7c3aed; }
+
+    /* ─── Tutorial Page ─────────────────────────────── */
+    .step-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-connector {
+      width: 2px;
+      background: var(--border);
+      flex: 1;
+      min-height: 24px;
+      margin: 4px auto;
+      margin-left: 17px;
+    }
+
+    .code-block {
+      background: var(--ink);
+      color: #e2dfd8;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: 'Courier New', monospace;
+      font-size: .82rem;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: auto;
+    }
+
+    .code-block .kw  { color: #e85d26; }
+    .code-block .str { color: #a8d8a8; }
+    .code-block .cmt { color: #6b6965; }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,255,255,.08);
+      border: none;
+      color: #a8a5a0;
+      border-radius: 5px;
+      padding: 4px 10px;
+      font-size: .72rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+
+    .video-placeholder {
+      aspect-ratio: 16/9;
+      background: var(--ink);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: .9rem;
+      gap: 12px;
+      border: 1.5px dashed #3a3835;
+      cursor: pointer;
+      transition: border-color .2s;
+    }
+    .video-placeholder:hover { border-color: var(--accent); }
+    .video-placeholder i { font-size: 2.5rem; color: var(--accent); }
+
+    /* ─── Quiz Page ─────────────────────────────────── */
+    .quiz-progress-bar {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .quiz-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #f4844d);
+      border-radius: 3px;
+      transition: width .4s ease;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all .18s ease;
+      margin-bottom: 12px;
+      background: var(--surface);
+    }
+
+    .quiz-option:hover {
+      border-color: var(--accent);
+      background: var(--tag-bg);
+    }
+
+    .quiz-option.selected {
+      border-color: var(--accent2);
+      background: #eef3ff;
+    }
+
+    .quiz-option.correct {
+      border-color: #2dab6a;
+      background: #edfbf3;
+    }
+
+    .quiz-option.wrong {
+      border-color: #e74c3c;
+      background: #fff5f5;
+    }
+
+    .option-letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      flex-shrink: 0;
+      transition: background .18s;
+    }
+
+    .quiz-option.selected .option-letter { background: var(--accent2); color: #fff; }
+    .quiz-option.correct  .option-letter { background: #2dab6a; color: #fff; }
+    .quiz-option.wrong    .option-letter { background: #e74c3c; color: #fff; }
+
+    .result-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 6px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .result-score {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .result-label { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+    /* ─── AI Reflection Log ─────────────────────────── */
+    .log-entry {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: border-color .2s;
+      position: relative;
+    }
+
+    .log-entry:hover { border-color: #c8c5bf; }
+
+    .log-entry-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .log-date {
+      font-size: .75rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .log-prompt {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .log-body {
+      font-size: .9rem;
+      color: #4a4845;
+      line-height: 1.65;
+    }
+
+    .log-meta {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .mood-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #f4f1eb;
+      color: var(--muted);
+    }
+
+    .mood-chip.good    { background: #edfbf3; color: #2dab6a; }
+    .mood-chip.neutral { background: #fff8e6; color: #d4900a; }
+    .mood-chip.confused{ background: #fff5f5; color: #e74c3c; }
+
+    .add-log-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 20px;
+      border: 1.5px dashed var(--border);
+      border-radius: 12px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      width: 100%;
+      transition: all .2s;
+      margin-bottom: 16px;
+    }
+    .add-log-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--tag-bg); }
+
+    .log-form-card {
+      background: var(--surface);
+      border: 1.5px solid var(--accent);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .log-form-card.open { display: block; }
+
+    .form-label-custom {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .form-control-custom {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      background: var(--paper);
+      color: var(--ink);
+      outline: none;
+      transition: border-color .18s;
+      resize: vertical;
+    }
+
+    .form-control-custom:focus { border-color: var(--accent); }
+
+    /* ─── CV Page ───────────────────────────────────── */
+    .cv-wrapper {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(13,13,20,.07);
+    }
+
+    .cv-sidebar {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 36px 28px;
+    }
+
+    .cv-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #f4844d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #fff;
+      margin: 0 auto 20px;
+    }
+
+    .cv-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .cv-role {
+      font-size: .85rem;
+      color: var(--accent);
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .cv-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .82rem;
+      color: #a8a5a0;
+      margin-bottom: 10px;
+    }
+
+    .cv-contact-item i { color: var(--accent); width: 16px; }
+
+    .cv-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      margin-top: 24px;
+      font-weight: 700;
+    }
+
+    .skill-bar-wrap { margin-bottom: 10px; }
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .78rem;
+      color: #a8a5a0;
+      margin-bottom: 4px;
+    }
+    .skill-bar-track {
+      height: 5px;
+      background: rgba(255,255,255,.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .cv-main { padding: 36px 32px; }
+
+    .cv-main-section { margin-bottom: 32px; }
+
+    .cv-main-label {
+      font-family: 'Syne', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .cv-main-divider {
+      height: 2px;
+      background: var(--accent);
+      width: 32px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+
+    .cv-entry { margin-bottom: 18px; }
+
+    .cv-entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .cv-entry-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .cv-entry-period {
+      font-size: .75rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .cv-entry-org {
+      font-size: .85rem;
+      color: var(--accent2);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .cv-entry-desc {
+      font-size: .85rem;
+      color: #4a4845;
+      line-height: 1.6;
+    }
+
+    .cv-chip {
+      display: inline-block;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      font-size: .72rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin: 3px 3px 3px 0;
+    }
+
+    .cv-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    /* ─── Buttons ───────────────────────────────────── */
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: .04em;
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-accent:hover { background: #d14e1a; transform: translateY(-1px); color: #fff; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--border);
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: .04em;
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .btn-ghost {
+      background: rgba(255,255,255,.08);
+      color: var(--paper);
+      border: 1.5px solid rgba(255,255,255,.15);
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,.14); }
+
+    /* ─── Module Tabs ───────────────────────────────── */
+    .module-tab-bar {
+      background: var(--surface);
+      border-bottom: 1.5px solid var(--border);
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 900;
+    }
+
+    .module-tabs-scroll {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 0;
+    }
+    .module-tabs-scroll::-webkit-scrollbar { display: none; }
+
+    .module-tab {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border: none;
+      border-bottom: 3px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: .82rem;
+      letter-spacing: .04em;
+      color: var(--muted);
+      white-space: nowrap;
+      transition: color .2s, border-color .2s, background .2s;
+      position: relative;
+    }
+
+    .module-tab:hover {
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    .module-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      background: var(--paper);
+    }
+
+    .module-tab .tab-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--border);
+      color: var(--muted);
+      font-size: .7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s, color .2s;
+      flex-shrink: 0;
+    }
+
+    .module-tab.active .tab-num {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .module-tab .tab-check {
+      color: #2dab6a;
+      font-size: .85rem;
+    }
+
+    .module-tab .tab-lock {
+      color: #c8c5bf;
+      font-size: .85rem;
+    }
+
+    /* Module panels */
+    .module-panel { display: none; }
+    .module-panel.active { display: block; }
+
+    /* ─── Footer ────────────────────────────────────── */
+    .site-footer {
+      background: var(--ink);
+      color: #a8a5a0;
+      border-top: 1.5px solid #1e1e28;
+      padding: 40px 0 28px;
+      margin-top: auto;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--paper);
+      margin-bottom: 6px;
+    }
+
+    .footer-tagline { font-size: .85rem; color: #6b6965; }
+
+    .footer-link {
+      color: #6b6965;
+      text-decoration: none;
+      font-size: .85rem;
+      transition: color .18s;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-link:hover { color: var(--accent); }
+
+    .footer-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--paper);
+      margin-bottom: 14px;
+    }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid #1e1e28;
+      margin: 28px 0 20px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .78rem;
+      color: #4a4845;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-social { display: flex; gap: 10px; }
+
+    .social-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid #2a2a35;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b6965;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all .18s;
+    }
+
+    .social-icon:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ─── Utility ───────────────────────────────────── */
+    .main-content { flex: 1; padding-bottom: 48px; }
+
+    .text-accent { color: var(--accent); }
+    .text-muted-custom { color: var(--muted); }
+
+    .bg-ink { background: var(--ink); }
+    .bg-surface { background: var(--surface); }
+
+    @media (max-width: 767px) {
+      .nav-btn { padding: 7px 11px; font-size: .75rem; }
+      .hero-title { font-size: 1.7rem; }
+      .cv-sidebar { padding: 28px 20px; }
+      .cv-main { padding: 28px 20px; }
+    }
+
+    /* ─── Fade-in animation ─────────────────────────── */
+    .page.active { animation: fadeUp .35s ease forwards; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════════ -->
+<header class="site-header">
+  <div class="container-lg">
+    <div class="d-flex align-items-center justify-content-between gap-3 gap-md-4">
+
+      <a class="brand" href="#" onclick="return false;">
+        <span class="brand-dot"></span>
+        LearnFlow
+      </a>
+
+      <nav class="nav-pills-custom">
+        <button class="nav-btn active" onclick="switchPage('tutorial')">
+          <i class="bi bi-book me-1 d-none d-md-inline"></i>Tutorial
+        </button>
+        <button class="nav-btn" onclick="switchPage('quiz')">
+          <i class="bi bi-patch-question me-1 d-none d-md-inline"></i>Quiz
+        </button>
+        <button class="nav-btn" onclick="switchPage('reflection')">
+          <i class="bi bi-journal-text me-1 d-none d-md-inline"></i>AI Reflection
+        </button>
+        <button class="nav-btn" onclick="switchPage('cv')">
+          <i class="bi bi-person-vcard me-1 d-none d-md-inline"></i>My CV
+        </button>
+      </nav>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MAIN
+═══════════════════════════════════════════════════ -->
+<main class="main-content">
+
+
+  <!-- ───────────────────────────────────────────────
+       PAGE 1 · TUTORIAL
+  ─────────────────────────────────────────────── -->
+  <section id="page-tutorial" class="page active">
+
+    <!-- Hero -->
+    <div class="page-hero">
+      <div class="container-lg">
+        <p class="hero-eyebrow"><i class="bi bi-book me-2"></i>Learning Modules</p>
+        <h1 class="hero-title">Getting Started with<br>AI-Assisted Learning</h1>
+        <p class="hero-sub">Six modules from zero to job-ready. Pick up where you left off — your progress is saved automatically.</p>
+        <div class="d-flex gap-3 mt-4 flex-wrap">
+          <button class="btn-accent" onclick="switchModule(1)"><i class="bi bi-play-fill"></i> Continue Learning</button>
+          <button class="btn-ghost"><i class="bi bi-bookmark"></i> Save Progress</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sticky Module Tab Bar ── -->
+    <div class="module-tab-bar">
+      <div class="container-lg">
+        <div class="module-tabs-scroll" id="module-tabs">
+
+          <button class="module-tab active" onclick="switchModule(0)">
+            <span class="tab-num">1</span>
+            Foundations
+            <i class="bi bi-check-circle-fill tab-check"></i>
+          </button>
+
+          <button class="module-tab" onclick="switchModule(1)">
+            <span class="tab-num">2</span>
+            Core Concepts
+            <i class="bi bi-check-circle-fill tab-check"></i>
+          </button>
+
+          <button class="module-tab" onclick="switchModule(2)">
+            <span class="tab-num">3</span>
+            Practical Skills
+          </button>
+
+          <button class="module-tab" onclick="switchModule(3)">
+            <span class="tab-num">4</span>
+            AI &amp; Automation
+            <i class="bi bi-lock-fill tab-lock"></i>
+          </button>
+
+          <button class="module-tab" onclick="switchModule(4)">
+            <span class="tab-num">5</span>
+            Projects
+            <i class="bi bi-lock-fill tab-lock"></i>
+          </button>
+
+          <button class="module-tab" onclick="switchModule(5)">
+            <span class="tab-num">6</span>
+            Career Prep
+            <i class="bi bi-lock-fill tab-lock"></i>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         MODULE 1 · FOUNDATIONS
+    ══════════════════════════════════════════ -->
+    <div class="module-panel active" id="module-0">
+      <div class="container-lg py-5">
+        <div class="row g-5">
+          <div class="col-lg-7">
+            <span class="tag tag-green"><i class="bi bi-check-circle-fill me-1"></i> Completed</span>
+            <h2 class="section-title mt-2">Module 1 — Foundations</h2>
+            <div class="divider-accent"></div>
+            <p class="text-muted-custom mb-4" style="font-size:.93rem;">Build the mental models you need before diving deeper. Covers vocabulary, study science, and tool setup.</p>
+
+            <!-- Step 1 -->
+            <div class="d-flex gap-3">
+              <div class="d-flex flex-column align-items-center">
+                <div class="step-badge">1</div><div class="step-connector"></div>
+              </div>
+              <div class="pb-4">
+                <span class="tag">Concept</span>
+                <h5 class="mb-2">Understanding the Basics</h5>
+                <p style="font-size:.9rem;color:#4a4845;" class="mb-3">Start by familiarising yourself with core vocabulary and mental models. Don't skip this — everything builds on it.</p>
+                <div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<span class="cmt">// Core concept example</span>
+<br><span class="kw">const</span> learning = {
+<br>&nbsp;&nbsp;approach: <span class="str">"spaced repetition"</span>,
+<br>&nbsp;&nbsp;sessions: <span class="kw">3</span>,
+<br>&nbsp;&nbsp;duration: <span class="str">"20 min each"</span>
+<br>};
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="d-flex gap-3">
+              <div class="d-flex flex-column align-items-center">
+                <div class="step-badge">2</div><div class="step-connector"></div>
+              </div>
+              <div class="pb-4">
+                <span class="tag tag-blue">Practice</span>
+                <h5 class="mb-2">Apply With Exercises</h5>
+                <p style="font-size:.9rem;color:#4a4845;" class="mb-3">Work through the interactive exercises below to reinforce the concept from step 1.</p>
+                <div class="video-placeholder">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <span>Watch: Applying Concepts in Practice (8 min)</span>
+                  <small style="font-size:.75rem;">Click to load video</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="d-flex gap-3">
+              <div class="d-flex flex-column align-items-center"><div class="step-badge">3</div></div>
+              <div class="pb-2">
+                <span class="tag tag-green">Reflect</span>
+                <h5 class="mb-2">Log Your Understanding</h5>
+                <p style="font-size:.9rem;color:#4a4845;" class="mb-3">Head to the AI Reflection Log to record what clicked and what confused you.</p>
+                <button class="btn-outline" onclick="switchPage('reflection')"><i class="bi bi-journal-plus"></i> Open Reflection Log</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <p class="section-label">Resources</p>
+            <h2 class="section-title">Further Reading</h2>
+            <div class="divider-accent"></div>
+            <div class="card-custom mb-3">
+              <div class="d-flex align-items-start gap-3">
+                <div class="card-icon icon-purple mb-0" style="width:40px;height:40px;font-size:1.1rem;flex-shrink:0;"><i class="bi bi-file-earmark-text-fill"></i></div>
+                <div><div class="tag tag-purple">Article</div><h6 class="mb-1">The Science of Effective Learning</h6><p class="text-muted-custom mb-0" style="font-size:.82rem;">Cognitive load theory and spaced repetition to double your retention.</p></div>
+              </div>
+            </div>
+            <div class="card-custom mb-3">
+              <div class="d-flex align-items-start gap-3">
+                <div class="card-icon icon-blue mb-0" style="width:40px;height:40px;font-size:1.1rem;flex-shrink:0;"><i class="bi bi-camera-video-fill"></i></div>
+                <div><div class="tag tag-blue">Video</div><h6 class="mb-1">Introduction to AI Tutoring Tools</h6><p class="text-muted-custom mb-0" style="font-size:.82rem;">12-minute overview of the most popular AI learning assistants today.</p></div>
+              </div>
+            </div>
+            <div class="card-custom">
+              <div class="d-flex align-items-start gap-3">
+                <div class="card-icon icon-orange mb-0" style="width:40px;height:40px;font-size:1.1rem;flex-shrink:0;"><i class="bi bi-book-fill"></i></div>
+                <div><div class="tag">eBook</div><h6 class="mb-1">Personalised Learning Pathways</h6><p class="text-muted-custom mb-0" style="font-size:.82rem;">Free 60-page guide on designing your own adaptive learning curriculum.</p></div>
+              </div>
+            </div>
+            <div class="d-flex gap-2 mt-4">
+              <button class="btn-outline flex-fill justify-content-center" onclick="switchModule(1)"><i class="bi bi-arrow-right"></i> Next Module</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         MODULE 2 · CORE CONCEPTS
+    ══════════════════════════════════════════ -->
+    <div class="module-panel" id="module-1">
+      <div class="container-lg py-5">
+        <div class="row g-5">
+          <div class="col-lg-7">
+            <span class="tag tag-green"><i class="bi bi-check-circle-fill me-1"></i> Completed</span>
+            <h2 class="section-title mt-2">Module 2 — Core Concepts</h2>
+            <div class="divider-accent"></div>
+            <p class="text-muted-custom mb-4" style="font-size:.93rem;">Dive into the theory behind AI-assisted learning, prompt engineering, and knowledge retrieval systems.</p>
+
+            <div class="d-flex gap-3">
+              <div class="d-flex flex-column align-items-center">
+                <div class="step-badge">1</div><div class="step-connector"></div>
+              </div>
+              <div class="pb-4">
+                <span class="tag">Theory</span>
+                <h5 class="mb-2">How Large Language Models Work</h5>
+                <p style="font-size:.9rem;color:#4a4845;" class="mb-3">Learn what happens under the hood when you interact with an AI assistant — tokens, context windows, and temperature.</p>
+                <div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<span class="cmt">// LLM interaction pattern</span>
+<br><span class="kw">const</span> prompt = {
+<br>&nbsp;&nbsp;system: <span class="str">"You are a helpful tutor."</span>,
+<br>&nbsp;&nbsp;user: <span class="str">"Explain spaced repetition."</span>,
+<br>&nbsp;&nbsp;temperature: <span class="kw">0.7</span>
+<br>};
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex gap-3">
+              <div class="d-flex flex-column align-items-center">
+                <div class="step-badge">2</div><div class="step-connector"></div>
+              </div>
+              <div class="pb-4">
+                <span class="tag tag-blue">Workshop</span>
+                <h5 class="mb-2">Prompt Engineering Fundamentals</h5>
+                <p style="font-size:.9rem;color:#4a4845;" class="mb-3">Craft prompts that get consistent, high-quality responses. Practice the role-task-format framework.</p>
+                <div class="card-custom" style="background:var(--paper);">
+                  <p class="section-label mb-1">Try it yourself</p>
+                  <p style="font-size:.85rem;color:#4a4845;" class="mb-2">Write a prompt that asks an AI to explain a concept at three different difficulty levels.</p>
+                  <textarea class="form-control-custom" rows="3" placeholder="Act as a teacher and explain [concept] to a: beginner, intermediate, expert…"></textarea>
+                  <button class="btn-accent mt-3" style="font-size:.8rem;padding:8px 16px;"><i class="bi bi-stars"></i> Analyse My Prompt</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex gap-3">
+              <div class="d-flex flex-column align-items-center"><div class="step-badge">3</div></div>
+              <div class="pb-2">
+                <span class="tag tag-purple">Deep Dive</span>
+                <h5 class="mb-2">Retrieval-Augmented Generation</h5>
+                <p style="font-size:.9rem;color:#4a4845;" class="mb-3">Understand how AI systems combine knowledge bases with generation to give accurate, grounded answers.</p>
+                <div class="video-placeholder">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <span>Watch: RAG Explained Simply (11 min)</span>
+                  <small style="font-size:.75rem;">Click to load video</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <p class="section-label">Key Terms</p>
+            <h2 class="section-title">Glossary</h2>
+            <div class="divider-accent"></div>
+            <div class="card-custom mb-3">
+              <div class="tag tag-purple">Term</div>
+              <h6>Context Window</h6>
+              <p class="text-muted-custom mb-0" style="font-size:.82rem;">The maximum amount of text an LLM can read and reason over in a single interaction.</p>
+            </div>
+            <div class="card-custom mb-3">
+              <div class="tag tag-blue">Term</div>
+              <h6>Temperature</h6>
+              <p class="text-muted-custom mb-0" style="font-size:.82rem;">Controls randomness in AI output. Lower = more deterministic; higher = more creative.</p>
+            </div>
+            <div class="card-custom mb-3">
+              <div class="tag">Term</div>
+              <h6>Embeddings</h6>
+              <p class="text-muted-custom mb-0" style="font-size:.82rem;">Numerical representations of text that allow AI to understand semantic similarity.</p>
+            </div>
+            <div class="card-custom">
+              <div class="tag tag-green">Term</div>
+              <h6>Fine-tuning</h6>
+              <p class="text-muted-custom mb-0" style="font-size:.82rem;">Further training a pre-trained model on a specific dataset to specialise its behaviour.</p>
+            </div>
+            <div class="d-flex gap-2 mt-4">
+              <button class="btn-outline" onclick="switchModule(0)"><i class="bi bi-arrow-left"></i> Prev</button>
+              <button class="btn-accent flex-fill justify-content-center" onclick="switchModule(2)">Next Module <i class="bi bi-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         MODULE 3 · PRACTICAL SKILLS
+    ══════════════════════════════════════════ -->
+    <div class="module-panel" id="module-2">
+      <div class="container-lg py-5">
+        <div class="row g-5">
+          <div class="col-lg-7">
+            <span class="tag" style="background:#fff8e6;color:#d4900a;"><i class="bi bi-clock me-1"></i> In Progress</span>
+            <h2 class="section-title mt-2">Module 3 — Practical Skills</h2>
+            <div class="divider-accent"></div>
+            <p class="text-muted-custom mb-4" style="font-size:.93rem;">Hands-on exercises to build real-world competency. Covers HTML, CSS, JavaScript, and integrating AI APIs.</p>
+
+            <div class="d-flex gap-3">
+              <div class="d-flex flex-column align-items-center">
+                <div class="step-badge">1</div><div class="step-connector"></div>
+              </div>
+              <div class="pb-4">
+                <span class="tag">Hands-on</span>
+                <h5 class="mb-2">Build Your First Web Page</h5>
+                <p style="font-size:.9rem;color:#4a4845;" class="mb-3">Scaffold a basic HTML structure, apply Bootstrap grid, and deploy to GitHub Pages.</p>
+                <div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<span class="cmt">&lt;!-- Bootstrap starter template --&gt;</span>
+<br><span class="kw">&lt;div</span> class=<span class="str">"container py-5"</span><span class="kw">&gt;</span>
+<br>&nbsp;&nbsp;<span class="kw">&lt;div</span> class=<span class="str">"row g-4"</span><span class="kw">&gt;</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">&lt;div</span> class=<span class="str">"col-md-6"</span><span class="kw">&gt;</span>Hello!<span class="kw">&lt;/div&gt;</span>
+<br>&nbsp;&nbsp;<span class="kw">&lt;/div&gt;</span>
+<br><span class="kw">&lt;/div&gt;</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex gap-3">
+              <div class="d-flex flex-column align-items-center">
+                <div class="step-badge" style="background:var(--border);color:var(--muted);">2</div><div class="step-connector"></div>
+              </div>
+              <div class="pb-4" style="opacity:.55;">
+                <span class="tag" style="background:#f4f1eb;color:var(--muted);">Locked</span>
+                <h5 class="mb-2">JavaScript Interactivity</h5>
+                <p style="font-size:.9rem;color:#4a4845;" class="mb-0">Complete Step 1 to unlock — event listeners, DOM manipulation, and fetch API basics.</p>
+              </div>
+            </div>
+
+            <div class="d-flex gap-3">
+              <div class="d-flex flex-column align-items-center"><div class="step-badge" style="background:var(--border);color:var(--muted);">3</div></div>
+              <div class="pb-2" style="opacity:.55;">
+                <span class="tag" style="background:#f4f1eb;color:var(--muted);">Locked</span>
+                <h5 class="mb-2">Calling an AI API</h5>
+                <p style="font-size:.9rem;color:#4a4845;" class="mb-0">Use the Anthropic API to add a live Q&amp;A chatbot to your web page.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <p class="section-label">Your Progress</p>
+            <h2 class="section-title">Module Checklist</h2>
+            <div class="divider-accent"></div>
+
+            <div class="card-custom mb-3" style="border-color:#2dab6a;">
+              <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-check-circle-fill" style="color:#2dab6a;font-size:1.3rem;"></i>
+                <div><strong style="font-size:.9rem;">Set up code editor</strong><br><span style="font-size:.78rem;color:var(--muted);">VS Code + extensions installed</span></div>
+              </div>
+            </div>
+            <div class="card-custom mb-3">
+              <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-circle" style="color:var(--muted);font-size:1.3rem;"></i>
+                <div><strong style="font-size:.9rem;">Build starter page</strong><br><span style="font-size:.78rem;color:var(--muted);">In progress — Step 1</span></div>
+              </div>
+            </div>
+            <div class="card-custom mb-3" style="opacity:.5;">
+              <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-lock-fill" style="color:var(--muted);font-size:1.3rem;"></i>
+                <div><strong style="font-size:.9rem;">Add interactivity</strong><br><span style="font-size:.78rem;color:var(--muted);">Locked</span></div>
+              </div>
+            </div>
+            <div class="card-custom" style="opacity:.5;">
+              <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-lock-fill" style="color:var(--muted);font-size:1.3rem;"></i>
+                <div><strong style="font-size:.9rem;">Integrate AI API</strong><br><span style="font-size:.78rem;color:var(--muted);">Locked</span></div>
+              </div>
+            </div>
+
+            <div class="card-custom mt-3" style="background:var(--ink);border-color:var(--ink);">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <i class="bi bi-trophy-fill" style="color:var(--accent);font-size:1.4rem;"></i>
+                <strong style="color:var(--paper);">Module Badge</strong>
+              </div>
+              <p style="font-size:.82rem;color:#a8a5a0;margin-bottom:0;">Complete all 3 steps to earn the <strong style="color:var(--accent);">Practical Builder</strong> badge for your CV.</p>
+            </div>
+
+            <div class="d-flex gap-2 mt-4">
+              <button class="btn-outline" onclick="switchModule(1)"><i class="bi bi-arrow-left"></i> Prev</button>
+              <button class="btn-accent flex-fill justify-content-center" onclick="switchPage('quiz')"><i class="bi bi-patch-question"></i> Take Quiz</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         MODULE 4 · AI & AUTOMATION (locked)
+    ══════════════════════════════════════════ -->
+    <div class="module-panel" id="module-3">
+      <div class="container-lg py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center py-5">
+            <div class="card-custom" style="padding:48px 36px;">
+              <i class="bi bi-lock-fill" style="font-size:3rem;color:var(--border);"></i>
+              <h3 class="mt-4 mb-2">Module 4 — AI &amp; Automation</h3>
+              <p class="text-muted-custom mb-4">Complete Module 3 to unlock this module. You'll explore workflow automation, AI agents, and building your own custom GPT.</p>
+              <div style="height:8px;background:var(--border);border-radius:4px;margin-bottom:12px;overflow:hidden;">
+                <div style="height:100%;width:40%;background:linear-gradient(90deg,var(--accent),#f4844d);border-radius:4px;"></div>
+              </div>
+              <p style="font-size:.8rem;color:var(--muted);">40% of Module 3 complete — keep going!</p>
+              <button class="btn-accent mt-2" onclick="switchModule(2)"><i class="bi bi-arrow-left"></i> Back to Module 3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         MODULE 5 · PROJECTS (locked)
+    ══════════════════════════════════════════ -->
+    <div class="module-panel" id="module-4">
+      <div class="container-lg py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center py-5">
+            <div class="card-custom" style="padding:48px 36px;">
+              <i class="bi bi-lock-fill" style="font-size:3rem;color:var(--border);"></i>
+              <h3 class="mt-4 mb-2">Module 5 — Projects</h3>
+              <p class="text-muted-custom mb-4">Real-world capstone projects that you can add directly to your CV. Unlock by completing Module 4.</p>
+              <button class="btn-outline mt-2" onclick="switchModule(2)"><i class="bi bi-arrow-left"></i> Continue from Module 3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         MODULE 6 · CAREER PREP (locked)
+    ══════════════════════════════════════════ -->
+    <div class="module-panel" id="module-5">
+      <div class="container-lg py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center py-5">
+            <div class="card-custom" style="padding:48px 36px;">
+              <i class="bi bi-lock-fill" style="font-size:3rem;color:var(--border);"></i>
+              <h3 class="mt-4 mb-2">Module 6 — Career Prep</h3>
+              <p class="text-muted-custom mb-4">Resume writing, interview practice with AI, LinkedIn optimisation, and salary negotiation. Unlock by completing all prior modules.</p>
+              <button class="btn-outline mt-2" onclick="switchModule(2)"><i class="bi bi-arrow-left"></i> Continue from Module 3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ───────────────────────────────────────────────
+       PAGE 2 · QUIZ
+  ─────────────────────────────────────────────── -->
+  <section id="page-quiz" class="page">
+
+    <div class="page-hero">
+      <div class="container-lg">
+        <p class="hero-eyebrow"><i class="bi bi-patch-question me-2"></i>Knowledge Check</p>
+        <h1 class="hero-title">Test What You Know</h1>
+        <p class="hero-sub">5 questions based on Module 1. Take your time — there's no time limit.</p>
+      </div>
+    </div>
+
+    <div class="container-lg py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+
+          <!-- Quiz card -->
+          <div id="quiz-panel">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span style="font-size:.82rem;color:var(--muted);">Question <span id="q-num">1</span> of 5</span>
+              <span class="tag" id="q-category">Concept</span>
+            </div>
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress-fill" id="quiz-progress" style="width:20%"></div>
+            </div>
+
+            <div class="card-custom mb-4" style="border-color:transparent;box-shadow:0 4px 20px rgba(13,13,20,.07);">
+              <p class="section-label mb-1">Question</p>
+              <h4 id="quiz-question" class="mb-0" style="font-size:1.15rem;line-height:1.4;"></h4>
+            </div>
+
+            <div id="quiz-options"></div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <button class="btn-outline" id="btn-prev" onclick="prevQuestion()" style="display:none;"><i class="bi bi-arrow-left"></i> Back</button>
+              <div></div>
+              <button class="btn-accent" id="btn-next" onclick="nextQuestion()" disabled>Next <i class="bi bi-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Results panel -->
+          <div id="quiz-results" style="display:none;text-align:center;">
+            <div class="result-ring">
+              <span class="result-score" id="res-score">0/5</span>
+              <span class="result-label">Score</span>
+            </div>
+            <h3 id="res-title" class="mb-2"></h3>
+            <p id="res-msg" class="text-muted-custom mb-4"></p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+              <button class="btn-accent" onclick="restartQuiz()"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
+              <button class="btn-outline" onclick="switchPage('reflection')"><i class="bi bi-journal-plus"></i> Log Reflection</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ───────────────────────────────────────────────
+       PAGE 3 · AI REFLECTION LOG
+  ─────────────────────────────────────────────── -->
+  <section id="page-reflection" class="page">
+
+    <div class="page-hero">
+      <div class="container-lg">
+        <p class="hero-eyebrow"><i class="bi bi-journal-text me-2"></i>Personal Journal</p>
+        <h1 class="hero-title">AI Reflection Log</h1>
+        <p class="hero-sub">Record your thoughts after each session. The AI analyses your entries and surfaces patterns in your learning.</p>
+      </div>
+    </div>
+
+    <div class="container-lg py-5">
+      <div class="row g-4">
+        <div class="col-lg-8">
+
+          <!-- Add new entry -->
+          <button class="add-log-btn" onclick="toggleLogForm()">
+            <i class="bi bi-plus-circle-fill" style="font-size:1.2rem;color:var(--accent);"></i>
+            <span>Add new reflection entry…</span>
+          </button>
+
+          <div class="log-form-card" id="log-form">
+            <p class="section-label mb-3">New Entry</p>
+            <div class="mb-3">
+              <label class="form-label-custom">What did you learn today?</label>
+              <textarea class="form-control-custom" id="log-what" rows="2" placeholder="Describe the main concept or skill you practised…"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label-custom">What questions still remain?</label>
+              <textarea class="form-control-custom" id="log-questions" rows="2" placeholder="What are you still unclear about?"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label-custom">How confident do you feel?</label>
+              <div class="d-flex gap-2 mt-1 flex-wrap">
+                <button class="mood-chip good"    onclick="selectMood(this,'good')"   ><i class="bi bi-emoji-smile"></i> Confident</button>
+                <button class="mood-chip neutral" onclick="selectMood(this,'neutral')"><i class="bi bi-emoji-neutral"></i> So-so</button>
+                <button class="mood-chip confused"onclick="selectMood(this,'confused')"><i class="bi bi-emoji-dizzy"></i> Confused</button>
+              </div>
+            </div>
+            <div class="d-flex gap-2 mt-3 flex-wrap">
+              <button class="btn-accent" onclick="saveEntry()"><i class="bi bi-check2"></i> Save Entry</button>
+              <button class="btn-outline" onclick="toggleLogForm()">Cancel</button>
+            </div>
+          </div>
+
+          <!-- Existing entries -->
+          <div id="log-entries-container"></div>
+
+        </div>
+
+        <!-- Stats sidebar -->
+        <div class="col-lg-4">
+          <div class="card-custom mb-4">
+            <p class="section-label">Summary</p>
+            <h5 class="mb-3">Your Learning Stats</h5>
+            <div class="d-flex justify-content-between mb-3">
+              <div style="text-align:center;">
+                <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);" id="stat-total">3</div>
+                <div style="font-size:.75rem;color:var(--muted);">Entries</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:#2dab6a;" id="stat-conf">2</div>
+                <div style="font-size:.75rem;color:var(--muted);">Confident</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:#e74c3c;" id="stat-conf2">1</div>
+                <div style="font-size:.75rem;color:var(--muted);">Confused</div>
+              </div>
+            </div>
+            <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:66%;background:linear-gradient(90deg,#2dab6a,#a8d8a8);border-radius:3px;"></div>
+            </div>
+            <p style="font-size:.78rem;color:var(--muted);margin-top:6px;">Confidence rate across all entries</p>
+          </div>
+
+          <div class="card-custom">
+            <p class="section-label">AI Insights</p>
+            <h5 class="mb-3">Pattern Analysis</h5>
+            <div style="font-size:.87rem;color:#4a4845;line-height:1.65;" id="ai-insight">
+              You tend to feel most confident early in the week. Consider revisiting tricky concepts on Fridays to strengthen retention before the weekend.
+            </div>
+            <button class="btn-accent mt-3" style="width:100%;justify-content:center;" onclick="refreshInsight()">
+              <i class="bi bi-stars"></i> Refresh AI Insight
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ───────────────────────────────────────────────
+       PAGE 4 · PERSONALISED CV
+  ─────────────────────────────────────────────── -->
+  <section id="page-cv" class="page">
+
+    <div class="page-hero">
+      <div class="container-lg">
+        <p class="hero-eyebrow"><i class="bi bi-person-vcard me-2"></i>Career Profile</p>
+        <h1 class="hero-title">Personalised CV</h1>
+        <p class="hero-sub">Auto-generated from your learning progress and reflection logs. Download or share with employers.</p>
+      </div>
+    </div>
+
+    <div class="container-lg py-5">
+      <div class="cv-actions mb-4">
+        <button class="btn-accent"><i class="bi bi-download"></i> Download PDF</button>
+        <button class="btn-outline"><i class="bi bi-share"></i> Share Link</button>
+        <button class="btn-outline"><i class="bi bi-pencil"></i> Edit Details</button>
+      </div>
+
+      <div class="cv-wrapper">
+        <div class="row g-0">
+
+          <!-- Sidebar -->
+          <div class="col-md-4 cv-sidebar">
+            <div class="cv-avatar">AJ</div>
+            <div class="cv-name">Alex Johnson</div>
+            <div class="cv-role">Junior Web Developer & AI Learner</div>
+
+            <div class="cv-section-label">Contact</div>
+            <div class="cv-contact-item"><i class="bi bi-envelope-fill"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="67060b021f27020a060e0b4904080a">[email&#160;protected]</a></div>
+            <div class="cv-contact-item"><i class="bi bi-telephone-fill"></i> +61 400 000 000</div>
+            <div class="cv-contact-item"><i class="bi bi-geo-alt-fill"></i> Perth, WA, Australia</div>
+            <div class="cv-contact-item"><i class="bi bi-linkedin"></i> linkedin.com/in/alexj</div>
+            <div class="cv-contact-item"><i class="bi bi-github"></i> github.com/alexj</div>
+
+            <div class="cv-section-label">Skills</div>
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>HTML & CSS</span><span>90%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>JavaScript</span><span>75%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>Python</span><span>60%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>AI / ML Basics</span><span>50%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:50%"></div></div>
+            </div>
+
+            <div class="cv-section-label">Languages</div>
+            <div class="cv-contact-item"><i class="bi bi-translate"></i> English — Native</div>
+            <div class="cv-contact-item"><i class="bi bi-translate"></i> Mandarin — Conversational</div>
+
+            <div class="cv-section-label">Courses Completed</div>
+            <div style="font-size:.8rem;color:#a8a5a0;line-height:1.7;">
+              ✓ LearnFlow: AI Foundations<br>
+              ✓ LearnFlow: Web Dev 101<br>
+              ✓ LearnFlow: Data Literacy
+            </div>
+          </div>
+
+          <!-- Main -->
+          <div class="col-md-8 cv-main">
+
+            <div class="cv-main-section">
+              <div class="cv-main-label">Profile</div>
+              <div class="cv-main-divider"></div>
+              <p style="font-size:.9rem;color:#4a4845;line-height:1.7;">
+                Motivated junior developer with a passion for AI-assisted learning. Completed 3 LearnFlow modules with an average quiz score of 82%. Demonstrated ability to reflect on learning gaps and adapt study strategies through consistent journalling.
+              </p>
+            </div>
+
+            <div class="cv-main-section">
+              <div class="cv-main-label">Education</div>
+              <div class="cv-main-divider"></div>
+              <div class="cv-entry">
+                <div class="cv-entry-header">
+                  <div class="cv-entry-title">Bachelor of Computer Science</div>
+                  <div class="cv-entry-period">2020 – 2023</div>
+                </div>
+                <div class="cv-entry-org">University of Western Australia, Perth</div>
+                <div class="cv-entry-desc">Majored in Software Engineering. Graduated with Distinction. Final year project: AI-powered study scheduler.</div>
+              </div>
+            </div>
+
+            <div class="cv-main-section">
+              <div class="cv-main-label">Experience</div>
+              <div class="cv-main-divider"></div>
+              <div class="cv-entry">
+                <div class="cv-entry-header">
+                  <div class="cv-entry-title">Frontend Developer Intern</div>
+                  <div class="cv-entry-period">Jan – Jun 2024</div>
+                </div>
+                <div class="cv-entry-org">TechStart PTY LTD, Perth</div>
+                <div class="cv-entry-desc">Built responsive UI components in React. Collaborated in agile sprints. Improved page load performance by 30% through code splitting.</div>
+              </div>
+              <div class="cv-entry">
+                <div class="cv-entry-header">
+                  <div class="cv-entry-title">Freelance Web Developer</div>
+                  <div class="cv-entry-period">2023 – Present</div>
+                </div>
+                <div class="cv-entry-org">Self-employed</div>
+                <div class="cv-entry-desc">Designed and delivered 8 client websites using HTML, CSS, Bootstrap, and JavaScript. Managed projects end-to-end from brief to deployment.</div>
+              </div>
+            </div>
+
+            <div class="cv-main-section mb-0">
+              <div class="cv-main-label">Technologies</div>
+              <div class="cv-main-divider"></div>
+              <div>
+                <span class="cv-chip">HTML5</span><span class="cv-chip">CSS3</span><span class="cv-chip">Bootstrap 5</span>
+                <span class="cv-chip">JavaScript</span><span class="cv-chip">React</span><span class="cv-chip">Python</span>
+                <span class="cv-chip">Git & GitHub</span><span class="cv-chip">Figma</span><span class="cv-chip">REST APIs</span>
+                <span class="cv-chip">AI Prompting</span><span class="cv-chip">VS Code</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container-lg">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand">LearnFlow</div>
+        <div class="footer-tagline">Your AI-powered learning companion. Build skills. Track growth. Get hired.</div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="footer-heading">Learn</div>
+        <a class="footer-link" href="#" onclick="switchPage('tutorial');return false;">Tutorial</a>
+        <a class="footer-link" href="#" onclick="switchPage('quiz');return false;">Quiz</a>
+        <a class="footer-link" href="#">Course Library</a>
+        <a class="footer-link" href="#">Certifications</a>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="footer-heading">Account</div>
+        <a class="footer-link" href="#" onclick="switchPage('reflection');return false;">My Reflections</a>
+        <a class="footer-link" href="#" onclick="switchPage('cv');return false;">My CV</a>
+        <a class="footer-link" href="#">Settings</a>
+        <a class="footer-link" href="#">Progress Report</a>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="footer-heading">Company</div>
+        <a class="footer-link" href="#">About Us</a>
+        <a class="footer-link" href="#">Blog</a>
+        <a class="footer-link" href="#">Careers</a>
+        <a class="footer-link" href="#">Contact</a>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="footer-heading">Legal</div>
+        <a class="footer-link" href="#">Privacy Policy</a>
+        <a class="footer-link" href="#">Terms of Use</a>
+        <a class="footer-link" href="#">Cookie Policy</a>
+        <a class="footer-link" href="#">Accessibility</a>
+      </div>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-bottom">
+      <span>© 2025 LearnFlow Pty Ltd. All rights reserved. Made in Perth, WA.</span>
+      <div class="footer-social">
+        <a class="social-icon" href="#"><i class="bi bi-twitter-x"></i></a>
+        <a class="social-icon" href="#"><i class="bi bi-linkedin"></i></a>
+        <a class="social-icon" href="#"><i class="bi bi-github"></i></a>
+        <a class="social-icon" href="#"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ─── Module Tab Navigation ─────────────────────── */
+function switchModule(idx) {
+  document.querySelectorAll('.module-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.module-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('module-' + idx).classList.add('active');
+  document.querySelectorAll('.module-tab')[idx].classList.add('active');
+  // Scroll the tab into view within the tab bar
+  const tab = document.querySelectorAll('.module-tab')[idx];
+  tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  // Scroll page to just below the sticky header + tab bar
+  const tabBarH = document.querySelector('.module-tab-bar').offsetHeight;
+  const navH = document.querySelector('.site-header').offsetHeight;
+  window.scrollTo({ top: navH + tabBarH - 2, behavior: 'smooth' });
+}
+
+/* ─── Page Navigation ───────────────────────────── */
+function switchPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const idx = ['tutorial','quiz','reflection','cv'].indexOf(id);
+  document.querySelectorAll('.nav-btn')[idx].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ─── Copy Code ─────────────────────────────────── */
+function copyCode(btn) {
+  const block = btn.parentElement;
+  const text = block.innerText.replace('Copy','').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 1500);
+  });
+}
+
+/* ─── Quiz Logic ────────────────────────────────── */
+const questions = [
+  {
+    q: "What does 'spaced repetition' mean in the context of learning?",
+    opts: ["Repeating material in random order","Reviewing information at increasing intervals over time","Studying many subjects at once","Taking a space break between lessons"],
+    correct: 1,
+    cat: "Concept"
+  },
+  {
+    q: "Which of the following best describes 'cognitive load'?",
+    opts: ["The physical weight of textbooks","The mental effort used in working memory","How quickly you read","Your motivation to study"],
+    correct: 1,
+    cat: "Theory"
+  },
+  {
+    q: "Why is keeping a reflection log useful for learners?",
+    opts: ["It replaces quizzes","It helps identify knowledge gaps and track progress","It is required by law","It makes learning faster automatically"],
+    correct: 1,
+    cat: "Reflection"
+  },
+  {
+    q: "What is the primary purpose of a personalised CV generated from learning data?",
+    opts: ["To list hobbies","To showcase verified skills and learning progress to employers","To replace a LinkedIn profile","To store passwords"],
+    correct: 1,
+    cat: "Application"
+  },
+  {
+    q: "How many LearnFlow modules has the sample CV user completed?",
+    opts: ["1","2","3","4"],
+    correct: 2,
+    cat: "Reading"
+  }
+];
+
+let currentQ = 0, selectedAnswers = [], currentSelected = null;
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('q-num').textContent = currentQ + 1;
+  document.getElementById('q-category').textContent = q.cat;
+  document.getElementById('quiz-question').textContent = q.q;
+  document.getElementById('quiz-progress').style.width = ((currentQ + 1) / questions.length * 100) + '%';
+
+  const letters = ['A','B','C','D'];
+  let html = '';
+  q.opts.forEach((opt, i) => {
+    html += `<div class="quiz-option" onclick="selectOption(this,${i})">
+      <div class="option-letter">${letters[i]}</div>
+      <div style="font-size:.93rem;">${opt}</div>
+    </div>`;
+  });
+  document.getElementById('quiz-options').innerHTML = html;
+
+  currentSelected = null;
+  document.getElementById('btn-next').disabled = true;
+  document.getElementById('btn-prev').style.display = currentQ > 0 ? 'inline-flex' : 'none';
+  document.getElementById('btn-next').textContent = currentQ === questions.length - 1 ? 'Finish ' : 'Next ';
+  document.getElementById('btn-next').innerHTML = currentQ === questions.length - 1
+    ? 'Finish <i class="bi bi-check-lg"></i>'
+    : 'Next <i class="bi bi-arrow-right"></i>';
+}
+
+function selectOption(el, idx) {
+  document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  currentSelected = idx;
+  document.getElementById('btn-next').disabled = false;
+}
+
+function nextQuestion() {
+  if (currentSelected === null) return;
+  selectedAnswers[currentQ] = currentSelected;
+  if (currentQ < questions.length - 1) {
+    currentQ++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) { currentQ--; renderQuestion(); }
+}
+
+function showResults() {
+  let score = 0;
+  selectedAnswers.forEach((ans, i) => { if (ans === questions[i].correct) score++; });
+  document.getElementById('quiz-panel').style.display = 'none';
+  document.getElementById('quiz-results').style.display = 'block';
+  document.getElementById('res-score').textContent = score + '/' + questions.length;
+
+  const pct = score / questions.length;
+  let title, msg;
+  if (pct === 1)       { title = '🎉 Perfect Score!'; msg = 'Outstanding! You have mastered this module.'; }
+  else if (pct >= 0.6) { title = '✅ Well Done!'; msg = 'Good result — review the questions you missed to push higher.'; }
+  else                 { title = '📖 Keep Practising'; msg = 'Revisit the tutorial and try again. You\'ve got this!'; }
+
+  document.getElementById('res-title').textContent = title;
+  document.getElementById('res-msg').textContent = msg;
+}
+
+function restartQuiz() {
+  currentQ = 0; selectedAnswers = []; currentSelected = null;
+  document.getElementById('quiz-panel').style.display = 'block';
+  document.getElementById('quiz-results').style.display = 'none';
+  renderQuestion();
+}
+
+/* ─── Reflection Log ────────────────────────────── */
+let selectedMood = 'neutral';
+
+const defaultEntries = [
+  {
+    prompt: "Understanding spaced repetition",
+    body: "I finally grasped why reviewing material at increasing intervals works better than cramming. The forgetting curve visualisation made it click.",
+    mood: "good",
+    date: "28 Mar 2025",
+    tag: "Module 1"
+  },
+  {
+    prompt: "Cognitive load — still uncertain",
+    body: "I understand the concept in theory but I'm not sure how to apply it when designing my own study schedule. Need more practical examples.",
+    mood: "confused",
+    date: "26 Mar 2025",
+    tag: "Module 1"
+  },
+  {
+    prompt: "Reflection log benefits",
+    body: "Keeping this log is already making me more aware of what I understand versus what I just think I understand. Good habit to build.",
+    mood: "neutral",
+    date: "24 Mar 2025",
+    tag: "Module 1"
+  }
+];
+
+function renderEntries() {
+  const container = document.getElementById('log-entries-container');
+  const moodIcon = { good:'bi-emoji-smile', neutral:'bi-emoji-neutral', confused:'bi-emoji-dizzy' };
+  const moodLabel = { good:'Confident', neutral:'So-so', confused:'Confused' };
+  container.innerHTML = defaultEntries.map(e => `
+    <div class="log-entry">
+      <div class="log-entry-header">
+        <div>
+          <span class="tag">${e.tag}</span>
+          <div class="log-prompt">${e.prompt}</div>
+        </div>
+        <span class="log-date">${e.date}</span>
+      </div>
+      <div class="log-body">${e.body}</div>
+      <div class="log-meta">
+        <span class="mood-chip ${e.mood}"><i class="bi ${moodIcon[e.mood]}"></i> ${moodLabel[e.mood]}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleLogForm() {
+  const f = document.getElementById('log-form');
+  f.classList.toggle('open');
+  if (f.classList.contains('open')) f.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function selectMood(el, mood) {
+  document.querySelectorAll('#log-form .mood-chip').forEach(c => c.style.outline = 'none');
+  el.style.outline = '2px solid var(--accent)';
+  selectedMood = mood;
+}
+
+function saveEntry() {
+  const what = document.getElementById('log-what').value.trim();
+  if (!what) { alert('Please describe what you learned.'); return; }
+  defaultEntries.unshift({
+    prompt: what,
+    body: document.getElementById('log-questions').value || 'No questions noted.',
+    mood: selectedMood,
+    date: new Date().toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'}),
+    tag: 'Module 1'
+  });
+  document.getElementById('log-what').value = '';
+  document.getElementById('log-questions').value = '';
+  selectedMood = 'neutral';
+  renderEntries();
+  updateStats();
+  toggleLogForm();
+}
+
+function updateStats() {
+  document.getElementById('stat-total').textContent = defaultEntries.length;
+  document.getElementById('stat-conf').textContent  = defaultEntries.filter(e=>e.mood==='good').length;
+  document.getElementById('stat-conf2').textContent = defaultEntries.filter(e=>e.mood==='confused').length;
+}
+
+const insights = [
+  "You tend to feel most confident early in the week. Consider revisiting tricky concepts on Fridays to strengthen retention before the weekend.",
+  "Your confused entries cluster around abstract concepts. Try sketching diagrams or finding a concrete analogy to anchor the idea.",
+  "You log reflections most consistently after quizzes. Keep that habit — it's one of the strongest predictors of long-term retention.",
+  "Entries marked 'So-so' often become 'Confident' after a follow-up session. Schedule a review within 48 hours for best results."
+];
+
+function refreshInsight() {
+  const el = document.getElementById('ai-insight');
+  el.style.opacity = 0;
+  setTimeout(() => {
+    el.textContent = insights[Math.floor(Math.random() * insights.length)];
+    el.style.transition = 'opacity .4s';
+    el.style.opaci
