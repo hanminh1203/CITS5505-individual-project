@@ -19,6 +19,10 @@ export class StorageService {
             return [];
         }
     }
+
+    clear() {
+        localStorage.removeItem(storageService.STORAGE_KEY);
+    }
 }
 
 export const component = new StorageService();

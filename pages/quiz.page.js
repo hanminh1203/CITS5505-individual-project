@@ -201,8 +201,6 @@ export class QuizComponent {
     }
 
     renderFeedback(result) {
-        this.renderCurrentResult(result);
-
         this.questions.forEach((question) => {
             const questionElement = this.getQuestionElement(question);
             questionElement.find('.question-option').removeClass('clickable');
@@ -224,6 +222,7 @@ export class QuizComponent {
     }
 
     renderResultsPanel(result, results) {
+        this.renderCurrentResult(result);
         this.hideElement(this.elements.controlButtons);
         this.showElement(this.elements.resetButton);
         this.elements.resultsList.html(this.renderResultRows(results));
@@ -267,7 +266,7 @@ export class QuizComponent {
     }
 
     onClearResults() {
-        localStorage.removeItem(storageService.STORAGE_KEY);
+        storageService.clear();
         this.elements.resultsList.html(this.renderResultRows([]));
     }
 
@@ -320,14 +319,13 @@ export class QuizComponent {
         if (results.length) {
             return results.map((line) => $('<tr></tr>')
                 .append($('<td></td>').text(new Date(line.date).toLocaleString()))
-                .append($('<td></td>').text(line.score))
-                .append($('<td></td>').text(line.percentage))
+                .append($('<td></td>').text(`${line.score} (${line.percentage})`))
                 .append($('<td></td>')
                     .addClass(line.isPassed ? 'text-success' : 'text-danger')
                     .text(line.isPassed ? 'Passed' : 'Failed')));
         }
 
-        return '<tr><td colspan="4" class="text-center">No results yet.</td></tr>';
+        return '<tr><td colspan="3" class="text-center">No results yet.</td></tr>';
     }
 
     resetState() {
