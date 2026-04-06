@@ -32,10 +32,6 @@
     box-shadow: 0 4px 20px rgba(13, 13, 20, .07);
 }
 
-.question-header:hover {
-    transform: translateY(-3px);
-}
-
 .question-option {
     display: flex;
     align-items: center;
@@ -68,6 +64,8 @@
 .question-option.clickable:hover {
     border-color: var(--accent-color);
     background: var(--tag-bg-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(13,13,20,.09);
 }
 
 .question-option.selected:not(.success):not(.error) {
