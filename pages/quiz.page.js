@@ -185,7 +185,7 @@ export class QuizComponent {
             const reward = await $.get('https://foodish-api.com/api/');
             if (reward.image) {
                 this.toggleRewardState(modal, true);
-                modal.find('#reward-image').attr('src', reward.image);
+                modal.find('#reward-image').append($('<img>').attr('src', reward.image).addClass('img-thumbnail').attr('alt', 'Failed to load reward image'));
                 return;
             }
         } catch {
@@ -319,7 +319,7 @@ export class QuizComponent {
         if (results.length) {
             return results.map((line) => $('<tr></tr>')
                 .append($('<td></td>').text(new Date(line.date).toLocaleString()))
-                .append($('<td></td>').text(`${line.score} (${line.percentage})`))
+                .append($('<td></td>').text(`${line.score} (${line.percentage}%)`))
                 .append($('<td></td>')
                     .addClass(line.isPassed ? 'text-success' : 'text-danger')
                     .text(line.isPassed ? 'Passed' : 'Failed')));
