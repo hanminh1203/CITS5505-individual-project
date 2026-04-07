@@ -204,13 +204,13 @@ export class QuizComponent {
         this.questions.forEach((question) => {
             const questionElement = this.getQuestionElement(question);
             questionElement.find('.question-option').removeClass('clickable');
-            questionElement.find(`.question-option[app-option=${question.answer}]`).addClass('success');
+            questionElement.find(`.question-option[data-app-option=${question.answer}]`).addClass('success');
 
             if (result.correctAnswers.includes(question.id)) {
                 this.setFeedbackMessage(question, false, QUIZ_MESSAGE.correct);
             } else {
                 this.setFeedbackMessage(question, true, `Incorrect! The correct answer is: ${question.options[question.answer]}`);
-                questionElement.find(`.question-option[app-option=${question.selected}]`).addClass('error');
+                questionElement.find(`.question-option[data-app-option=${question.selected}]`).addClass('error');
             }
         });
     }
@@ -276,8 +276,8 @@ export class QuizComponent {
         }
 
         const selectedOption = $(event.currentTarget);
-        const questionId = selectedOption.attr('app-question-id');
-        const selectedAnswer = parseInt(selectedOption.attr('app-option'));
+        const questionId = selectedOption.attr('data-app-question-id');
+        const selectedAnswer = parseInt(selectedOption.attr('data-app-option'));
         const question = this.questions.find((currentQuestion) => currentQuestion.id === questionId);
 
         selectedOption.addClass('selected').siblings().removeClass('selected');

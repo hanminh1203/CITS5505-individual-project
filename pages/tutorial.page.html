@@ -1,36 +1,36 @@
-<section class="page-header">
+<div class="page-header">
     <div class="container">
         <div class="page-name"><i class="bi bi-book me-2"></i>Tutorial</div>
-        <h1 class="page-title">Getting Started with HTML, CSS, JS</h1>
+        <div class="page-title">Getting Started with HTML, CSS, JS</div>
         <div class="page-subtitle">
             Read below to build a solid foundation before testing your knowledge in the quiz.
         </div>
     </div>
-</section>
+</div>
 <div class="module-tab-bar">
     <div class="container d-flex">
-        <button class="module-tab active" app-module-tab-name="html">
+        <button class="module-tab active" data-app-module-tab-name="html">
             <span class="tab-num">1</span>
             HTML</button>
-        <button class="module-tab" app-module-tab-name="css">
+        <button class="module-tab" data-app-module-tab-name="css">
             <span class="tab-num">2</span>
             CSS</button>
-        <button class="module-tab" app-module-tab-name="javascript">
+        <button class="module-tab" data-app-module-tab-name="javascript">
             <span class="tab-num">3</span>
             JavaScript</button>
     </div>
 </div>
-<section class="lesson active" app-module-name="html">
+<section class="lesson active" data-app-module-name="html">
     <div class="container pt-3 pb-3">
-        <div class="title">Module: HTML</div>
+        <h2 class="title">Module: HTML</h2>
         <div class="content">
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">1</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">1</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>What is HTML?</h2>
+                    <h2>What is HTML?</h2>
                     <p><strong>HTML (Hyper Text Markup Language)</strong> was originally defined as a type of SGML in
                         1990,
                         by Tim Berners-Lee.<br>HTML5 was a significant revamp of the language released in 2008.</p>
@@ -40,7 +40,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Interoperability</h5>
+                                        <div class="flip-card-front-text">Interoperability</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -54,7 +54,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Graceful Error Recovery</h5>
+                                        <div class="flip-card-front-text">Graceful Error Recovery</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -68,7 +68,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Backwards Compatibility</h5>
+                                        <div class="flip-card-front-text">Backwards Compatibility</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -82,7 +82,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Prioritize Users</h5>
+                                        <div class="flip-card-front-text">Prioritize Users</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -97,7 +97,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Separation of Concerns</h5>
+                                        <div class="flip-card-front-text">Separation of Concerns</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -114,11 +114,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">2</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">2</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Document Structure</h2>
+                    <h2>Document Structure</h2>
                     <p>An HTML document is a <strong>tree data structure</strong> made of elements. Most elements
                         consist of an <strong>opening tag</strong>, content, and a <strong>closing tag</strong>.</p>
                     <pre><code>&lt;!DOCTYPE html&gt;
@@ -138,11 +138,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">3</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">3</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Text and Semantic Content</h2>
+                    <h2>Text and Semantic Content</h2>
                     <p>HTML provides various tags to define the meaning of text:</p>
                     <ul>
                         <li><code>&lt;h1&gt;</code> to <code>&lt;h4&gt;</code>: Headings of varying importance.</li>
@@ -161,11 +161,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">4</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">4</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Images and Hyperlinks</h2>
+                    <h2>Images and Hyperlinks</h2>
                     <p>All HTML tags can have a list of attributes which appear between its name and the right bracket
                         of
                         the opening tag.</p>
@@ -175,8 +175,7 @@
                         <code>alt</code> attribute provides text for if the image can't be displayed or for screen
                         readers.
                     </p>
-                    <pre
-                        class="flex-fill mb-0 me-3"><code>&lt;img
+                    <pre class="flex-fill mb-0 me-3"><code>&lt;img
   src="https://imgs.xkcd.com/comics/university.png"
   alt="Pointed advice on university website design"
   style="width:500px"&gt;</code></pre>
@@ -193,11 +192,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">5</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">5</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Organizing Data: Lists and Tables</h2>
+                    <h2>Organizing Data: Lists and Tables</h2>
                     <div class="content-subheader">Lists</div>
                     <p>HTML supports <strong>Ordered Lists</strong> (<code>&lt;ol&gt;</code>) for numbered items and
                         <strong>Unordered Lists</strong> (<code>&lt;ul&gt;</code>) for bullet points. Items are defined
@@ -224,11 +223,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">6</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">6</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Layout and Grouping</h2>
+                    <h2>Layout and Grouping</h2>
                     <p>To group elements for formatting or layout, HTML uses <strong>Block</strong> and
                         <strong>Inline</strong> containers:
                     </p>
@@ -245,11 +244,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">7</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">7</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Forms and Interaction</h2>
+                    <h2>Forms and Interaction</h2>
                     <p>The <code>&lt;form&gt;</code> element is the standard way to send data from the browser to a
                         server
                         .</p>
@@ -266,22 +265,22 @@
             </section>
         </div>
         <div class="d-flex mt-4">
-            <button class="btn-outline flex-fill justify-content-center" app-module-tab-name="css"
-            ><i class="bi bi-arrow-right me-2"></i>Next module</button>
+            <button class="btn-outline flex-fill justify-content-center" data-app-module-tab-name="css"><i
+                    class="bi bi-arrow-right me-2"></i>Next module</button>
         </div>
     </div>
 </section>
-<section class="lesson" app-module-name="css">
+<section class="lesson" data-app-module-name="css">
     <div class="container pt-3 pb-3">
-        <div class="title">Module: CSS (Cascading Style Sheets)</div>
+        <h2 class="title">Module: CSS (Cascading Style Sheets)</h2>
         <div class="content">
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">1</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">1</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>What is CSS?</h2>
+                    <h2>What is CSS?</h2>
                     <div>CSS stands for <em>Cascading Style Sheets</em>
                         <ul>
                             <li>a stylesheet language for the web</li>
@@ -298,7 +297,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Speed</h5>
+                                        <div class="flip-card-front-text">Speed</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -313,7 +312,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Maintainability</h5>
+                                        <div class="flip-card-front-text">Maintainability</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -327,7 +326,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Accessibility</h5>
+                                        <div class="flip-card-front-text">Accessibility</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -342,7 +341,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Portability</h5>
+                                        <div class="flip-card-front-text">Portability</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -356,7 +355,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Reduced work</h5>
+                                        <div class="flip-card-front-text">Reduced work</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -370,7 +369,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front card">
                                     <div class="card-body d-flex text-center justify-content-center align-items-center">
-                                        <h5>Consistency</h5>
+                                        <div class="flip-card-front-text">Consistency</div>
                                     </div>
                                 </div>
                                 <div class="flip-card-back card">
@@ -388,11 +387,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">2</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">2</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Applying CSS to Your Documents</h2>
+                    <h2>Applying CSS to Your Documents</h2>
                     <p>There are three primary ways to include CSS in your project:</p>
 
                     <h3>A. Inline Styles</h3>
@@ -420,11 +419,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">3</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">3</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Selectors: Targeting Elements</h2>
+                    <h2>Selectors: Targeting Elements</h2>
                     <p>A <strong>selector</strong> determines which HTML elements a style rule applies to.</p>
                     <ul>
                         <li><strong>Universal Selector (<code>*</code>):</strong> Matches all elements on the page.</li>
@@ -454,11 +453,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">4</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">4</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>The Box Model</h2>
+                    <h2>The Box Model</h2>
                     <p>Every element is laid out as <strong>four boxes</strong> that control spacing and borders.</p>
                     <ol>
                         <li><strong>Content:</strong> Where the actual element (text/image) is rendered.</li>
@@ -485,16 +484,17 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">5</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">5</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Common Properties</h2>
+                    <h2>Common Properties</h2>
                     <h3>Fonts and Text</h3>
                     <ul>
                         <li><strong>font-size:</strong> Sets the size using numbers or names (e.g.,
                             <code>xx-large</code>)
-                            .</li>
+                            .
+                        </li>
                         <li><strong>text-align:</strong> Controls alignment (<code>left</code>, <code>center</code>,
                             <code>right</code>, or <code>justify</code>).
                         </li>
@@ -557,11 +557,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">6</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">6</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Layout and Conflict Resolution</h2>
+                    <h2>Layout and Conflict Resolution</h2>
                     <p>By default, elements follow <strong>normal flow</strong>, appearing sequentially above each other
                         . This can be overridden using:</p>
                     <ul>
@@ -584,11 +584,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">7</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">7</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Modern Styling with Frameworks</h2>
+                    <h2>Modern Styling with Frameworks</h2>
                     <p>Manually laying out pages with raw CSS is difficult and must account for many device sizes.
                         <strong>CSS Frameworks</strong> like <strong>Bootstrap</strong> are open-source libraries that
                         provide pre-built, responsive components. Bootstrap uses a <strong>12-column grid
@@ -598,22 +598,22 @@
             </section>
         </div>
         <div class="d-flex mt-4">
-            <button class="btn-outline flex-fill justify-content-center" app-module-tab-name="javascript"
-            ><i class="bi bi-arrow-right me-2"></i>Next module</button>
+            <button class="btn-outline flex-fill justify-content-center" data-app-module-tab-name="javascript"><i
+                    class="bi bi-arrow-right me-2"></i>Next module</button>
         </div>
     </div>
 </section>
-<section class="lesson" app-module-name="javascript">
+<section class="lesson" data-app-module-name="javascript">
     <div class="container pt-3 pb-3">
-        <div class="title">Module: Javascript</div>
+        <h2 class="title">Module: Javascript</h2>
         <div class="content">
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">1</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">1</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>What is JavaScript?</h2>
+                    <h2>What is JavaScript?</h2>
                     <p><strong>JavaScript</strong> is a high-level, dynamic, untyped, and interpreted programming
                         language
                         standardized in the <strong>ECMAScript</strong> specification. Along with HTML and CSS, it is
@@ -634,11 +634,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">2</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">2</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Execution, I/O, and Debugging</h2>
+                    <h2>Execution, I/O, and Debugging</h2>
                     <h3>Execution Environments</h3>
                     <p>JavaScript primarily runs in <strong>Browsers</strong>, where it can interact with the internal
                         model
@@ -670,11 +670,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">3</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">3</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Syntax and Variables</h2>
+                    <h2>Syntax and Variables</h2>
                     <p>JavaScript syntax is flexible but has specific rules:</p>
                     <ul>
                         <li><strong>Semicolons:</strong> Statements should end with <code>;</code>, though the
@@ -711,11 +711,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">4</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">4</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Data Types and Coercion</h2>
+                    <h2>Data Types and Coercion</h2>
                     <p>JavaScript uses <strong>Dynamic Typing</strong>, meaning variables can hold any type of value at
                         any
                         time.</p>
@@ -746,11 +746,11 @@
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">5</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">5</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Control Structures and Arrays</h2>
+                    <h2>Control Structures and Arrays</h2>
                     <h3>Program Flow</h3>
                     <p>Standard structures include <code>if-else</code>, <code>switch</code>, and the <strong>ternary
                             operator</strong> (<code>condition ? val1 : val2</code>). Loops include <code>for</code>,
@@ -771,16 +771,17 @@ console.log(fruits.length); // returns 2</code></pre>
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">6</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">6</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Functions</h2>
+                    <h2>Functions</h2>
                     <p>Functions are <strong>first-class objects</strong>. They must be defined before use.</p>
                     <ul>
                         <li><strong>Parameters:</strong> JavaScript is lax; missing arguments are
                             <code>undefined</code>,
-                            and extra arguments are stored in the <code>arguments</code> property array.</li>
+                            and extra arguments are stored in the <code>arguments</code> property array.
+                        </li>
                         <li><strong>Passing:</strong> Primitives are passed by <strong>Value</strong>; Objects are
                             passed by
                             <strong>Sharing</strong> (references can be used to change the object).
@@ -793,11 +794,11 @@ console.log(fruits.length); // returns 2</code></pre>
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">7</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">7</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Objects and Prototypes</h2>
+                    <h2>Objects and Prototypes</h2>
                     <p>Objects are collections of name-value pairs, created quickly with <code>{ ... }</code>.
                         Properties are accessed via dot <code>.</code> or <code>[]</code> notation.</p>
                     <h3>Prototypes and Inheritance</h3>
@@ -820,11 +821,11 @@ console.log(fruits.length); // returns 2</code></pre>
 
             <section class="lesson-point">
                 <div class="point-header">
-                <div class="point-number">8</div>
-                <div class="point-connector"></div>
+                    <div class="point-number">8</div>
+                    <div class="point-connector"></div>
                 </div>
                 <div class="point-content">
-                <h2>Scoping and Closures</h2>
+                    <h2>Scoping and Closures</h2>
                     <p>Scoping determines variable visibility: <strong>Global</strong> (accessible anywhere),
                         <strong>Function</strong> (inside a function), or <strong>Block</strong> (inside
                         <code>{}</code>)

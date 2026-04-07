@@ -1,12 +1,12 @@
-<section class="page-header">
+<div class="page-header">
     <div class="container">
         <div class="page-name"><i class="bi bi-patch-question me-2"></i>Knowledge check</div>
-        <h1 class="page-title">Test What You Know</h1>
+        <div class="page-title">Test What You Know</div>
         <div class="page-subtitle">
             Pick your answers and see how you go! Get at least 7 right answer to win a reward. Take your time - there's no time limit.
         </div>
     </div>
-</section>
+</div>
 <div class="container p-4">
     <form id="quiz-container">
     </form>
@@ -19,7 +19,7 @@
                 <div class="result-ring">
                     <span class="result-score" id="res-score"></span>
                 </div>
-                <h3 class="result-message" id="res-message"></h3>
+                <div class="result-message" id="res-message"></div>
                 <div class="result-description" id="res-description"></div>
             </div>
             <h3 class="mb-3">History</h3>
@@ -44,8 +44,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="reward-popup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="reward-popup-label" aria-hidden="true">
+<div class="modal fade" id="reward-popup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -54,7 +53,7 @@
             </div>
             <div class="modal-body">
                 <div id="reward-popup-image-success" class="d-block">
-                    <img id="reward-image" class="img-thumbnail" alt="Failed to load reward image">
+                    <img id="reward-image" src="reward" class="img-thumbnail" alt="Failed to load reward image">
                     <div>
                         Congratulations! You earn yourself a picture of gorgeous gourmet cuisine.
                     </div>

@@ -67,7 +67,7 @@
     },
     {
         "id": "CITS-HTML-007",
-        "question": "When representing durations in a <time> element, what prefix is used for days?",
+        "question": "When representing durations in a &lt;time&gt; element, what prefix is used for days?",
         "options": [
             "P",
             "T",

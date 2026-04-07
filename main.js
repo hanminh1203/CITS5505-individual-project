@@ -49,7 +49,7 @@ $(document).ready(() => {
             return;
         }
 
-        $('link[app-style-sheet]').remove();
+        $('link[data-app-style-sheet]').remove();
 
         destroyCurrentComponent();
 
@@ -58,7 +58,7 @@ $(document).ready(() => {
                 initializeRouteScript(routeConfig);
             });
             if (routeConfig.css) {
-                $('head').append($('<link rel="stylesheet">').attr('href', routeConfig.css).attr('app-style-sheet', true));
+                $('head').append($('<link rel="stylesheet">').attr('href', routeConfig.css).attr('data-app-style-sheet', true));
             }
             $('main').removeClass().addClass(hash);
             updateActiveNavigation(hash);
@@ -93,4 +93,3 @@ $(document).click((event) => {
         event.preventDefault();
     }
 })
-

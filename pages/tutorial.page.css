@@ -2,6 +2,7 @@
     font-size: 2rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
+    line-height: 1.5;
 }
 
 .lesson .title::after {
@@ -184,6 +185,12 @@ pre code {
 
 .flip-card-front {
     color: black;
+}
+
+.flip-card-front-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
 .flip-card-back {
