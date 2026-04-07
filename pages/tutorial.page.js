@@ -25,7 +25,7 @@ class TutorialComponent {
         });
 
         $('.box-model').on('mouseover', (event) => {
-            const hoveredBox = event.currentTarget;
+            const hoveredBox = event.target;
             $('.box-model').each((_, element) => {
                 $(element).toggleClass('box-white', element !== hoveredBox);
             });
