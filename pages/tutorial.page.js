@@ -35,13 +35,19 @@ class TutorialComponent {
 
         $('button[data-app-module-tab-name]').on('click', (event) => {
             const moduleName = $(event.currentTarget).attr('data-app-module-tab-name');
-            $(`button[data-app-module-tab-name="${moduleName}"]`).addClass('active').siblings('button').removeClass('active');
-            $(`.lesson[data-app-module-name="${moduleName}"]`).addClass('active').siblings('.lesson').removeClass('active');
-            const pageHeader = $('.page-header');
-            $('#scrolling-div')[0].scrollTo({
-                top: pageHeader[0].offsetTop + pageHeader[0].offsetHeight,
-                behavior: 'smooth'
-            });
+            this.changeTab(moduleName);
+        });
+    }
+
+    changeTab(moduleName) {
+        $(`button[data-app-module-tab-name="${moduleName}"]`).addClass('active').siblings('button').removeClass('active');
+        $(`.lesson[data-app-module-name="${moduleName}"]`).addClass('active').siblings('.lesson').removeClass('active');
+
+        // scroll to the top of the module content
+        const pageHeader = $('.page-header');
+        $('#scrolling-div')[0].scrollTo({
+            top: pageHeader[0].offsetTop + pageHeader[0].offsetHeight,
+            behavior: 'smooth'
         });
     }
 }
